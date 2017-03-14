@@ -5,11 +5,12 @@
 #include "repository.h"
 #include "controller.h"
 #include "ui.h"
+#include "dynamic_array.h"
 
 
 
 int main() {
-
+	
 	test_controller();
 	test_repo();
 	OfferRepo *r = create_repo();
@@ -42,7 +43,6 @@ int main() {
 
 	start_ui(ui);
 	delete_ui(ui);
-	
 	
 	_CrtDumpMemoryLeaks();
 	system("pause");

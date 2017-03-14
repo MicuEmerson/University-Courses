@@ -21,7 +21,6 @@ int main()
 	destroyUI(ui);
 
 	_CrtDumpMemoryLeaks();
-	
+
 	return 0;
-	
 }

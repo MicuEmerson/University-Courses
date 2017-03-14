@@ -24,8 +24,9 @@ void menu() {
 	printf("4) List Offers\n");
 	printf("5) Display All The Tourism Offer Contain A Given String \n");
 	printf("6) Display All Offers Of A Given Type, Starting From A Given Date\n");
-	printf("7) Undo\n");
-	printf("8) Redo\n");
+	printf("7) Display All Offers Having A Given Type And A Price Less Than A Given Value, Sorted Ascending By Price\n");
+	printf("8) Undo\n");
+	printf("9) Redo\n");
 	printf("0) Exit\n\n");
 
 }
@@ -113,6 +114,7 @@ void print_filter_date(UI *ui, char *type, int d, int m, int y) {
 }
 
 
+
 void start_ui(UI* ui) {
 
 	printf("\t TOURISM AGENCY  \n\n");
@@ -180,9 +182,20 @@ void start_ui(UI* ui) {
 
 		}
 		else if (cmd == 7) {
-			;
+			
+			printf("Type: ");
+			scanf("%s", &type);
+			printf("Price: ");
+			scanf("%d", &p);
+
+			printf("\n");
+			filter_price(ui->ctrl, &type, p);
+			printf("\n");
 		}
 		else if (cmd == 8) {
+			;
+		}
+		else if (cmd == 9) {
 			;
 		}
 		else if (cmd == 0) {
@@ -193,6 +206,4 @@ void start_ui(UI* ui) {
 		}
 
 	}
-
-
 }

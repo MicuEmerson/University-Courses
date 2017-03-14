@@ -101,8 +101,8 @@ void test_repo() {
 	idx = find_offer(r, "Retezat", 14, 9, 2017, 250);
 	assert(idx == 3);
 	
-	update_offer_repo(r, "Retezat", 14, 9, 2017, "Mountain", "Cluj", 1, 1, 1, 1);
-	assert(strcmp(r->vec[3]->destination, "Cluj") == 0);
+	update_offer_repo(r, "Retezat", 14, 9, 2017, "Mountain", "Clujasdasdsadas", 1, 1, 1, 1);
+	assert(strcmp(r->vec[3]->destination, "Clujasdasdsadas") == 0);
 	assert(r->vec[3]->price == 1);
 	assert(r->vec[3]->day == 1);
 	assert(r->vec[3]->mounth == 1);
@@ -112,7 +112,7 @@ void test_repo() {
 	assert(r->n == 3);
 	delete_offer(r, "Maldive", 11, 12, 2017);
 	assert(r->n == 3);
-	delete_offer(r, "Cluj", 1, 1, 1, 1);
+	delete_offer(r, "Clujasdasdsadas", 1, 1, 1, 1);
 	assert(r->n == 2);
 	
 	free_repo(r);

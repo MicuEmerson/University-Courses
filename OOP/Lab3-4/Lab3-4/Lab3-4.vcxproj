@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="controller.c" />
     <ClCompile Include="domain.c" />
+    <ClCompile Include="dynamic_array.c" />
     <ClCompile Include="repository.c" />
     <ClCompile Include="Source.c" />
     <ClCompile Include="ui.c" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="controller.h" />
     <ClInclude Include="domain.h" />
+    <ClInclude Include="dynamic_array.h" />
     <ClInclude Include="repository.h" />
     <ClInclude Include="ui.h" />
   </ItemGroup>

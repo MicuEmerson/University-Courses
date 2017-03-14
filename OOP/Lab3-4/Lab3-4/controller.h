@@ -42,3 +42,16 @@ OfferRepo* filter_destination(Controller *ctrl, char *destination);
         
 */
 OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int year);
+
+/*
+In this function we filter the repo. The condition for passing the filter is to have the same type like an given type, and the price
+should be less then a given value
+Input:
+- Controller *ctrl = pointer to a Controller structure
+- char *type = given type
+- int price = the given price
+Output:
+- Return a pointer to an new repository where our offer are filtred
+
+*/
+void filter_price(Controller *ctrl, char *type, int price);

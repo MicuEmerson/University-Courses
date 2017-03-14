@@ -1,5 +1,6 @@
 #include "UI.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 UI* createUI(Controller* c)
 {

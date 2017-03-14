@@ -5,7 +5,6 @@
 #include <assert.h>
 
 
-
 Controller *create_ctrl(OfferRepo *r) {
 
 	Controller *ctrl = (Controller *)malloc(sizeof(Controller));
@@ -43,7 +42,6 @@ void swap(Offer **a, Offer **b) {
 	Offer *aux = *a;
 	*a = *b;
 	*b = aux;
-
 }
 
 OfferRepo* filter_destination(Controller *ctrl, char *destination) {
@@ -58,16 +56,13 @@ OfferRepo* filter_destination(Controller *ctrl, char *destination) {
 			add_offer(repo, y);
 		}
 	}
-
-	 
+ 
 	for (i = 0; i < repo->n; i++) 
 		for (j = i; j < repo->n; j++) 
 			if (repo->vec[i]->price > repo->vec[j]->price) 
 				swap(&repo->vec[i], &repo->vec[j]);
-				
-		
+						
 	return repo;
-	
 }
 
 OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int year) {
@@ -85,6 +80,29 @@ OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int ye
 	return repo;
 }
 
+void filter_price(Controller *ctrl, char *type, int price) {
+
+	OfferRepo *repo = create_repo();
+	int i, j;
+	for (i = 0; i < ctrl->r->n; i++) {
+		if (strcmp(ctrl->r->vec[i]->type, type) == 0)
+			if (ctrl->r->vec[i]->price < price) {
+				Offer *y = create_offer(ctrl->r->vec[i]->type, ctrl->r->vec[i]->destination, ctrl->r->vec[i]->day, ctrl->r->vec[i]->mounth, ctrl->r->vec[i]->year, ctrl->r->vec[i]->price);
+				add_offer(repo, y);
+			}
+	}
+
+	for (i = 0; i < repo->n; i++)
+		for (j = i; j < repo->n; j++)
+			if (repo->vec[i]->price > repo->vec[j]->price)
+				swap(&repo->vec[i], &repo->vec[j]);
+
+	print_repo(repo);
+	free_repo(repo);
+
+}
+
+
 void init_for_test(Controller *ctrl) {
 
 	Offer *a = create_offer("Seaside", "Maldive", 11, 12, 2017, 825);
@@ -97,6 +115,7 @@ void init_for_test(Controller *ctrl) {
 	add_offer_ctrl(ctrl, c);
 	add_offer_ctrl(ctrl, d);
 }
+
 
 void test_filter_date() {
 
@@ -143,7 +162,6 @@ void test_filter_destination() {
 	assert(repo2->n == 0);
 	free_repo(repo2);
 
-
 	free_ctrl(ctrl);
 }
 
@@ -151,5 +169,4 @@ void test_controller() {
 
 	test_filter_date();
 	test_filter_destination();
-
 }

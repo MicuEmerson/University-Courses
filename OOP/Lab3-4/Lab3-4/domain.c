@@ -38,6 +38,8 @@ void print_offer(Offer* x){
 void update_offer(Offer *x, char *type, char *dest, int day, int mounth, int year, int price) {
 
 	strcpy(x->type, type);
+	free(x->destination);
+	x->destination = (char*)malloc(strlen(dest) + 1);
 	strcpy(x->destination, dest);
 	x->day = day;
 	x->mounth = mounth;
