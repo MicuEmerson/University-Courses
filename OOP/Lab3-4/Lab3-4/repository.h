@@ -59,7 +59,7 @@ Params:
 Output:
 	- Return 0 if no such an offer in repository, else return 1 if the update operation was made
 */
-int update_offer_repo(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2);
+int update_offer(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2);
 
 
 /*
@@ -88,6 +88,12 @@ Ouput:
 	- return -1 if x is not in repo, else return 1 if we delete it
 */
 int delete_offer(OfferRepo *v, char *dest, int d, int m, int y);
+
+
+/*
+#TODO
+*/
+OfferRepo* copy_repo(OfferRepo *r);
 
 void test_repo();
 

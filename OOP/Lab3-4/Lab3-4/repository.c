@@ -11,11 +11,6 @@ OfferRepo *create_repo() {
 
 void free_repo(OfferRepo *r) {
 	
-	int i;
-	
-	for (i = 0; i < r->arr->n; i++) 
-		free_offer(r->arr->vec[i]);
-	
 	free_dynamicArr(r->arr);
 	free(r);
 }
@@ -43,7 +38,7 @@ int find_offer(OfferRepo *r, char *dest, int d1, int m1, int y1) {
 	return -1;
 }
 
-int update_offer_repo(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2) {
+int update_offer(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2) {
 	
 	int idx = find_offer(r, dest1, d1, m1, y1);
 	if (idx == -1)
@@ -52,6 +47,7 @@ int update_offer_repo(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *t
 	delete_offer(r, dest1, d1, m1, y1);
 	Offer *x = create_offer(type2, dest2, d2, m2, y2, p2);
 	int status = add_offer(r, x);
+
 	if (status == 0) {
 		free(x);
 		return 0;
@@ -77,6 +73,17 @@ void print_repo(OfferRepo *r) {
 	int i;
 	for (i = 0; i < r->arr->n; i++)
 		print_offer(r->arr->vec[i]);
+}
+
+OfferRepo *copy_repo(OfferRepo *r) {
+
+	int i;
+	OfferRepo *r2 = create_repo();
+	for (i = 0; i < r->arr->n; i++) {
+		Offer *x = create_offer(r->arr->vec[i]->type, r->arr->vec[i]->destination, r->arr->vec[i]->day, r->arr->vec[i]->mounth, r->arr->vec[i]->year, r->arr->vec[i]->price);
+		add_offer(r2, x);
+	}
+	return r2;
 }
 
 
@@ -106,7 +113,7 @@ void test_repo() {
 	idx = find_offer(r, "Retezat", 14, 9, 2017, 250);
 	assert(idx == 3);
 	
-	update_offer_repo(r, "Retezat", 14, 9, 2017, "Mountain", "Clujasdasdsadas", 1, 1, 1, 1);
+	update_offer(r, "Retezat", 14, 9, 2017, "Mountain", "Clujasdasdsadas", 1, 1, 1, 1);
 	assert(strcmp(r->arr->vec[3]->destination, "Clujasdasdsadas") == 0);
 	assert(r->arr->vec[3]->price == 1);
 	assert(r->arr->vec[3]->day == 1);
@@ -122,4 +129,3 @@ void test_repo() {
 	
 	free_repo(r);
 }
-

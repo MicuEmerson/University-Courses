@@ -28,7 +28,6 @@ void menu() {
 	printf("8) Undo\n");
 	printf("9) Redo\n");
 	printf("0) Exit\n\n");
-
 }
 
 int readIntegerNumber(const char* message)
@@ -54,28 +53,22 @@ int readIntegerNumber(const char* message)
 void readOffer(char *type, char *dest, int *d, int *m, int *y, int *p) {
 	
 	printf("Read Offer\n");
-
 	printf("Type: ");
-
 	scanf("%s", type);
+
 	while (strcmp("Mountain", type) && strcmp("CityBreak", type) && strcmp("Seaside", type)) {
 		printf("Invalid input, try again!\n");
 		printf("Type: ");
 		scanf("%s", type);
 	}
 	
-
 	printf("Destination: ");
 	scanf("%s", dest);
 
 	*d = readIntegerNumber("Day: ");
-
 	*m = readIntegerNumber("Mounth: ");
-
 	*y = readIntegerNumber("Year: ");
-	
 	*p = readIntegerNumber("Price: ");
-	
 }
 
 void readUpdate(char *dest, int *d, int *m, int *y) {
@@ -88,7 +81,6 @@ void readUpdate(char *dest, int *d, int *m, int *y) {
 	scanf("%d", m);
 	printf("Year: ");
 	scanf("%d", y);
-	
 }
 
 void print_filter_destination(UI *ui, char *s) {
@@ -114,7 +106,6 @@ void print_filter_date(UI *ui, char *type, int d, int m, int y) {
 }
 
 
-
 void start_ui(UI* ui) {
 
 	printf("\t TOURISM AGENCY  \n\n");
@@ -124,12 +115,11 @@ void start_ui(UI* ui) {
 	while (1) {
 		
 		menu();
-		
 		cmd = readIntegerNumber("cmd: ");
+
 		if (cmd == 1) {
 
 			readOffer(&type, &dest, &d, &m, &y, &p);
-		
 			Offer *x = create_offer(&type, &dest, d, m, y, p);
 
 			if (add_offer_ctrl(ui->ctrl, x) == 0) {
@@ -158,6 +148,8 @@ void start_ui(UI* ui) {
 		else if (cmd == 4) {
 
 			printf("\n");
+			if (ui->ctrl->r->arr->n == 0)
+				printf("****Empty Repository!****\n");
 			print_ctrl(ui->ctrl);
 			printf("\n");
 		}
@@ -169,7 +161,6 @@ void start_ui(UI* ui) {
 			printf("\n");
 			print_filter_destination(ui, s);
 			printf("\n");
-
 		}
 		else if (cmd == 6) {
 
@@ -179,7 +170,6 @@ void start_ui(UI* ui) {
 			printf("\n");
 			print_filter_date(ui, type, d, m, y);
 			printf("\n");
-
 		}
 		else if (cmd == 7) {
 			
@@ -193,10 +183,12 @@ void start_ui(UI* ui) {
 			printf("\n");
 		}
 		else if (cmd == 8) {
-			;
+			if (!undo(ui->ctrl))
+				printf("Unnable to perform undo operation!\n");
 		}
 		else if (cmd == 9) {
-			;
+			if (!redo(ui->ctrl))
+				printf("Unnable to perform redo operation!\n");
 		}
 		else if (cmd == 0) {
 			break;

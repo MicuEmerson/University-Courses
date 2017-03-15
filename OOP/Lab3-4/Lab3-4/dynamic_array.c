@@ -12,6 +12,9 @@ DynamicArr *create_dynamicArr(int capacity) {
 
 void free_dynamicArr(DynamicArr *myArr) {
 
+	int i;
+	for (i = 0; i < myArr->n; i++)
+		free_offer(myArr->vec[i]);
 	free(myArr->vec);
 	free(myArr);
 }

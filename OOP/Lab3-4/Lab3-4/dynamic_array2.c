@@ -11,7 +11,13 @@ DynamicArr2 *create_dynamicArr2(int capacity) {
 	return myArr;
 }
 
+int check_undo(DynamicArr2 *myArr) {
+	return myArr->index - 1 > -1;
+}
 
+int check_redo(DynamicArr2 *myArr) {
+	return myArr->index + 1 < myArr->n;
+}
 
 void free_dynamicArr2(DynamicArr2 *myArr) {
 
@@ -40,12 +46,11 @@ void add_dynamicArr2(DynamicArr2 *myArr, OfferRepo *x) {
 }
 
 
-void delete_dynamicArr2(DynamicArr2 *myArr, int pos)
-{
+void delete_dynamicArr2(DynamicArr2 *myArr) {
+
 	int i;
-	for (i = pos; i < myArr->n - 1; i++)
-		myArr->vec[i] = myArr->vec[i + 1];
+	for (i = myArr->n - 1; i > myArr->index ; i--)
+		free_repo(myArr->vec[i]);
 
-	myArr->n--;
+	myArr->n = myArr->index + 1;
 }
-

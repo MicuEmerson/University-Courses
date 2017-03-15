@@ -9,27 +9,84 @@ Controller *create_ctrl(OfferRepo *r) {
 
 	Controller *ctrl = (Controller *)malloc(sizeof(Controller));
 	ctrl->r = r;
+	ctrl->myList = create_dynamicArr2(1);
 	return ctrl;
 }
 
 void free_ctrl(Controller *ctrl) {
+	
 	free_repo(ctrl->r);
+	free_dynamicArr2(ctrl->myList);
 	free(ctrl);
 }
 
+int undo(Controller* ctrl) {
+	if (check_undo(ctrl->myList)) {
+
+		OfferRepo *r2 = ctrl->r;
+		ctrl->r = copy_repo(ctrl->myList->vec[--ctrl->myList->index]);
+		free_repo(r2);
+		return 1;
+	}
+	return 0;
+}
+
+int redo(Controller *ctrl) {
+	if (check_redo(ctrl->myList)) {
+
+		OfferRepo *r2 = ctrl->r;
+		ctrl->r = copy_repo(ctrl->myList->vec[++ctrl->myList->index]);
+		free_repo(r2);
+		return 1;
+	}
+	return 0;
+}
+
+
 int add_offer_ctrl(Controller *ctrl, Offer *x) {
 
-	return add_offer(ctrl->r, x);
+	int status = add_offer(ctrl->r, x);
+	OfferRepo *y = copy_repo(ctrl->r);
+
+	if (status == 1) {
+		delete_dynamicArr2(ctrl->myList);
+		add_dynamicArr2(ctrl->myList, y);
+	}
+	else
+		free_repo(y);
+	
+		
+	return status;
 }
 
 int update_offer_ctrl(Controller *ctrl, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2) {
 
-	return update_offer_repo(ctrl->r, dest1, d1, m1, y1, type2, dest2, d2, m2, y2, p2);
+	int status = update_offer(ctrl->r, dest1, d1, m1, y1, type2, dest2, d2, m2, y2, p2);
+	OfferRepo *x = copy_repo(ctrl->r);
+
+	if (status == 1) {
+		delete_dynamicArr2(ctrl->myList);
+		add_dynamicArr2(ctrl->myList, x);
+	}
+	else
+		free_repo(x);
+
+	return status;
 }
 
 int delete_offer_ctrl(Controller *ctrl, char *dest, int d, int m, int y) {
+	
+	int status = delete_offer(ctrl->r, dest, d, m, y);
+	OfferRepo *x = copy_repo(ctrl->r);
 
-	return delete_offer(ctrl->r, dest, d, m, y);
+	if (status == 1) {
+		delete_dynamicArr2(ctrl->myList);
+		add_dynamicArr2(ctrl->myList, x);
+	}
+	else
+		free_repo(x);
+
+	return status;
 }
 
 void print_ctrl(Controller *ctrl) {
@@ -67,8 +124,9 @@ OfferRepo* filter_destination(Controller *ctrl, char *destination) {
 
 OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int year) {
 
-	OfferRepo *repo = create_repo();
 	int i;
+	OfferRepo *repo = create_repo();
+
 	for (i = 0; i < ctrl->r->arr->n; i++)
 		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
 			if (ctrl->r->arr->vec[i]->year >= year)
@@ -82,8 +140,9 @@ OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int ye
 
 void filter_price(Controller *ctrl, char *type, int price) {
 
-	OfferRepo *repo = create_repo();
 	int i, j;
+	OfferRepo *repo = create_repo();
+
 	for (i = 0; i < ctrl->r->arr->n; i++) {
 		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
 			if (ctrl->r->arr->vec[i]->price < price) {
@@ -123,7 +182,6 @@ void test_filter_date() {
 	Controller *ctrl = create_ctrl(r);
 	init_for_test(ctrl);
 	
-	
 	OfferRepo *repo = filter_date(ctrl, "Mountain", 1, 1, 1);
 	assert(repo->arr->n == 2);
 	free_repo(repo);
@@ -141,7 +199,6 @@ void test_filter_date() {
 	free_repo(repo3);
 
 	free_ctrl(ctrl);
-		
 }
 
 void test_filter_destination() {
