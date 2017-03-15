@@ -3,8 +3,8 @@
 
 typedef struct {
 
-	Offer **elems;
-	int len;
+	Offer **vec;
+	int n;
 	int capacity;
 
 }DynamicArr;

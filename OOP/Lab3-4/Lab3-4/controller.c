@@ -49,18 +49,18 @@ OfferRepo* filter_destination(Controller *ctrl, char *destination) {
 	int i, j;
 	OfferRepo *repo = create_repo();
 
-	for (i = 0; i < ctrl->r->n; i++) {
+	for (i = 0; i < ctrl->r->arr->n; i++) {
 		
-		if (strstr(ctrl->r->vec[i]->destination, destination) || destination == NULL) {
-			Offer *y = create_offer(ctrl->r->vec[i]->type, ctrl->r->vec[i]->destination, ctrl->r->vec[i]->day, ctrl->r->vec[i]->mounth, ctrl->r->vec[i]->year, ctrl->r->vec[i]->price);
+		if (strstr(ctrl->r->arr->vec[i]->destination, destination) || destination == NULL) {
+			Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
 			add_offer(repo, y);
 		}
 	}
  
-	for (i = 0; i < repo->n; i++) 
-		for (j = i; j < repo->n; j++) 
-			if (repo->vec[i]->price > repo->vec[j]->price) 
-				swap(&repo->vec[i], &repo->vec[j]);
+	for (i = 0; i < repo->arr->n; i++)
+		for (j = i; j < repo->arr->n; j++)
+			if (repo->arr->vec[i]->price > repo->arr->vec[j]->price)
+				swap(&repo->arr->vec[i], &repo->arr->vec[j]);
 						
 	return repo;
 }
@@ -69,12 +69,12 @@ OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int ye
 
 	OfferRepo *repo = create_repo();
 	int i;
-	for (i = 0; i < ctrl->r->n; i++)
-		if (strcmp(ctrl->r->vec[i]->type, type) == 0)
-			if (ctrl->r->vec[i]->year >= year)
-				if (ctrl->r->vec[i]->mounth >= mounth)
-					if (ctrl->r->vec[i]->day >= day) {
-						Offer *y = create_offer(ctrl->r->vec[i]->type, ctrl->r->vec[i]->destination, ctrl->r->vec[i]->day, ctrl->r->vec[i]->mounth, ctrl->r->vec[i]->year, ctrl->r->vec[i]->price);
+	for (i = 0; i < ctrl->r->arr->n; i++)
+		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
+			if (ctrl->r->arr->vec[i]->year >= year)
+				if (ctrl->r->arr->vec[i]->mounth >= mounth)
+					if (ctrl->r->arr->vec[i]->day >= day) {
+						Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
 						add_offer(repo, y);
 					}
 	return repo;
@@ -84,18 +84,18 @@ void filter_price(Controller *ctrl, char *type, int price) {
 
 	OfferRepo *repo = create_repo();
 	int i, j;
-	for (i = 0; i < ctrl->r->n; i++) {
-		if (strcmp(ctrl->r->vec[i]->type, type) == 0)
-			if (ctrl->r->vec[i]->price < price) {
-				Offer *y = create_offer(ctrl->r->vec[i]->type, ctrl->r->vec[i]->destination, ctrl->r->vec[i]->day, ctrl->r->vec[i]->mounth, ctrl->r->vec[i]->year, ctrl->r->vec[i]->price);
+	for (i = 0; i < ctrl->r->arr->n; i++) {
+		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
+			if (ctrl->r->arr->vec[i]->price < price) {
+				Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
 				add_offer(repo, y);
 			}
 	}
 
-	for (i = 0; i < repo->n; i++)
-		for (j = i; j < repo->n; j++)
-			if (repo->vec[i]->price > repo->vec[j]->price)
-				swap(&repo->vec[i], &repo->vec[j]);
+	for (i = 0; i < repo->arr->n; i++)
+		for (j = i; j < repo->arr->n; j++)
+			if (repo->arr->vec[i]->price > repo->arr->vec[j]->price)
+				swap(&repo->arr->vec[i], &repo->arr->vec[j]);
 
 	print_repo(repo);
 	free_repo(repo);
@@ -125,19 +125,19 @@ void test_filter_date() {
 	
 	
 	OfferRepo *repo = filter_date(ctrl, "Mountain", 1, 1, 1);
-	assert(repo->n == 2);
+	assert(repo->arr->n == 2);
 	free_repo(repo);
 
 	OfferRepo *repo1 = filter_date(ctrl, "Mountain", 1, 10, 2020);
-	assert(repo1->n == 0);
+	assert(repo->arr->n == 0);
 	free_repo(repo1);
 	
 	OfferRepo *repo2 = filter_date(ctrl, "Seaside", 1, 10, 2000);
-	assert(repo2->n == 1);
+	assert(repo->arr->n == 1);
 	free_repo(repo2);
 
 	OfferRepo *repo3 = filter_date(ctrl, "Mountain", 1, 10, 2016);
-	assert(repo3->n == 1);
+	assert(repo->arr->n == 1);
 	free_repo(repo3);
 
 	free_ctrl(ctrl);
@@ -151,15 +151,15 @@ void test_filter_destination() {
 	init_for_test(ctrl);
 
 	OfferRepo *repo = filter_destination(ctrl, "e");
-	assert(repo->n == 2);
+	assert(repo->arr->n == 2);
 	free_repo(repo);
 
 	OfferRepo *repo1 = filter_destination(ctrl, "");
-	assert(repo1->n == 4);
+	assert(repo->arr->n == 4);
 	free_repo(repo1);
 
 	OfferRepo *repo2 = filter_destination(ctrl, "qqq");
-	assert(repo2->n == 0);
+	assert(repo->arr->n == 0);
 	free_repo(repo2);
 
 	free_ctrl(ctrl);

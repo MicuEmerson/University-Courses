@@ -4,40 +4,40 @@
 DynamicArr *create_dynamicArr(int capacity) {
 
 	DynamicArr *myArr = (DynamicArr*)malloc(sizeof(DynamicArr));
-	myArr->elems = (Offer*)malloc(capacity * sizeof(Offer));
-	myArr->len = 0;
+	myArr->vec = (Offer*)malloc(capacity * sizeof(Offer));
+	myArr->n = 0;
 	myArr->capacity = capacity;
 	return myArr;
 }
 
 void free_dynamicArr(DynamicArr *myArr) {
 
-	free(myArr->elems);
+	free(myArr->vec);
 	free(myArr);
 }
 
 void realloc_dynamicArr(DynamicArr *myArr) {
 
 	myArr->capacity = myArr->capacity * 2;
-	myArr->elems = (Offer*)realloc(myArr->elems, myArr->capacity * sizeof(Offer));
+	myArr->vec = (Offer*)realloc(myArr->vec, myArr->capacity * sizeof(Offer));
 }
 
 void add_dynamicArr(DynamicArr *myArr, Offer *x) {
 
-	if (myArr->len == myArr->capacity)
+	if (myArr->n == myArr->capacity)
 		realloc_dynamicArr(myArr);
 
-	myArr->elems[myArr->len] = x;
-	myArr->len++;
+	myArr->vec[myArr->n] = x;
+	myArr->n++;
 }
 
 
 void delete_dynamicArr(DynamicArr *myArr, int pos)
 {
 	int i;
-	for (i = pos; i < myArr->len - 1; i++)
-		myArr->elems[i] = myArr->elems[i + 1];
+	for (i = pos; i < myArr->n - 1; i++)
+		myArr->vec[i] = myArr->vec[i + 1];
 
-	myArr->len--;
+	myArr->n--;
 }
 

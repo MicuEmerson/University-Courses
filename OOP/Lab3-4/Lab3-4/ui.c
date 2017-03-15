@@ -94,7 +94,7 @@ void readUpdate(char *dest, int *d, int *m, int *y) {
 void print_filter_destination(UI *ui, char *s) {
 
 	OfferRepo *repo = filter_destination(ui->ctrl, s);
-	if (repo->n == 0) 
+	if (repo->arr->n == 0) 
 		printf("No such an offer in repository\n");
 	else 
 		print_repo(repo);
@@ -105,7 +105,7 @@ void print_filter_destination(UI *ui, char *s) {
 void print_filter_date(UI *ui, char *type, int d, int m, int y) {
 
 	OfferRepo *repo = filter_date(ui->ctrl, type, d, m, y);
-	if (repo->n == 0) 
+	if (repo->arr->n == 0) 
 		printf("No such an offer in repository\n");
 	else 
 		print_repo(repo);
@@ -149,7 +149,7 @@ void start_ui(UI* ui) {
 		}
 		else if (cmd == 3) {
 
-			printf("Read Update\n");
+			printf("Read Delete\n");
 			readUpdate(&dest2, &d2, &m2, &y2);
 			if(delete_offer_ctrl(ui->ctrl, dest2, d2, m2, y2) == 0)
 				printf("\nNo such an Offer\n");

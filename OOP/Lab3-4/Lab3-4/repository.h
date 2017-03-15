@@ -1,10 +1,10 @@
 #pragma once
 #include "domain.h"
+#include "dynamic_array.h"
 
 typedef struct {
 
-	Offer *vec[100];
-	int n;
+	DynamicArr *arr;
 
 }OfferRepo;
 

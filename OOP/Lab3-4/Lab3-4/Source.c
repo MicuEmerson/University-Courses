@@ -10,7 +10,32 @@
 
 
 int main() {
+
+	/*
+	OfferRepo *r = create_repo();
 	
+	Offer *a = create_offer("Seaside", "Maldive", 11, 12, 2017, 825);
+	Offer *b = create_offer("Mountain", "Cavnic", 12, 11, 2017, 350);
+	Offer *c = create_offer("CityBreak", "London", 13, 10, 2017, 200);
+
+	add_offer(r, a);
+	add_offer(r, b);
+	add_offer(r, c);
+	add_offer(r, a);
+	print_repo(r);
+	
+	
+	printf("\n\n");
+	printf("%d\n",update_offer_repo(r, "Maldive", 11, 12, 2017, "Mountain", "Everest", 1, 1, 1, 1));
+	
+	print_repo(r);
+	free_repo(r);
+	//printf("%d", r->arr->n);
+	
+   
+
+		
+	*/
 	test_controller();
 	test_repo();
 	OfferRepo *r = create_repo();
@@ -44,8 +69,8 @@ int main() {
 	start_ui(ui);
 	delete_ui(ui);
 	
+	
 	_CrtDumpMemoryLeaks();
 	system("pause");
-
 	return 0;
 }	
