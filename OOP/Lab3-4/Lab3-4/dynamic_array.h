@@ -9,6 +9,10 @@ typedef struct {
 
 }DynamicArr;
 
+/*
+   In this function we create a new object 'dynamicArr' with capacity as a given value
+*/
+
 DynamicArr *create_dynamicArr(int capacity);
 void free_dynamicArr(DynamicArr *myArr);
 void realloc_dynamicArr(DynamicArr *myArr);

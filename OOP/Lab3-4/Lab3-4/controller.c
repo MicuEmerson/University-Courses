@@ -54,7 +54,6 @@ int add_offer_ctrl(Controller *ctrl, Offer *x) {
 	}
 	else
 		free_repo(y);
-	
 		
 	return status;
 }
@@ -101,65 +100,95 @@ void swap(Offer **a, Offer **b) {
 	*b = aux;
 }
 
-OfferRepo* filter_destination(Controller *ctrl, char *destination) {
+
+int cmp_dest(Offer *x, Offer *y) {
+
+	return  strstr(x->destination, y->destination) || y->destination == NULL;
+}
+
+
+int cmp_date(Offer *x, Offer *y) {
+
+	if (strcmp(x->type, y->type) == 0)
+		if (x->year >= y->year)
+			if (x->mounth >= y->mounth)
+				if (x->day >= y->day)
+					return 1;
+	return 0;
+}
+
+int cmp_price(Offer *x, Offer *y) {
+
+	if (strcmp(x->type, y->type) == 0)
+		if (x->price < y->price)
+			return 1;
+	return 0;
+
+}
+int cmp_price2(Offer *x, Offer *y) {
+
+	return x->price <= y->price;
+
+}
+
+OfferRepo* filter(Controller *ctrl, Offer *x, int(*cmp)(Offer*, Offer*)) {
 
 	int i, j;
 	OfferRepo *repo = create_repo();
 
-	for (i = 0; i < ctrl->r->arr->n; i++) {
-		
-		if (strstr(ctrl->r->arr->vec[i]->destination, destination) || destination == NULL) {
+	for (i = 0; i < ctrl->r->arr->n; i++) 
+		if (cmp(ctrl->r->arr->vec[i], x)) {
+			
 			Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
 			add_offer(repo, y);
 		}
-	}
- 
+
 	for (i = 0; i < repo->arr->n; i++)
 		for (j = i; j < repo->arr->n; j++)
 			if (repo->arr->vec[i]->price > repo->arr->vec[j]->price)
 				swap(&repo->arr->vec[i], &repo->arr->vec[j]);
-						
+					
 	return repo;
 }
 
-OfferRepo* filter_date(Controller *ctrl, char *type, int day, int mounth, int year) {
+int cmp_sortType(Offer *x, Offer *y) {
 
-	int i;
-	OfferRepo *repo = create_repo();
-
-	for (i = 0; i < ctrl->r->arr->n; i++)
-		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
-			if (ctrl->r->arr->vec[i]->year >= year)
-				if (ctrl->r->arr->vec[i]->mounth >= mounth)
-					if (ctrl->r->arr->vec[i]->day >= day) {
-						Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
-						add_offer(repo, y);
-					}
-	return repo;
+	return strcmp(x->type, y->type) < 1;
+	
 }
 
-void filter_price(Controller *ctrl, char *type, int price) {
+int cmp_sortDestination(Offer *x, Offer *y) {
+
+	return strcmp(x->destination, y->destination) < 1;
+
+}
+
+int cmp_sortDate(Offer *x, Offer *y) {
+
+	if (x->year <= y->year)
+		if (x->mounth <= y->mounth)
+			if (x->day <= y->day)
+				return 1;
+	return 0;
+}
+
+int cmp_sortPrice(Offer *x, Offer *y) {
+
+	if (x->price <= y->price)
+				return 1;
+	return 0;
+}
+
+
+void sort(Controller *ctrl, int(*cmp)(Offer*, Offer*)) {
 
 	int i, j;
-	OfferRepo *repo = create_repo();
-
-	for (i = 0; i < ctrl->r->arr->n; i++) {
-		if (strcmp(ctrl->r->arr->vec[i]->type, type) == 0)
-			if (ctrl->r->arr->vec[i]->price < price) {
-				Offer *y = create_offer(ctrl->r->arr->vec[i]->type, ctrl->r->arr->vec[i]->destination, ctrl->r->arr->vec[i]->day, ctrl->r->arr->vec[i]->mounth, ctrl->r->arr->vec[i]->year, ctrl->r->arr->vec[i]->price);
-				add_offer(repo, y);
-			}
-	}
-
-	for (i = 0; i < repo->arr->n; i++)
-		for (j = i; j < repo->arr->n; j++)
-			if (repo->arr->vec[i]->price > repo->arr->vec[j]->price)
-				swap(&repo->arr->vec[i], &repo->arr->vec[j]);
-
-	print_repo(repo);
-	free_repo(repo);
-
+	for (i = 0; i < ctrl->r->arr->n; i++)
+		for (j = i; j < ctrl->r->arr->n; j++)
+			if (cmp(ctrl->r->arr->vec[i], ctrl->r->arr->vec[j])) 
+				swap(&ctrl->r->arr->vec[i], &ctrl->r->arr->vec[j]);
 }
+
 
 
 void init_for_test(Controller *ctrl) {
@@ -180,23 +209,33 @@ void test_filter_date() {
 
 	OfferRepo *r = create_repo();
 	Controller *ctrl = create_ctrl(r);
+	Offer *x;
 	init_for_test(ctrl);
-	
-	OfferRepo *repo = filter_date(ctrl, "Mountain", 1, 1, 1);
+
+	x = create_offer("Mountain","", 1, 1, 1, 0);
+	OfferRepo *repo = filter(ctrl, x, cmp_date);
 	assert(repo->arr->n == 2);
+	free_offer(x);
 	free_repo(repo);
 
-	OfferRepo *repo1 = filter_date(ctrl, "Mountain", 1, 10, 2020);
-	assert(repo->arr->n == 0);
+	x = create_offer("Mountain", "", 1, 10, 2020, 0);
+	OfferRepo *repo1 = filter(ctrl, x, cmp_date);
+	assert(repo1->arr->n == 0);
+	free_offer(x);
 	free_repo(repo1);
 	
-	OfferRepo *repo2 = filter_date(ctrl, "Seaside", 1, 10, 2000);
-	assert(repo->arr->n == 1);
+	x = create_offer("Seaside", "", 1, 1, 2017, 0);
+	OfferRepo *repo2 = filter(ctrl, x, cmp_date);
+	assert(repo2->arr->n == 1);
+	free_offer(x);
 	free_repo(repo2);
-
-	OfferRepo *repo3 = filter_date(ctrl, "Mountain", 1, 10, 2016);
-	assert(repo->arr->n == 1);
+	
+	x = create_offer("Mountain", "", 1, 10, 2016, 0);
+	OfferRepo *repo3 = filter(ctrl, x, cmp_date);
+	assert(repo3->arr->n == 1);
+	free_offer(x);
 	free_repo(repo3);
+	
 
 	free_ctrl(ctrl);
 }
@@ -205,19 +244,47 @@ void test_filter_destination() {
 
 	OfferRepo *r = create_repo();
 	Controller *ctrl = create_ctrl(r);
+	Offer *x;
 	init_for_test(ctrl);
 
-	OfferRepo *repo = filter_destination(ctrl, "e");
+	x = create_offer("", "e", 0, 0, 0, 0);
+	OfferRepo *repo = filter(ctrl, x, cmp_dest);
 	assert(repo->arr->n == 2);
+	free_offer(x);
 	free_repo(repo);
-
-	OfferRepo *repo1 = filter_destination(ctrl, "");
-	assert(repo->arr->n == 4);
+	 
+	x = create_offer("", "", 0, 0, 0, 0);
+	OfferRepo *repo1 = filter(ctrl, x, cmp_dest);
+	assert(repo1->arr->n == 4);
+	free_offer(x);
 	free_repo(repo1);
 
-	OfferRepo *repo2 = filter_destination(ctrl, "qqq");
-	assert(repo->arr->n == 0);
+	x = create_offer("", "qqq", 0, 0, 0, 0);
+	OfferRepo *repo2 = filter(ctrl, x, cmp_dest);
+	assert(repo2->arr->n == 0);
+	free_offer(x);
 	free_repo(repo2);
+	
+	free_ctrl(ctrl);
+}
+
+void test_sort() {
+    
+	OfferRepo *r = create_repo();
+	Controller *ctrl = create_ctrl(r);
+	init_for_test(ctrl);
+
+	sort(ctrl, cmp_sortPrice);
+	assert(ctrl->r->arr->vec[0]->price == 825);
+	assert(ctrl->r->arr->vec[3]->price == 200);
+
+	sort(ctrl, cmp_sortDestination);
+	assert(strcmp(ctrl->r->arr->vec[0]->destination, "Retezat") == 0);
+	assert(strcmp(ctrl->r->arr->vec[3]->destination, "Cavnic") == 0);
+	
+	sort(ctrl, cmp_sortType);
+	assert(strcmp(ctrl->r->arr->vec[0]->type, "Seaside") == 0);
+	assert(strcmp(ctrl->r->arr->vec[3]->type, "CityBreak") == 0);
 
 	free_ctrl(ctrl);
 }
@@ -226,4 +293,5 @@ void test_controller() {
 
 	test_filter_date();
 	test_filter_destination();
+	test_sort();
 }

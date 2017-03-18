@@ -25,8 +25,10 @@ void menu() {
 	printf("5) Display All The Tourism Offer Contain A Given String \n");
 	printf("6) Display All Offers Of A Given Type, Starting From A Given Date\n");
 	printf("7) Display All Offers Having A Given Type And A Price Less Than A Given Value, Sorted Ascending By Price\n");
-	printf("8) Undo\n");
-	printf("9) Redo\n");
+	printf("8) Display All Offers With Price Smaller Then A Given Value\n");
+	printf("9) Sort\n");
+	printf("10) Undo\n");
+	printf("11) Redo\n");
 	printf("0) Exit\n\n");
 }
 
@@ -83,9 +85,10 @@ void readUpdate(char *dest, int *d, int *m, int *y) {
 	scanf("%d", y);
 }
 
-void print_filter_destination(UI *ui, char *s) {
 
-	OfferRepo *repo = filter_destination(ui->ctrl, s);
+void print_filter(UI *ui, Offer *x, int(*cmp)(Offer*, Offer*)) {
+
+	OfferRepo *repo = filter(ui->ctrl, x, cmp);
 	if (repo->arr->n == 0) 
 		printf("No such an offer in repository\n");
 	else 
@@ -94,16 +97,6 @@ void print_filter_destination(UI *ui, char *s) {
 	free_repo(repo);
 }
 
-void print_filter_date(UI *ui, char *type, int d, int m, int y) {
-
-	OfferRepo *repo = filter_date(ui->ctrl, type, d, m, y);
-	if (repo->arr->n == 0) 
-		printf("No such an offer in repository\n");
-	else 
-		print_repo(repo);
-
-	free_repo(repo);
-}
 
 
 void start_ui(UI* ui) {
@@ -158,18 +151,26 @@ void start_ui(UI* ui) {
 			printf("String: ");
 			scanf("%s", &s);
 
+			Offer *x = create_offer("", s, 0, 0, 0, 0);
+
 			printf("\n");
-			print_filter_destination(ui, s);
+			print_filter(ui, x, cmp_dest);
 			printf("\n");
+
+			free_offer(x);
 		}
 		else if (cmd == 6) {
 
 			printf("Read Type\n");
 			readUpdate(&type, &d, &m, &y);
 
+			Offer *x = create_offer(type, "", d, m, y, 0);
+
 			printf("\n");
-			print_filter_date(ui, type, d, m, y);
+			print_filter(ui, x, cmp_date);
 			printf("\n");
+
+			free_offer(x);
 		}
 		else if (cmd == 7) {
 			
@@ -178,15 +179,52 @@ void start_ui(UI* ui) {
 			printf("Price: ");
 			scanf("%d", &p);
 
+			Offer *x = create_offer(type, "", 0, 0, 0, p);
+
 			printf("\n");
-			filter_price(ui->ctrl, &type, p);
+			print_filter(ui, x, cmp_price);
 			printf("\n");
+
+			free_offer(x);
 		}
 		else if (cmd == 8) {
+			printf("Price: ");
+			scanf("%d", &p);
+
+			Offer *x = create_offer("", "", 0, 0, 0, p);
+
+			printf("\n");
+			print_filter(ui, x, cmp_price2);
+			printf("\n");
+			free_offer(x);
+		}
+		else if (cmd == 9) {
+
+			printf("Sort by: \n");
+			printf("1)Type \n");
+			printf("2)Destination \n");
+			printf("3)Date \n");
+			printf("4)Price \n");
+			
+			p = readIntegerNumber("cmd: ");
+			while (p > 5 || p < 1)
+				p = readIntegerNumber("cmd: ");
+
+			if (p == 1)
+				sort(ui->ctrl, cmp_sortType);
+			else if (p == 2)
+				sort(ui->ctrl, cmp_sortDestination);
+			else if (p == 3)
+				sort(ui->ctrl, cmp_sortDate);
+			else
+				sort(ui->ctrl, cmp_sortPrice);
+
+		}
+		else if (cmd == 10) {
 			if (!undo(ui->ctrl))
 				printf("Unnable to perform undo operation!\n");
 		}
-		else if (cmd == 9) {
+		else if (cmd == 11) {
 			if (!redo(ui->ctrl))
 				printf("Unnable to perform redo operation!\n");
 		}

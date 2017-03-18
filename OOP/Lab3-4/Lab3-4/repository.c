@@ -57,7 +57,6 @@ int update_offer(OfferRepo *r, char *dest1, int d1, int m1, int y1, char *type2,
 
 }
 
-
 int delete_offer(OfferRepo *r, char *dest, int d, int m, int y) {
 	
 	int poz = find_offer(r, dest, d, m, y);
@@ -119,6 +118,7 @@ void test_repo() {
 	assert(r->arr->vec[3]->day == 1);
 	assert(r->arr->vec[3]->mounth == 1);
 	assert(r->arr->vec[3]->year == 1);
+	
 	
 	delete_offer(r, "Maldive", 11, 12, 2017);
 	assert(r->arr->n == 3);

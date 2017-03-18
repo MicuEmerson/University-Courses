@@ -9,10 +9,13 @@
 #include "dynamic_array2.h"
 
 
+
 int main() {
 
+
 	test_controller();
-	test_repo();
+	
+	//test_repo();
 
 	OfferRepo *r = create_repo();
 	Controller *ctrl = create_ctrl(r);
@@ -44,6 +47,12 @@ int main() {
 	start_ui(ui);
 	delete_ui(ui);
 	
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDOUT);
 	_CrtDumpMemoryLeaks();
 	system("pause");
 
