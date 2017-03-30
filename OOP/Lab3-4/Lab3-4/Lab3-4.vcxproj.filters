@@ -36,6 +36,9 @@
     <ClCompile Include="dynamic_array2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="operationStack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="domain.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dynamic_array2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="operationStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

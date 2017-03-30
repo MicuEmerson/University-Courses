@@ -13,10 +13,10 @@
 int main() {
 
 
-	test_controller();
-	
+	//test_controller();
+	//test_dynamicArr();
 	//test_repo();
-
+	
 	OfferRepo *r = create_repo();
 	Controller *ctrl = create_ctrl(r);
 	
@@ -28,8 +28,8 @@ int main() {
 	Offer *f = create_offer("CityBreak", "Tokyo", 16, 7, 2017, 1300);
 	Offer *g = create_offer("CityBreak", "Barcelona", 7, 6, 2017, 455);
 	Offer *h = create_offer("Mountain", "Feleacu", 18, 5, 2017, 150);
-	Offer *i = create_offer("Seaside", "Black Sea", 19, 4, 2017, 350);
-	Offer *k = create_offer("CityBreak", "New York", 10, 3, 2017, 1500);
+	Offer *i = create_offer("Seaside", "BlackSea", 19, 4, 2017, 350);
+	Offer *k = create_offer("CityBreak", "Cluj", 10, 3, 2017, 1500);
 	
 	add_offer_ctrl(ctrl, a);
 	add_offer_ctrl(ctrl, b);
@@ -46,6 +46,7 @@ int main() {
 	UI *ui = create_ui(ctrl);
 	start_ui(ui);
 	delete_ui(ui);
+   
 	
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);

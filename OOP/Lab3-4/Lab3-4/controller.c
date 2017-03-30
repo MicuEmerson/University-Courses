@@ -10,6 +10,9 @@ Controller *create_ctrl(OfferRepo *r) {
 	Controller *ctrl = (Controller *)malloc(sizeof(Controller));
 	ctrl->r = r;
 	ctrl->myList = create_dynamicArr2(1);
+	ctrl->undoStack = create_stack();
+	ctrl->redoStack = create_stack();
+	ctrl->OK = 0;
 	return ctrl;
 }
 
@@ -17,6 +20,8 @@ void free_ctrl(Controller *ctrl) {
 	
 	free_repo(ctrl->r);
 	free_dynamicArr2(ctrl->myList);
+	free_stack(ctrl->undoStack);
+	free_stack(ctrl->redoStack);
 	free(ctrl);
 }
 
@@ -42,6 +47,46 @@ int redo(Controller *ctrl) {
 	return 0;
 }
 
+int undo_stack(Controller *ctrl) {
+	
+	if (isEmpty_stack(ctrl->undoStack))
+		return 0;
+
+	Operation *op = pop_stack(ctrl->undoStack);
+
+	if (op->opType == 1) {
+		delete_offer_ctrl(ctrl, op->x->destination, op->x->day, op->x->mounth, op->x->year);
+		op->opType = 3;
+		push_stack(ctrl->redoStack, op);
+	}
+	else if (op->opType == 2) {
+
+		Operation *op2 = pop_stack(ctrl->undoStack);
+		
+		update_offer_ctrl(ctrl, op->x->destination, op->x->day, op->x->mounth, op->x->year,
+					      op2->x->type, op2->x->destination, op2->x->day, op2->x->mounth, op2->x->year, op2->x->price);
+
+		push_stack(ctrl->redoStack, op);
+		push_stack(ctrl->redoStack, op2);
+
+		free_operation(op2);
+	}
+	
+	
+
+
+	free_operation(op);
+
+	return 1;
+
+}
+
+
+int redo_stack(Controller *ctrl) {
+	;
+
+}
+
 
 int add_offer_ctrl(Controller *ctrl, Offer *x) {
 
@@ -49,6 +94,16 @@ int add_offer_ctrl(Controller *ctrl, Offer *x) {
 	OfferRepo *y = copy_repo(ctrl->r);
 
 	if (status == 1) {
+
+		if (ctrl->OK == 0) {
+			free_stack(ctrl->redoStack);
+			create_stack(ctrl->redoStack);
+
+			Operation *op = create_operation(x, 1);
+			push_stack(ctrl->undoStack, op);
+			free_operation(op);
+		}
+
 		delete_dynamicArr2(ctrl->myList);
 		add_dynamicArr2(ctrl->myList, y);
 	}
@@ -60,30 +115,76 @@ int add_offer_ctrl(Controller *ctrl, Offer *x) {
 
 int update_offer_ctrl(Controller *ctrl, char *dest1, int d1, int m1, int y1, char *type2, char *dest2, int d2, int m2, int y2, int p2) {
 
+	Offer *k, *q;
+	int pos = find_offer(ctrl->r, dest1, d1, m1, y1);
+
+	q = create_offer(type2, dest2, d2, m2, y2, p2);
+	k = create_offer(ctrl->r->arr->vec[pos]->type, ctrl->r->arr->vec[pos]->destination, ctrl->r->arr->vec[pos]->day,
+		ctrl->r->arr->vec[pos]->mounth, ctrl->r->arr->vec[pos]->year, ctrl->r->arr->vec[pos]->price);
+
+	if (pos == -1)
+		free_offer(q), free_offer(k);
+
 	int status = update_offer(ctrl->r, dest1, d1, m1, y1, type2, dest2, d2, m2, y2, p2);
 	OfferRepo *x = copy_repo(ctrl->r);
 
 	if (status == 1) {
+
+		if (ctrl->OK == 0) {
+			free_stack(ctrl->redoStack);
+			create_stack(ctrl->redoStack);
+
+			Operation *op = create_operation(k, 2);
+			push_stack(ctrl->undoStack, op);
+			free_operation(op);
+
+			Operation *op1 = create_operation(q, 2);
+			push_stack(ctrl->undoStack, op1);
+			free_operation(op1);
+			
+		}
 		delete_dynamicArr2(ctrl->myList);
 		add_dynamicArr2(ctrl->myList, x);
 	}
 	else
 		free_repo(x);
+
+	free_offer(q);
+	free_offer(k);
 
 	return status;
 }
 
 int delete_offer_ctrl(Controller *ctrl, char *dest, int d, int m, int y) {
 	
+	int pos = find_offer(ctrl->r, dest, d, m, y);
+	
+	Offer *k = create_offer(ctrl->r->arr->vec[pos]->type, ctrl->r->arr->vec[pos]->destination, ctrl->r->arr->vec[pos]->day,
+			ctrl->r->arr->vec[pos]->mounth, ctrl->r->arr->vec[pos]->year, ctrl->r->arr->vec[pos]->price);
+
+
 	int status = delete_offer(ctrl->r, dest, d, m, y);
 	OfferRepo *x = copy_repo(ctrl->r);
 
 	if (status == 1) {
+		 
+		if (ctrl->OK == 0) {
+			free_stack(ctrl->redoStack);
+			create_stack(ctrl->redoStack);
+
+			Operation *op = create_operation(k, 3);
+			push_stack(ctrl->undoStack, op);
+			free_operation(op);
+		}
+		
+		
 		delete_dynamicArr2(ctrl->myList);
 		add_dynamicArr2(ctrl->myList, x);
 	}
-	else
+	else {
 		free_repo(x);
+	}
+	free_offer(k);
 
 	return status;
 }

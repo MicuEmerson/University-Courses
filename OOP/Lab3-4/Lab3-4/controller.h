@@ -1,10 +1,16 @@
 #pragma once
 #include "repository.h"
 #include "dynamic_array2.h"
+#include "operationStack.h"
+#include "domain.h"
+
 typedef struct {
 
 	OfferRepo *r;
 	DynamicArr2 *myList;
+	OperationsStack *undoStack;
+	OperationsStack *redoStack;
+	int OK;
 
 }Controller;
 
@@ -82,6 +88,10 @@ void sort(Controller* Ctrl, int(*cmp)(Offer*, Offer*));
 */
 int undo(Controller* ctrl);
 int redo(Controller* ctrl);
+
+int undo_stack(Controller *ctrl);
+int redo_stack(Controller *ctrl);
+
 
 /*
      Below we have compare functions.

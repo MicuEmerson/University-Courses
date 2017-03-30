@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 Offer* create_offer(char *type, char *destination, int day, int mounth, int year, int price)
-{   
+{
 	Offer *x = (Offer*)malloc(sizeof(Offer));
 
 	x->type = (char*)malloc(strlen(type) + 1);
@@ -34,4 +34,8 @@ void print_offer(Offer* x){
 
 }
 
+Offer *copy_offer(Offer *x) {
 
+	return create_offer(x->type, x->destination, x->day, x->mounth, x->year, x->price);
+
+}

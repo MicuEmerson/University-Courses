@@ -115,6 +115,8 @@ void start_ui(UI* ui) {
 			readOffer(&type, &dest, &d, &m, &y, &p);
 			Offer *x = create_offer(&type, &dest, d, m, y, p);
 
+			ui->ctrl->OK = 0;
+
 			if (add_offer_ctrl(ui->ctrl, x) == 0) {
 				free_offer(x);
 				printf("\nOffer already in repository!\n");
@@ -126,6 +128,8 @@ void start_ui(UI* ui) {
 			readUpdate(&dest2, &d2, &m2, &y2);
 			readOffer(&type, &dest, &d, &m, &y, &p);
 
+			ui->ctrl->OK = 0;
+
 			if (update_offer_ctrl(ui->ctrl, dest2, d2, m2, y2, type, dest, d, m, y, p) == 0)
 				printf("\nNo such an Offer\n");
 
@@ -134,6 +138,9 @@ void start_ui(UI* ui) {
 
 			printf("Read Delete\n");
 			readUpdate(&dest2, &d2, &m2, &y2);
+
+			ui->ctrl->OK = 0;
+
 			if(delete_offer_ctrl(ui->ctrl, dest2, d2, m2, y2) == 0)
 				printf("\nNo such an Offer\n");
 
@@ -221,12 +228,16 @@ void start_ui(UI* ui) {
 
 		}
 		else if (cmd == 10) {
-			if (!undo(ui->ctrl))
+			ui->ctrl->OK = 1;
+			if (!undo_stack(ui->ctrl))
 				printf("Unnable to perform undo operation!\n");
+			printf("AAA %d si %d \n", ui->ctrl->redoStack->n, ui->ctrl->undoStack->n);
 		}
 		else if (cmd == 11) {
+			ui->ctrl->OK = 1;
 			if (!redo(ui->ctrl))
 				printf("Unnable to perform redo operation!\n");
+			
 		}
 		else if (cmd == 0) {
 			break;
