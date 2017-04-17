@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>source.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include "domain.h"
+#include "repository.h"
+#include "controller.h"
+#include "UI.h"
+#include "testing.h"
+#include &lt;crtdbg.h&gt;
+using namespace std;
+
+<span style = "background-color:#dfd">int main() {</span>
+
+	{
+	   
+<span style = "background-color:#dfd">		Repository repo;</span>
+
+<span style = "background-color:#dfd">		Controller ctrl(repo);</span>
+
+<span style = "background-color:#dfd">		UI ui(ctrl);
+   		ui.run();
+	}</span>
+	
+<span style = "background-color:#dfd">	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDOUT);
+	_CrtDumpMemoryLeaks();</span>
+
+<span style = "background-color:#dfd">	system("pause");
+	return 0;</span>
+
+<span style = "background-color:#dfd">}</span></pre>
+	</body>
+</html>

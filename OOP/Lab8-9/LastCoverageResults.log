@@ -1,0 +1,86 @@
+[2017-04-16 00:41:49] [info] Start Program:
+Path:"./Debug/Lab5-6.exe"
+Arguments:
+Working directory: not set.
+Modules: Selected: * Excluded: 
+Sources: Selected: Lab5-6 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Html 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2017-04-16 00:41:49] [info] Module: C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.exe is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\ntdll.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\ntdll.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\ntdll.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\ntdll.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\wow64.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\wow64.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\wow64win.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\wow64win.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\kernel32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\kernel32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\kernel32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\kernel32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\kernel32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\kernel32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\user32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\user32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\System32\wow64cpu.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\System32\wow64cpu.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\kernel32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\kernel32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\KernelBase.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\KernelBase.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\shell32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\shell32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\msvcrt.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\msvcrt.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\cfgmgr32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\cfgmgr32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\windows.storage.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\windows.storage.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\combase.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\combase.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\rpcrt4.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\rpcrt4.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\sspicli.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\sspicli.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\cryptbase.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\cryptbase.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\bcryptprimitives.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\bcryptprimitives.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\sechost.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\sechost.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\advapi32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\advapi32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\shlwapi.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\shlwapi.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\gdi32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\gdi32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\user32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\user32.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\kernel.appcore.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\kernel.appcore.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\SHCore.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\SHCore.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\powrprof.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\powrprof.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\profapi.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\profapi.dll
+[2017-04-16 00:41:50] [info] Module: C:\WINDOWS\SysWOW64\msvcp140d.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:50] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\msvcp140d.dll
+[2017-04-16 00:41:51] [info] Module: C:\WINDOWS\SysWOW64\ucrtbased.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:51] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\ucrtbased.dll
+[2017-04-16 00:41:51] [info] Module: C:\WINDOWS\SysWOW64\vcruntime140d.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:51] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\vcruntime140d.dll
+[2017-04-16 00:41:51] [info] Module: C:\WINDOWS\SysWOW64\imm32.dll is selected because it matches selected pattern: *
+[2017-04-16 00:41:51] [warning] Cannot find pdb for C:\WINDOWS\SysWOW64\imm32.dll
+[2017-04-16 08:30:31] [info] ----------------------------------------------------
+[2017-04-16 08:30:31] [info] Coverage generated in Folder C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\CoverageReport-2017-04-16-08h30m29s
+[2017-04-16 08:30:31] [info] ----------------------------------------------------

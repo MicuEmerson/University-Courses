@@ -1,0 +1,131 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>repository.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "repository.h"
+
+bool Repository::add(Coat x)
+<span style = "background-color:#fdd">{   
+	if (this-&gt;find(x) != -1)
+		return false;</span>
+
+<span style = "background-color:#fdd">	this-&gt;v.push_back(x);
+	return true;
+}</span>
+
+int Repository::find(Coat x)
+<span style = "background-color:#fdd">{   
+	for (int i = 0; i &lt; this-&gt;v.size(); i++)
+		if (v[i] == x)
+			return i;
+	return -1;
+}</span>
+
+bool Repository::del(Coat x)
+<span style = "background-color:#fdd">{   
+	int pos = this-&gt;find(x);
+	if (pos == -1)
+		return false;</span>
+
+<span style = "background-color:#fdd">	iter_swap(this-&gt;v.begin() + pos, this-&gt;v.begin() + v.size() - 1);
+	v.pop_back();</span>
+	
+<span style = "background-color:#fdd">	return true;
+}</span>
+
+bool Repository::update(Coat x, Coat y)
+<span style = "background-color:#fdd">{   
+	if(this-&gt;find(x) == -1)
+		return false;
+	this-&gt;del(x);
+	this-&gt;add(y);
+	return true;
+}</span>
+
+void Repository::print()
+<span style = "background-color:#fdd">{   
+	for (auto it : v)
+		it.print_coat();
+}</span>
+
+std::vector&lt;Coat&gt; Repository::getAll()
+<span style = "background-color:#fdd">{
+	return this-&gt;v;
+}</span>
+
+<span style = "background-color:#fdd">int convert(std::string s) {</span>
+
+<span style = "background-color:#fdd">	int nr = 0;
+	for (int i = 0; i &lt; s.size(); i++)
+		nr = nr * 10 + s[i] - 48;
+	return nr;
+}</span>
+
+<span style = "background-color:#fdd">std::string convert2(int x) {</span>
+
+<span style = "background-color:#fdd">	std::string res;
+	while (x) {
+		res += ((x % 10) + 48);
+		x /= 10;
+	}
+	reverse(res.begin(), res.end());
+	return res;
+}</span>
+
+void Repository::readFromFile()
+<span style = "background-color:#dfd">{
+	std::ifstream fin("repository.txt");
+	std::string x;
+	while (fin &gt;&gt; x) {</span>
+		
+<span style = "background-color:#fdd">		std::stringstream ss(x);
+		std::vector&lt;std::string&gt; result;</span>
+
+<span style = "background-color:#fdd">		while (ss.good()) {
+			std::string sir;
+			getline(ss, sir, ',');
+			result.push_back(sir);
+		}</span>
+
+<span style = "background-color:#fdd">		Coat x(convert(result[0]), result[1], convert(result[2]), convert(result[3]), result[4]);
+		this-&gt;add(x);
+	}</span>
+
+
+<span style = "background-color:#dfd">	fin.close();
+}</span>
+
+static int firstTime = 1;
+void Repository::writeToFile()
+<span style = "background-color:#dfd">{  </span>
+	
+<span style = "background-color:#dfd">	if (!firstTime)
+		return;
+
+	firstTime = 0;
+	std::ofstream fout("repository.txt");</span>
+	std::string s;
+<span style = "background-color:#dfd">	</span>
+<span style = "background-color:#fdd">	for (auto it : this-&gt;v) {
+		s = convert2(it.get_size());
+		s += "," + it.get_color();
+		s += "," + convert2(it.get_price());
+		s += "," + convert2(it.get_quantity());
+		s += "," + it.get_photo() + "\n";
+		fout &lt;&lt; s;
+	}</span>
+<span style = "background-color:#dfd">	fout.close();</span>
+}
+<span style = "background-color:#dfd">
+</span>
+
+</pre>
+	</body>
+</html>

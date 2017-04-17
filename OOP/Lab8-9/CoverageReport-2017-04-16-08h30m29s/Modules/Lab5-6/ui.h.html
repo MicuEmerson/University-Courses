@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>ui.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "controller.h"
+#include &lt;iostream&gt;
+using namespace std;
+
+class UI {
+
+private:
+	Controller ctrl;
+	int readInteger(const char* message);
+public:
+
+<span style = "background-color:#dfd">	UI(const Controller &amp; controller) : ctrl(controller) {}</span>
+	void printMenu();
+	void printAdminMenu();
+	void printUserMenu();
+	void iterate(int size);
+	void run();
+	void readCoat(int &amp;s, string &amp;c, int &amp;p, int &amp;q, string &amp;ph);
+	
+};</pre>
+	</body>
+</html>

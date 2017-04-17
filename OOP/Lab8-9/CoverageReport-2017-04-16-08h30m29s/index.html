@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Lab5-6.exe</title>
+        <link rel="stylesheet" type="text/css" href="third-party/css/style.css"/>
+        <script src="third-party/RGraph/libraries/RGraph.common.core.js" type="text/javascript"></script>
+        <script src="third-party/RGraph/libraries/RGraph.common.dynamic.js" type="text/javascript"></script>
+        <script src="third-party/RGraph/libraries/RGraph.common.tooltips.js" type="text/javascript"></script>
+        <script src="third-party/RGraph/libraries/RGraph.pie.js" type="text/javascript"></script>
+        <script src="third-party/JQuery/jquery-1.11.1.min.js"></script>
+    </head>
+    <body>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            
+            new RGraph.Pie('pi_3aa7863b-f69d-475d-b94e-a4974af40317', [52, 200])
+                .set('labels', ['Cover 20%','Uncover 80%'])
+                .set('colors', ['rgb(0,255,0)','rgb(255,0,0)'])
+                .set('linewidth', 1)
+                .set('shadow', true)
+                .set('tooltips', ['cover 52 lines (20%)', 'uncover 200 lines (80%)'])
+                .set('tooltips.event', 'onmousemove')
+                .set('labels.sticks', true)
+                .set('labels.sticks.length', 10)
+                .draw();
+            
+
+      })
+    </script>    
+        <h1>
+        Lab5-6.exe
+        </h1>
+        <h4>
+        
+        </h4>
+        <table id="rounded-corner">
+            <thead>
+                <tr>
+                    <th scope="col" class="rounded-left">Coverage</th>
+                    <th scope="col">Total lines</th>
+                    <th scope="col" class="rounded-right">Items</th>
+                </tr>
+            </thead> 
+            <tbody>
+                
+                <tr>
+                    <td>
+            <canvas id="pi_3aa7863b-f69d-475d-b94e-a4974af40317" width="280" height="100">Cover 20%</canvas>
+                    </td>            
+                    <td>252</td>
+                    <td>            
+                       <a href="Modules/Lab5-6.html">C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.exe</a> 
+                      
+                    </td>
+                </tr>        
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                <td colspan="2" class="rounded-foot-left"></td>
+                <td class="rounded-foot-right"></td>
+                </tr>
+            </tfoot>            
+        </table>
+    </body>
+</html>
