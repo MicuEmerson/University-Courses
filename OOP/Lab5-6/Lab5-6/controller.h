@@ -12,6 +12,7 @@ private:
 public:
 
 	Controller(const Repository& r) : repo(r) {}
+	
 	bool add_repo(Coat x);
 	bool del_repo(Coat x);
 	bool update_repo(Coat x, Coat y);

@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>controller.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "repository.h"
+#include "domain.h"
+#include "shopBag.h"
+
+
+class Controller {
+
+private:
+	Repository repo;
+	ShopBag bag;
+public:
+
+<span style = "background-color:#dfd">	Controller(const Repository&amp; r) : repo(r) {}</span>
+	
+<span style = "background-color:#dfd">	bool add_repo(Coat x) { return this-&gt;repo.add(x); }
+	bool del_repo(Coat x) { return this-&gt;repo.del(x); }
+	bool update_repo(Coat x, Coat y) { return this-&gt;repo.update(x, y); }
+	void print_repo() { this-&gt;repo.print(); }</span>
+
+<span style = "background-color:#dfd">	void add_bag(Coat x) { this-&gt;bag.add(x); }
+	int get_price_bag() { return  this-&gt;bag.get_bagPrice(); }
+	void print_bag() { this-&gt;bag.print(); }</span>
+	
+<span style = "background-color:#dfd">	std::vector&lt;Coat&gt;&amp; getAll_repo() { return this-&gt;repo.getAll(); }</span>
+	
+
+};</pre>
+	</body>
+</html>

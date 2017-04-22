@@ -1,2 +1,7 @@
-﻿  Source.cpp
-LINK : fatal error LNK1104: cannot open file 'C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.ilk'
+﻿  shopBag.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  UI.cpp
+  Source.cpp
+  Lab5-6.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.exe
+  Lab5-6.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.pdb (Full PDB)

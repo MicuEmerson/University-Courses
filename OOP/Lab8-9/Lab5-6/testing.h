@@ -14,22 +14,43 @@ void tests() {
 	Coat d{ 33, "green", 89, 2, "http://www.justwomenfashion.com/wp-content/uploads/2016/04/new-winter-long-coat-women-double-breasted-fashion-woman-wool-green-coats-spain-ukraine-manteau.jpg" };
 	Coat e{ 34, "pink", 59, 3, "https://s-media-cache-ak0.pinimg.com/originals/81/53/02/815302195da2d512ceaa56aea81faa1d.jpg" };
 
-
+	assert(a.get_color() == "blue");
+	assert(a.get_photo() == "https://s-media-cache-ak0.pinimg.com/736x/00/4e/7b/004e7b590432e8a49b260141756785fe.jpg");
+	assert(a.get_price() == 65);
+	assert(a.get_quantity() == 3);
+	assert(a.get_size() == 33);
+	assert(a == a);
+	a.set_color("1");
+	a.set_photo("1");
+	a.set_price(1);
+	a.set_quantity(1);
+	a.set_size(1);
+	a.print_coat();
+	a.see_photo();
 
 	Repository r;
 	Controller ctrl(r);
+	
 	assert(ctrl.add_repo(a) == true);
-	assert(ctrl.add_repo(b) == true);
 	assert(ctrl.add_repo(a) == false);
-	ctrl.add_bag(a);
-	assert(ctrl.get_price_bag() == 65);
-	ctrl.add_bag(b);
 
-	assert(ctrl.get_price_bag() == 255);
-	ctrl.add_bag(c);
+	assert(ctrl.del_repo(a) == true);
+	assert(ctrl.del_repo(a) == false);
+    
+	ctrl.add_repo(b);
+	assert(ctrl.update_repo(b, c) == true);
+	assert(ctrl.update_repo(b, c) == false);
+	
+	
+	ctrl.add_bag(d);
+	assert(ctrl.get_price_bag() == 89);
 
-	assert(ctrl.update_repo(a, c) == true);
-	assert(ctrl.del_repo(c) == true);
+	ctrl.print_bag();
+	ctrl.print_repo();
+	auto v = ctrl.getAll_repo();
+
+
+	
 	
 
 }

@@ -49,6 +49,7 @@ void UI::printAdminMenu()
 	cout << "\t 2 - Update." << endl;
 	cout << "\t 3 - Delete " << endl;
 	cout << "\t 4 - Show All" << endl;
+	cout << "\t 5 - Instances" << endl;
 	cout << "\t 0 - Back." << endl;
 }
 
@@ -61,94 +62,25 @@ void UI::printUserMenu()
 }
 void UI::iterate(int size)
 {
-	Coat *vec = this->ctrl.getAll_repo();
+	Coat *v = this->ctrl.getAll_repo();
 	int n = this->ctrl.getSize_repo();
-	int m = 0;
-	int i = 0, flag = 1, cmd;
-
-	for (int i = 0; i < n; i++) {
-		if (vec[i].get_size() == size)
-			m++;
-	}
-	if (size == 0)
-		m = n;
-
-	while (true) {
-
-		if (flag == 0) {
-			cout << "No more items with this size\n";
-			break;
-		}
-		flag = 0;
-
-		if ((size == 0 || vec[i].get_size() == size) && vec[i].get_quantity()) {
-
-			flag = 1;
-			vec[i].print_coat();
-			cout << "\t\t1 Buy\n";
-			cout << "\t\t2 See Photo\n";
-			cout << "\t\t3 Next\n";
-			cout << "\t\t4 Back\n";
-			cin >> cmd;
-
-			if (cmd == 1) {
-				this->ctrl.add_bag(vec[i]);
-				vec[i].set_quantity(vec[i].get_quantity() - 1);
-				cout << "'\t\tThe current cart value is: " << ctrl.get_price_bag() << endl;
-			}
-			else if (cmd == 2) {
-				vec[i].see_photo();
-				cout << "\t\t1 Buy\n";
-				cout << "\t\t2 Next\n";
-				cout << "\t\t3 Back\n";
-				cin >> cmd;
-				if (cmd == 1) {
-					this->ctrl.add_bag(vec[i]);
-					vec[i].set_quantity(vec[i].get_quantity() - 1);
-					cout << "'\t\tThe current cart value is: " << ctrl.get_price_bag() << endl;
-				}
-				else if (cmd == 2) {
-					i++;
-				}
-				else {
-					break;
-				}
-			}
-			else if (cmd == 3) {
-				i++;
-			}
-			else if (cmd == 4) {
-				flag = 2;
-			}
-			else {
-				cout << "Wrong command\n";
-			}
-		}
-
-		if (flag == 2)
-			break;
-
-		if (i == m)
-			i = 0;
-
-		if (vec[i].get_quantity() == 0) {
-			cout << "Coat size:" << vec[i].get_size() << " and color: " << vec[i].get_color() << " out of stock! We will present you the next one!\n";
-			this->ctrl.del_repo(vec[i]);
-			i++;
-			m--;
-			if (m == 0){
-				cout << "No more coats of this size\n";
-				break;
-			}
-	    }
-
-		if (i == m)
-			i = 0;
-	}
-	for (int i = 0; i < n; i++)
-		if (!vec[i].get_quantity())
-			this->ctrl.del_repo(vec[i]);
+	DynamicVector <Coat> vec;
+	this->ctrl.print_repo();
+	cout << endl;
 	
+	for (int i = 0; i < n; i++)
+		if (v[i].get_size() == size)
+			vec.add(v[i]);
+
+	int m = vec.getSize();
+	Coat *v2 = vec.getAll();
+	this->ctrl.del_repo(v2[0]);
+	this->ctrl.print_repo();
+	for (int i = 0; i < m; i++) {
+
+		v2[i].print_coat();
+
+	}
 }
 
 
@@ -199,6 +131,9 @@ void UI::run()
 				}
 				else if (cmd == 4) {
 					this->ctrl.print_repo();
+				}
+				else if (cmd == 5) {
+					cout << "all instance: " << Coat::get_nr_instance() << "current instance: " << Coat::get_current_instance() << endl;
 				}
 				else if (cmd == 0) {
 					break;

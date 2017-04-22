@@ -27,7 +27,9 @@ bool Repository::del(Coat x)
 	if (pos == -1)
 		return false;
 
-	this->v.del(pos);
+	//this->v.del(pos);
+	
+	this->v - x;
 	return true;
 }
 
@@ -60,4 +62,10 @@ int Repository::getSize()
 {
 	return this->v.getSize();
 }
+
+bool Repository::operator==(Coat x)
+{
+	return false;
+}
+
 

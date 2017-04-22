@@ -18,5 +18,5 @@ public:
 	void add(Coat x);
 	void print();
 	int get_bagPrice();
-	void writeToFile();
+
 };

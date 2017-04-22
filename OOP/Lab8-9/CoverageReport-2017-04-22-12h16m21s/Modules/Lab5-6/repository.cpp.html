@@ -1,0 +1,67 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>repository.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "repository.h"
+
+bool Repository::add(Coat x)
+<span style = "background-color:#dfd">{   
+	if (this-&gt;find(x) != -1)
+		return false;</span>
+
+<span style = "background-color:#dfd">	this-&gt;v.push_back(x);
+	return true;
+}</span>
+
+int Repository::find(Coat x)
+<span style = "background-color:#dfd">{   
+	for (int i = 0; i &lt; this-&gt;v.size(); i++)
+		if (v[i] == x)
+			return i;
+	return -1;
+}</span>
+
+bool Repository::del(Coat x)
+<span style = "background-color:#dfd">{   
+	int pos = this-&gt;find(x);
+	if (pos == -1)
+		return false;</span>
+
+<span style = "background-color:#dfd">	v.erase(v.begin() + pos);</span>
+	
+<span style = "background-color:#dfd">	return true;
+}</span>
+
+bool Repository::update(Coat x, Coat y)
+<span style = "background-color:#dfd">{   
+	if(this-&gt;find(x) == -1)
+		return false;
+	this-&gt;del(x);
+	this-&gt;add(y);
+	return true;
+}</span>
+
+void Repository::print()
+<span style = "background-color:#dfd">{   
+	for (auto it : v)
+		it.print_coat();
+}</span>
+
+std::vector&lt;Coat&gt;&amp; Repository::getAll()
+<span style = "background-color:#dfd">{
+	return this-&gt;v;
+}</span>
+
+
+
+
+</pre>
+	</body>
+</html>

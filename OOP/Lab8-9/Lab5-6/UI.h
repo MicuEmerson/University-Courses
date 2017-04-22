@@ -17,5 +17,7 @@ public:
 	void iterate(int size);
 	void run();
 	void readCoat(int &s, string &c, int &p, int &q, string &ph);
+	int getNext(vector<Coat>& vec, int pos, int size);
+	void printIterate(int x);
 	
 };

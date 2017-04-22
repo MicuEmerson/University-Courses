@@ -1,26 +1,11 @@
-﻿  repository.cpp
-c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(109): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(108): note: while compiling class template member function 'void DynamicVector<Coat>::resize(double)'
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(94): note: see reference to function template instantiation 'void DynamicVector<Coat>::resize(double)' being compiled
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(92): note: while compiling class template member function 'void DynamicVector<Coat>::add(T)'
-          with
-          [
-              T=Coat
-          ]
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\repository.cpp(8): note: see reference to function template instantiation 'void DynamicVector<Coat>::add(T)' being compiled
-          with
-          [
-              T=Coat
-          ]
+﻿  Source.cpp
+c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(129): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(128): note: while compiling class template member function 'void DynamicVector<Coat>::resize(double)'
+  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(97): note: see reference to function template instantiation 'void DynamicVector<Coat>::resize(double)' being compiled
+  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(55): note: while compiling class template member function 'DynamicVector<Coat>::DynamicVector(const DynamicVector<Coat> &)'
+  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\controller.h(27): note: see reference to function template instantiation 'DynamicVector<Coat>::DynamicVector(const DynamicVector<Coat> &)' being compiled
   c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\repository.h(7): note: see reference to class template instantiation 'DynamicVector<Coat>' being compiled
   Generating Code...
-  Compiling...
-  Source.cpp
-c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(109): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(108): note: while compiling class template member function 'void DynamicVector<int>::resize(double)'
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(94): note: see reference to function template instantiation 'void DynamicVector<int>::resize(double)' being compiled
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\dynamicarr.h(45): note: while compiling class template member function 'DynamicVector<int>::DynamicVector(int)'
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\testing.h(10): note: see reference to function template instantiation 'DynamicVector<int>::DynamicVector(int)' being compiled
-  c:\users\emy\desktop\university-courses\oop\lab5-6\lab5-6\testing.h(10): note: see reference to class template instantiation 'DynamicVector<int>' being compiled
-  Generating Code...
+  Skipping... (no relevant changes detected)
+  UI.cpp
   Lab5-6.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab5-6\Debug\Lab5-6.exe

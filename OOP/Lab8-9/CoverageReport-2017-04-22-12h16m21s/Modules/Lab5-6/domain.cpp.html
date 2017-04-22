@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>domain.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "domain.h"
+
+Coat::Coat(int size, const std::string&amp; color, int price, int quantity, const std::string&amp; photo)
+<span style = "background-color:#dfd">{
+	this-&gt;size = size;
+	this-&gt;color = color;
+	this-&gt;price = price;
+	this-&gt;quantity = quantity;
+	this-&gt;photo = photo;
+}</span>
+
+
+void Coat::print_coat()
+<span style = "background-color:#dfd">{
+	std::cout &lt;&lt; "Size: " &lt;&lt; this-&gt;size &lt;&lt; " Color: " &lt;&lt; this-&gt;color &lt;&lt; " Price: " &lt;&lt; this-&gt;price &lt;&lt; " Quantity: " &lt;&lt; this-&gt;quantity &lt;&lt;  '\n';
+}</span>
+
+bool Coat::operator==(Coat x)
+<span style = "background-color:#dfd">{
+	if (this-&gt;color == x.get_color() &amp;&amp; this-&gt;size == x.get_size())
+		return true;
+	return false;
+}</span>
+
+void Coat::see_photo()
+<span style = "background-color:#dfd">{
+	ShellExecuteA(NULL, NULL, "chrome.exe", this-&gt;get_photo().c_str(), NULL, SW_SHOWMAXIMIZED);</span>
+	
+<span style = "background-color:#dfd">}</span>
+</pre>
+	</body>
+</html>

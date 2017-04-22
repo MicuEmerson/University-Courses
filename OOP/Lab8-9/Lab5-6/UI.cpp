@@ -60,9 +60,79 @@ void UI::printUserMenu()
 	cout << "\t 0 - Back." << endl;
 }
 
+
+void UI::printIterate(int x)
+{
+	cout << "\t\t1)Buy\n";
+	if(x) cout << "\t\t2)See Photo\n";
+	cout << "\t\t3)Next\n";
+	cout << "\t\t0)Back\n";
+}
+
+int UI::getNext(vector<Coat>& vec, int pos, int size) {
+
+	int steps = 0;
+	while (true) {
+
+		steps++;
+		if (steps > vec.size())
+			return -1;
+		
+		if (pos >= vec.size())
+			pos = 0;
+
+		if (vec[pos].get_size() == size || size == 0)
+			return pos;
+	    
+		pos++;
+	}
+
+}
+
+
+
+
 void UI::iterate(int size)
 {
-	;
+	vector<Coat>& vec = this->ctrl.getAll_repo();
+	int pos = 0, cmd;
+
+	while (true) {
+
+		pos = this->getNext(vec, pos, size);
+
+		if (pos == -1) {
+			cout << "No more elements with this size in repository\n";
+			break;
+		}
+
+		vec[pos].print_coat();
+		this->printIterate(1);
+		cin >> cmd;
+		if (cmd == 1) {
+			vec[pos].set_quantity(vec[pos].get_quantity() - 1);
+			this->ctrl.add_bag(vec[pos]);
+
+			if (vec[pos].get_quantity() == 0) 
+				this->ctrl.del_repo(vec[pos]);
+			else
+				pos++;
+		}
+		else if (cmd == 2) {
+			vec[pos].see_photo();
+		}
+		else if (cmd == 3) {
+			pos++;
+		}
+		else
+			break;
+	}
+
+
+
+
+
+	
 }
 
 

@@ -22,7 +22,7 @@ public:
 	int get_price_bag() { return  this->bag.get_bagPrice(); }
 	void print_bag() { this->bag.print(); }
 	
-	std::vector<Coat> getAll_repo() { return this->getAll_repo(); }
+	std::vector<Coat>& getAll_repo() { return this->repo.getAll(); }
 	
 
 };

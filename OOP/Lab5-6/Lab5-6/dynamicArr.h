@@ -12,7 +12,7 @@ private:
 public:
 
 	// default constructor for a DynamicVector
-	DynamicVector(int capacity = 10);
+	DynamicVector(int capacity = 100);
 
 	// copy constructor for a DynamicVector
 	DynamicVector(const DynamicVector& v);
@@ -20,6 +20,7 @@ public:
 
 	// assignment operator for a DynamicVector
 	DynamicVector& operator=(const DynamicVector& v);
+	void operator-(T x);
 
 	/*
 	Overloading the subscript operator
@@ -31,6 +32,7 @@ public:
 	// Adds an element to the current DynamicVector.
 	void add(T e);
 	void del(int pos);
+	int find(T e);
 	int getSize() const;
 	T* getAll();
 
@@ -41,7 +43,7 @@ private:
 };
 
 template <typename T>
-DynamicVector<T>::DynamicVector(int capacity = 10)
+DynamicVector<T>::DynamicVector(int capacity = 100)
 {
 	this->size = 0;
 	this->capacity = capacity;
@@ -87,6 +89,7 @@ T& DynamicVector<T>::operator[](int pos)
 	return this->elems[pos];
 }
 
+
 template <typename T>
 void DynamicVector<T>::add(T e)
 {
@@ -104,6 +107,23 @@ void DynamicVector<T>::del(int pos)
 }
 
 template <typename T>
+int DynamicVector<T>::find(T elem)
+{
+	for (int i = 0; i < this->size; i++)
+		if (elem.get_size() == elems[i].get_size() && elem.get_color() == elems[i].get_color())
+			return i;
+	return -1;
+}
+
+template <typename T>
+void DynamicVector<T>::operator-(T x)
+{
+	int pos = this->find(x);
+	this->del(pos);
+}
+
+
+template <typename T>
 void DynamicVector<T>::resize(double factor)
 {
 	this->capacity *= factor;
@@ -116,7 +136,7 @@ void DynamicVector<T>::resize(double factor)
 	this->elems = els;
 }
 
-template <typename T>
+template <typename T> 
 int DynamicVector<T>::getSize() const
 {
 	return this->size;

@@ -64,4 +64,8 @@ public:
 	*/
 	int getSize();
 
+	bool operator==(Coat x);
+
+	
+
 };

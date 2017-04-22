@@ -21,8 +21,8 @@ public:
 	  OUTPUT:
 	      - True is we successfully added the element into repo, false otherwise(if the element is already in the repo)
 	*/
-	Repository() { this->readFromFile(); }
-	~Repository() { this->writeToFile(); }
+	//Repository() { this->readFromFile(); }
+	//~Repository() { this->writeToFile(); }
 	
 	bool add(Coat x);
 
@@ -64,15 +64,8 @@ public:
 	OUTPUT:
 	- Return an pointer to our first element from our dynamic vector of Coats.
 	*/
-	std::vector<Coat> getAll();
-
-	void readFromFile();
-	void writeToFile();
+	std::vector<Coat>& getAll();
 
 
-
-
-
-	
 
 };
