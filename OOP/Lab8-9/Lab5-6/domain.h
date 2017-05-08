@@ -3,6 +3,8 @@
 #include <iostream>
 #include <Windows.h>
 #include <shellapi.h>
+#include <sstream>
+#include <vector>
 
 
 class Coat {
@@ -34,4 +36,9 @@ public:
 	void print_coat();
 
 	bool operator==(Coat x);
+
+	friend std::istream & operator>>(std::istream & is, Coat & x);
+	friend std::ostream & operator<<(std::ostream & os, Coat & x);
+		
 };
+

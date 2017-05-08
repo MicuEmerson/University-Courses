@@ -110,13 +110,13 @@ void UI::iterate(int size)
 		this->printIterate(1);
 		cin >> cmd;
 		if (cmd == 1) {
+
 			vec[pos].set_quantity(vec[pos].get_quantity() - 1);
 			this->ctrl.add_bag(vec[pos]);
 
 			if (vec[pos].get_quantity() == 0) 
 				this->ctrl.del_repo(vec[pos]);
-			else
-				pos++;
+			
 		}
 		else if (cmd == 2) {
 			vec[pos].see_photo();
@@ -206,7 +206,7 @@ void UI::run()
 				}
 				else if (cmd == 2) {
 
-					this->ctrl.print_bag();
+					this->ctrl.openThings_ctrl();
 					cout << endl;
 				}
 				else if (cmd == 0) {

@@ -48,6 +48,29 @@ std::vector<Coat>& Repository::getAll()
 	return this->v;
 }
 
+void Repository::readFromFile()
+{
+	std::ifstream fin("textRepo.txt");
+	Coat x;
+
+	while (fin >> x)
+		v.push_back(x);
+	
+	fin.close();
+}
+
+void Repository::writeToFile()
+{
+	std::ofstream fout("textRepo.txt");
+
+	for (auto it : this->v)
+		fout << it;
+
+	fout.close();
+
+
+}
+
 
 
 

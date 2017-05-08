@@ -1,0 +1,243 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>ui.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "UI.h"
+
+
+int UI::readInteger(const char* message)
+<span style = "background-color:#fdd">{</span>
+	char s[16];
+<span style = "background-color:#fdd">	int res = 0;
+	int flag = 0;
+	int r = 0;</span>
+
+<span style = "background-color:#fdd">	while (flag == 0)</span>
+	{
+<span style = "background-color:#fdd">		printf(message);
+		scanf("%s", s);</span>
+
+<span style = "background-color:#fdd">		r = sscanf(s, "%d", &amp;res);	// reads data from s and stores them as integer, if possible; returns 1 if successful
+		flag = (r == 1);
+		if (flag == 0)
+			printf("Error reading number!\n");
+	}
+	return res;
+}</span>
+
+void UI::readCoat(int &amp;s, string &amp;c, int &amp;p, int &amp;q, string &amp;ph)
+<span style = "background-color:#fdd">{
+	s = readInteger("size: ");
+	cout &lt;&lt; "color: ";
+	cin &gt;&gt; c;
+	p = readInteger("price: ");
+	q = readInteger("quantity: ");
+	cout &lt;&lt; "photo: ";
+	cin &gt;&gt; ph;</span>
+
+<span style = "background-color:#fdd">}</span>
+
+
+void UI::printMenu()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; endl;
+	cout &lt;&lt; "1 - Administrator mode" &lt;&lt; endl;
+	cout &lt;&lt; "2 - User mode" &lt;&lt; endl;
+	cout &lt;&lt; "0 - Exit." &lt;&lt; endl;
+}</span>
+
+void UI::printAdminMenu()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Possible commands: " &lt;&lt; endl;
+	cout &lt;&lt; "\t 1 - Add " &lt;&lt; endl;
+	cout &lt;&lt; "\t 2 - Update." &lt;&lt; endl;
+	cout &lt;&lt; "\t 3 - Delete " &lt;&lt; endl;
+	cout &lt;&lt; "\t 4 - Show All" &lt;&lt; endl;
+	cout &lt;&lt; "\t 0 - Back." &lt;&lt; endl;
+}</span>
+
+void UI::printUserMenu()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Possible commands: " &lt;&lt; endl;
+	cout &lt;&lt; "\t 1 - Buy some coats" &lt;&lt; endl;
+	cout &lt;&lt; "\t 2 - Show cart list" &lt;&lt; endl;
+	cout &lt;&lt; "\t 0 - Back." &lt;&lt; endl;
+}</span>
+
+
+void UI::printIterate(int x)
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "\t\t1)Buy\n";
+	if(x) cout &lt;&lt; "\t\t2)See Photo\n";
+	cout &lt;&lt; "\t\t3)Next\n";
+	cout &lt;&lt; "\t\t0)Back\n";
+}</span>
+
+<span style = "background-color:#fdd">int UI::getNext(vector&lt;Coat&gt;&amp; vec, int pos, int size) {</span>
+
+<span style = "background-color:#fdd">	int steps = 0;
+	while (true) {</span>
+
+<span style = "background-color:#fdd">		steps++;
+		if (steps &gt; vec.size())
+			return -1;</span>
+		
+<span style = "background-color:#fdd">		if (pos &gt;= vec.size())
+			pos = 0;</span>
+
+<span style = "background-color:#fdd">		if (vec[pos].get_size() == size || size == 0)
+			return pos;</span>
+	    
+<span style = "background-color:#fdd">		pos++;
+	}</span>
+
+<span style = "background-color:#fdd">}</span>
+
+
+
+
+void UI::iterate(int size)
+<span style = "background-color:#fdd">{
+	vector&lt;Coat&gt;&amp; vec = this-&gt;ctrl.getAll_repo();
+	int pos = 0, cmd;</span>
+
+<span style = "background-color:#fdd">	while (true) {</span>
+
+<span style = "background-color:#fdd">		pos = this-&gt;getNext(vec, pos, size);</span>
+
+<span style = "background-color:#fdd">		if (pos == -1) {
+			cout &lt;&lt; "No more elements with this size in repository\n";
+			break;</span>
+		}
+
+<span style = "background-color:#fdd">		vec[pos].print_coat();
+		this-&gt;printIterate(1);
+		cin &gt;&gt; cmd;
+		if (cmd == 1) {</span>
+
+<span style = "background-color:#fdd">			vec[pos].set_quantity(vec[pos].get_quantity() - 1);
+			this-&gt;ctrl.add_bag(vec[pos]);</span>
+
+<span style = "background-color:#fdd">			if (vec[pos].get_quantity() == 0) 
+				this-&gt;ctrl.del_repo(vec[pos]);</span>
+			
+<span style = "background-color:#fdd">		}
+		else if (cmd == 2) {
+			vec[pos].see_photo();</span>
+		}
+<span style = "background-color:#fdd">		else if (cmd == 3) {
+			pos++;</span>
+		}
+<span style = "background-color:#fdd">		else
+			break;
+	}</span>
+
+
+
+
+
+	
+<span style = "background-color:#fdd">}</span>
+
+
+
+void UI::run()
+<span style = "background-color:#fdd">{
+	int cmd = -1;
+	while (true) {</span>
+
+<span style = "background-color:#fdd">		this-&gt;printMenu();
+		cin &gt;&gt; cmd;
+		if (cmd == 1) {</span>
+
+			int s, p, q, ss;
+<span style = "background-color:#fdd">			string c,cc, ph;</span>
+
+<span style = "background-color:#fdd">			while (true) {
+				this-&gt;printAdminMenu();
+				cin &gt;&gt; cmd;
+				if (cmd == 1) {</span>
+					
+<span style = "background-color:#fdd">					readCoat(s, c, p, q, ph);
+					Coat x(s, c, p, q, ph);
+					if (!ctrl.add_repo(x))
+						cout &lt;&lt; "this elem already in repo\n";
+				}
+				else if (cmd == 2) {</span>
+					
+<span style = "background-color:#fdd">					ss = readInteger("size: ");
+					cout &lt;&lt; "color: ";
+					cin &gt;&gt; cc;
+					readCoat(s, c, p, q, ph);
+					Coat x(ss, cc, 0, 0, " ");
+					Coat y(s, c, p, q, ph);</span>
+					
+<span style = "background-color:#fdd">					if (!ctrl.update_repo(x, y))
+						cout &lt;&lt; "no such an elem in repo\n";</span>
+
+<span style = "background-color:#fdd">				}
+				else if (cmd == 3) {</span>
+					
+<span style = "background-color:#fdd">					s = readInteger("size: ");
+					cout &lt;&lt; "color: ";
+					cin &gt;&gt; c;
+					Coat x(s, c, 0, 0, " ");
+					if(!ctrl.del_repo(x))
+						cout &lt;&lt; "no such an elem in repo\n";
+				}
+				else if (cmd == 4) {
+					this-&gt;ctrl.print_repo();</span>
+				}
+				
+<span style = "background-color:#fdd">				else if (cmd == 0) {
+					break;</span>
+				}
+<span style = "background-color:#fdd">				else
+					cout &lt;&lt; "invalid command\n";
+			}
+		}
+		else if (cmd == 2) {</span>
+
+<span style = "background-color:#fdd">			while (true) {</span>
+
+<span style = "background-color:#fdd">				printUserMenu();
+				cin &gt;&gt; cmd;
+				if (cmd == 1) {</span>
+					int size;
+<span style = "background-color:#fdd">					cout &lt;&lt; "what is the size of coat?\n";
+					cin &gt;&gt; size;
+					this-&gt;iterate(size);</span>
+				}
+<span style = "background-color:#fdd">				else if (cmd == 2) {</span>
+
+<span style = "background-color:#fdd">					this-&gt;ctrl.print_bag();
+					cout &lt;&lt; endl;</span>
+				}
+<span style = "background-color:#fdd">				else if (cmd == 0) {
+					break;</span>
+				}
+<span style = "background-color:#fdd">				else {
+					cout &lt;&lt; "invalid command\n";</span>
+				}
+<span style = "background-color:#fdd">			}</span>
+
+		}
+<span style = "background-color:#fdd">		else if (cmd == 0)
+			break;
+		else {
+			cout &lt;&lt; "Invalid input\n";</span>
+		}
+<span style = "background-color:#fdd">	}
+}</span>
+
+
+</pre>
+	</body>
+</html>

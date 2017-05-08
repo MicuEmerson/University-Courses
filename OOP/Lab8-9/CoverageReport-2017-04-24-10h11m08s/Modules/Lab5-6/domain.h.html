@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>domain.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+#include &lt;Windows.h&gt;
+#include &lt;shellapi.h&gt;
+
+
+class Coat {
+
+private:
+	int size;
+	std::string color;
+	int price;
+	int quantity;
+	std::string photo;
+
+public:
+	Coat() : size(0), color(""), price(0), quantity(0), photo("") {}
+	Coat(int size, const std::string&amp;, int price, int quantity, const std::string&amp;);
+
+<span style = "background-color:#dfd">	int get_price()			{ return price; }
+	int get_size()			{ return size; }
+	int get_quantity()		{ return quantity; }
+	std::string get_color() { return color; }
+	std::string get_photo() { return photo; }</span>
+
+		
+<span style = "background-color:#dfd">	void set_price(int p)		   { price = p; }
+	void set_size(int s)		   { size = s; }
+	void set_color(std::string c)  { color = c; }
+	void set_photo(std::string ph) { photo = ph; }
+	void set_quantity(int q)	   { quantity = q; }</span>
+	void see_photo();
+	void print_coat();
+
+	bool operator==(Coat x);
+};</pre>
+	</body>
+</html>

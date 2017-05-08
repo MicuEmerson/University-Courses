@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
-#include <sstream>
 #include <iterator>
 #include <string>
 
@@ -21,8 +20,6 @@ public:
 	  OUTPUT:
 	      - True is we successfully added the element into repo, false otherwise(if the element is already in the repo)
 	*/
-	//Repository() { this->readFromFile(); }
-	//~Repository() { this->writeToFile(); }
 	
 	bool add(Coat x);
 
@@ -65,6 +62,9 @@ public:
 	- Return an pointer to our first element from our dynamic vector of Coats.
 	*/
 	std::vector<Coat>& getAll();
+
+	void readFromFile();
+	void writeToFile();
 
 
 

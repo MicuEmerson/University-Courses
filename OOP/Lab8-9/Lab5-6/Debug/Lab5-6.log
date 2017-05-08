@@ -1,7 +1,6 @@
-﻿  shopBag.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  UI.cpp
-  Source.cpp
+﻿  Source.cpp
+c:\users\emy\desktop\university-courses\oop\lab8-9\lab5-6\html_bag.h(27): warning C4101: 'price': unreferenced local variable
+c:\users\emy\desktop\university-courses\oop\lab8-9\lab5-6\html_bag.h(28): warning C4101: 'quantity': unreferenced local variable
+c:\users\emy\desktop\university-courses\oop\lab8-9\lab5-6\html_bag.h(25): warning C4101: 'size': unreferenced local variable
   Lab5-6.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.exe
   Lab5-6.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab8-9\Debug\Lab5-6.pdb (Full PDB)

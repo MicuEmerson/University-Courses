@@ -53,5 +53,11 @@
     <ClInclude Include="testing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HTML_bag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSV_bag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

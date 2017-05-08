@@ -19,5 +19,6 @@ public:
 	void readCoat(int &s, string &c, int &p, int &q, string &ph);
 	int getNext(vector<Coat>& vec, int pos, int size);
 	void printIterate(int x);
-	
+	void writeToFile_UI() { this->ctrl.writeToFile_repo(); }
+	void readFromFile_UI() { this->ctrl.readFromFile_repo(); }
 };

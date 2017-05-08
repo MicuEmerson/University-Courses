@@ -151,7 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
+    <ClInclude Include="CSV_bag.h" />
     <ClInclude Include="domain.h" />
+    <ClInclude Include="HTML_bag.h" />
     <ClInclude Include="repository.h" />
     <ClInclude Include="shopBag.h" />
     <ClInclude Include="testing.h" />

@@ -2,13 +2,14 @@
 #include <vector>
 #include "domain.h"
 #include <fstream>
+#include <Windows.h>
+#include <shellapi.h>
 
 class ShopBag {
 
-private:
+protected:
 	
 	std::vector <Coat> v;
-	// Variable where we keep the total price of the elements from the shopbag.
 	int price;
 
 public:
@@ -18,5 +19,7 @@ public:
 	void add(Coat x);
 	void print();
 	int get_bagPrice();
-
+	virtual void writeToFile_bag() = 0;
+	virtual void openThings() = 0;
+	
 };
