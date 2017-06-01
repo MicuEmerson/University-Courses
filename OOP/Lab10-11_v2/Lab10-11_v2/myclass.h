@@ -9,10 +9,15 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
+#include <QMessageBox>
 #include "controller.h"
 #include <QRadioButton>
 #include <string>
 #include <algorithm>
+#include "domain.h"
+#include "coatValidator.h"
+#include "repositoryExceptions.h"
+
 
 class myClass : public QWidget
 {
@@ -23,9 +28,15 @@ public:
 	~myClass();
 
 private:
-	void guiInit();
-	void setSignals();
+
 	Controller *ctrl;
+	void guiInit();
+	void bagInit();
+	void setSignals();
+	void setSignalsFilter();
+	int getRepoListSelectedIndex();
+	void addToBag();
+	
 
 	//Elem upLayout
 	QListWidget* repoList;
@@ -45,12 +56,24 @@ private:
 	QPushButton* filterButton;
 	QPushButton* updateButton;
 
+	//radio buttons
 	QRadioButton *b1;
 	QRadioButton *b2;
 
+	//filter widget button
+	QPushButton *filterOk;
+	QLineEdit *sizeFilter;
+	QWidget * wid;
+
 	private slots:
-	void sortting();
-	void repoInit();
+		void sortting();
+		void repoInit();
+		void addNewCoat();
+		void deleteCoat();
+		void updateCoat();
+		void filter();
+		void filterSize();
+		
 };
 
 #endif // MYCLASS_H

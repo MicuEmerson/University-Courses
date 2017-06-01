@@ -1,2 +1,5 @@
-﻿  myclass.cpp
-  Lab10-11_v2.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\Lab10-11_v2\x64\Debug\Lab10-11_v2.exe
+﻿  moc_myclass.cpp
+  main.cpp
+  myclass.cpp
+  Generating Code...
+LINK : fatal error LNK1201: error writing to program database 'C:\Users\Emy\Desktop\University-Courses\OOP\Lab10-11_v2\x64\Debug\Lab10-11_v2.pdb'; check for insufficient disk space, invalid path, or insufficient privilege

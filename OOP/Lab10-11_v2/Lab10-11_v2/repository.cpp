@@ -29,10 +29,15 @@ bool Repository::del(Coat x)
 
 bool Repository::update(Coat x, Coat y)
 {   
-	if(this->find(x) == -1)
-		return false;
-	this->del(x);
-	this->add(y);
+	for (auto &it : this->v) 
+		if (it == x) {
+			it.set_color(y.get_color());
+			it.set_price(y.get_price());
+			it.set_photo(y.get_photo());
+			it.set_quantity(y.get_quantity());
+			it.set_size(y.get_size());
+		}
+	
 	return true;
 }
 

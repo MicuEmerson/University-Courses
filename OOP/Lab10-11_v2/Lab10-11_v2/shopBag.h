@@ -21,5 +21,6 @@ public:
 	int get_bagPrice();
 	virtual void writeToFile_bag() = 0;
 	virtual void openThings() = 0;
+	std::vector<Coat> & getAll_B() { return this->v; }
 	
 };

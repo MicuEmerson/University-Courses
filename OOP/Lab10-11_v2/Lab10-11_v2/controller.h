@@ -30,6 +30,7 @@ public:
      void print_bag() { this->bag->print(); }
 	
 	std::vector<Coat>& getAll_repo() { return this->repo.getAll(); }
+	std::vector<Coat>& getAll_bag() { return this->bag->getAll_B(); }
 
 	void writeToFile_repo() { this->repo.writeToFile(); }
 	void readFromFile_repo() { this->repo.readFromFile(); }

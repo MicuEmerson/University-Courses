@@ -13,6 +13,13 @@ public:
 	std::vector<std::string> getErrors() const {
 		return this->errors;
 	}
+	std::string getErrorsAsString() const
+	{
+		std::string err;
+		for (auto e : this->errors)
+			err += e;
+		return err;
+	}
 	
 };
 
