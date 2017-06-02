@@ -18,14 +18,26 @@ void myClass::guiInit()
 {
 	QVBoxLayout * mainLay = new QVBoxLayout{this};
 	
+	
 	// up part
 	QHBoxLayout * upLay = new QHBoxLayout{};
 	repoList = new QListWidget{};
+	
+
+	photoButton = new QPushButton{ "See Photo" };
 	insertButton = new QPushButton{"Insert"};
+
+	//up middle buttons vertical lay
+	QVBoxLayout * upButtons = new QVBoxLayout{};
+	upButtons->addWidget(insertButton);
+	upButtons->addWidget(photoButton);
+	QWidget * upB = new QWidget{};
+	upB->setLayout(upButtons);
+
 	shopList = new QListWidget{};
-    
+
 	upLay->addWidget(repoList);
-	upLay->addWidget(insertButton);
+	upLay->addWidget(upB);
 	upLay->addWidget(shopList);
 
 	// middle part
@@ -48,19 +60,28 @@ void myClass::guiInit()
 	deleteButton = new QPushButton{"Delete"};
 	updateButton = new QPushButton{"Update"};
 	filterButton = new QPushButton{ "Filter" };
+	seeBagButton = new QPushButton{ "ShopBag Content" };
 
 	downLay->addWidget(addButton);
 	downLay->addWidget(deleteButton);
 	downLay->addWidget(updateButton);
 	downLay->addWidget(filterButton);
+	downLay->addWidget(seeBagButton);
 
 
 	//butoane radio de sus
 	QHBoxLayout * buttonLay = new QHBoxLayout{};
 	b1 = new QRadioButton{ "Suffle" }; 
 	b2 = new QRadioButton{ "Sorted" };
+	priceBag = new QLineEdit{};
+
 	buttonLay->addWidget(b1);
+	buttonLay->addSpacing(300);
 	buttonLay->addWidget(b2);
+	buttonLay->addSpacing(500);
+	buttonLay->addWidget(priceBag);
+
+
 
 
 	//we insert all layount in main layout using widgets
@@ -87,12 +108,16 @@ void myClass::guiInit()
 void myClass::bagInit()
 {
 	this->shopList->clear();
+	int price = 0;
+
 	for (auto s : ctrl->getAll_bag()) {
 
-		QString itemInList = QString::fromStdString(s.get_color() + " - " + std::to_string(s.get_size()) + " - " + std::to_string(s.get_quantity()));
+		price += s.get_price();
+		QString itemInList = QString::fromStdString(s.get_color() + " - " + std::to_string(s.get_size()) );
 		QListWidgetItem *item3 = new QListWidgetItem(itemInList);
 		this->shopList->addItem(item3);
 	}
+	this->priceBag->setText(QString::fromStdString(std::to_string(price) + "$"));
 }
 
 void myClass::repoInit()
@@ -116,6 +141,9 @@ void myClass::setSignals()
 	QObject::connect(this->deleteButton, SIGNAL(clicked()), this, SLOT(deleteCoat()));
 	QObject::connect(this->updateButton, SIGNAL(clicked()), this, SLOT(updateCoat()));
 	QObject::connect(this->filterButton, SIGNAL(clicked()), this, SLOT(filter()));
+	QObject::connect(this->insertButton, SIGNAL(clicked()), this, SLOT(addToBag()));
+	QObject::connect(this->photoButton, SIGNAL(clicked()), this, SLOT(seePhoto()));
+	QObject::connect(this->seeBagButton, SIGNAL(clicked()), this, SLOT(seeBagContent()));
 
 }
 
@@ -176,6 +204,7 @@ int myClass::getRepoListSelectedIndex()
 void myClass::addToBag()
 {
 	int index = this->getRepoListSelectedIndex();
+	if (index == -1) return;
 	Coat x =  this->ctrl->getAll_repo()[index];
 
 	int q = x.get_quantity() - 1;
@@ -188,14 +217,24 @@ void myClass::addToBag()
 		this->ctrl->update_repo(x, y);
 
 	this->ctrl->add_bag(x);
+	this->repoInit();
+	this->bagInit();
 
+}
 
+void myClass::seePhoto()
+{
+	int index = this->getRepoListSelectedIndex();
+	this->ctrl->getAll_repo()[index].see_photo();
+}
 
+void myClass::seeBagContent()
+{
+	this->ctrl->openThings_ctrl();
 }
 
 void myClass::deleteCoat()
 {   
-	
 	std::string Size = this->sizeCoat->text().toStdString();
 	std::string Color = this->colorCoat->text().toStdString();
 	Coat x(stoi(Size), Color, 1, 1, "1");
@@ -215,8 +254,6 @@ void myClass::updateCoat()
 	Coat x(std::stoi(Size), Color, std::stoi(Price), std::stoi(Quantity), Link);
 	this->ctrl->update_repo(x, x);
 	repoInit();
-	
-	
 }
 
 
@@ -239,20 +276,18 @@ void myClass::filter()
 }
 
 void myClass::filterSize()
-{  
-	
+{  	
 	int sss = stoi(sizeFilter->text().toStdString());
 	this->repoList->clear();
 
 	for (auto s : ctrl->getAll_repo()) 
 		if (s.get_size() == sss || sss == 0) {
-			QString itemInList = QString::fromStdString(s.get_color() + " - " + std::to_string(s.get_size()));
+			QString itemInList = QString::fromStdString(s.get_color() + " - " + std::to_string(s.get_size()) + " - " + std::to_string(s.get_quantity()));
 			QListWidgetItem *item3 = new QListWidgetItem(itemInList);
 			this->repoList->addItem(item3);
 		}
 	
 	this->wid->close();
-	
 }
 
 void myClass::sortting() {
@@ -264,6 +299,7 @@ void myClass::sortting() {
 		std::string x;
 		x = s.get_color();
 		x += " - " + std::to_string(s.get_size());
+		x += " - " + std::to_string(s.get_quantity());
 		vec.push_back(x);
 	}
 

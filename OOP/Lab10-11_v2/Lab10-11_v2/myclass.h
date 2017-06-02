@@ -17,6 +17,7 @@
 #include "domain.h"
 #include "coatValidator.h"
 #include "repositoryExceptions.h"
+#include <QSpacerItem>
 
 
 class myClass : public QWidget
@@ -35,13 +36,15 @@ private:
 	void setSignals();
 	void setSignalsFilter();
 	int getRepoListSelectedIndex();
-	void addToBag();
+	
 	
 
 	//Elem upLayout
 	QListWidget* repoList;
 	QListWidget* shopList;
 	QPushButton* insertButton;
+	QPushButton* photoButton;
+	QLineEdit* priceBag;
 
 	//Elem midLayout
 	QLineEdit* sizeCoat;
@@ -55,6 +58,7 @@ private:
 	QPushButton* deleteButton;
 	QPushButton* filterButton;
 	QPushButton* updateButton;
+	QPushButton* seeBagButton;
 
 	//radio buttons
 	QRadioButton *b1;
@@ -73,6 +77,10 @@ private:
 		void updateCoat();
 		void filter();
 		void filterSize();
+		void addToBag();
+		void seePhoto();
+		void seeBagContent();
+
 		
 };
 
