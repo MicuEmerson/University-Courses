@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{68435572-0C9D-4781-9903-93C6E4539CD0}</ProjectGuid>
+    <ProjectGuid>{B484DFBA-8162-469B-BEF5-24B74995591C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Lab56</RootNamespace>
+    <RootNamespace>ConsoleApplication1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,7 +91,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -142,25 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="controller.cpp" />
-    <ClCompile Include="domain.cpp" />
-    <ClCompile Include="repository.cpp" />
-    <ClCompile Include="repositoryExceptions.cpp" />
-    <ClCompile Include="shopBag.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="UI.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="coatValidator.h" />
-    <ClInclude Include="controller.h" />
-    <ClInclude Include="CSV_bag.h" />
-    <ClInclude Include="domain.h" />
-    <ClInclude Include="HTML_bag.h" />
-    <ClInclude Include="repository.h" />
-    <ClInclude Include="repositoryExceptions.h" />
-    <ClInclude Include="shopBag.h" />
-    <ClInclude Include="testing.h" />
-    <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

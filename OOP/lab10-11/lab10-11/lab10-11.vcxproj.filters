@@ -24,12 +24,12 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{4d1bea82-734d-41a0-8749-4a5ad05d2aca}</UniqueIdentifier>
+      <UniqueIdentifier>{f5d984e5-c95f-4e40-816c-4d3181736774}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{bfe6db10-98ef-4de5-93a0-ec33c3e1a6ef}</UniqueIdentifier>
+      <UniqueIdentifier>{9e99ae85-3701-4196-9917-5bbb4e7a2933}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -38,71 +38,53 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="myclass.cpp">
+    <ClCompile Include="myqtclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_myclass.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_myqtclass.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_myclass.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_myqtclass.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_myclass.cpp">
+    <ClCompile Include="GeneratedFiles\qrc_myqtclass.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="controller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="domain.cpp">
+    <ClCompile Include="UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="repositoryExceptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shopBag.cpp">
+    <ClCompile Include="domain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="repository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
-      <Filter>Generated Files\Debug</Filter>
+    <ClCompile Include="shopBag.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="qcustomplot.cpp">
+    <ClCompile Include="controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="myclass.h">
+    <CustomBuild Include="myqtclass.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="myclass.ui">
+    <CustomBuild Include="myqtclass.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="myclass.qrc">
+    <CustomBuild Include="myqtclass.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="qcustomplot.h">
-      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_myclass.h">
+    <ClInclude Include="GeneratedFiles\ui_myqtclass.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="coatValidator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CSV_bag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HTML_bag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="repository.h">
@@ -111,14 +93,29 @@
     <ClInclude Include="repositoryExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shopBag.h">
+    <ClInclude Include="UI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="coatValidator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HTML_bag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="domain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="shopBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSV_bag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="textRepo.txt" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

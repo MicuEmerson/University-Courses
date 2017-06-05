@@ -36,8 +36,8 @@ private:
 	void setSignals();
 	void setSignalsFilter();
 	int getRepoListSelectedIndex();
-	
-	
+
+
 
 	//Elem upLayout
 	QListWidget* repoList;
@@ -69,19 +69,23 @@ private:
 	QLineEdit *sizeFilter;
 	QWidget * wid;
 
-	private slots:
-		void sortting();
-		void repoInit();
-		void addNewCoat();
-		void deleteCoat();
-		void updateCoat();
-		void filter();
-		void filterSize();
-		void addToBag();
-		void seePhoto();
-		void seeBagContent();
+	//plot
+	
 
-		
+	private slots:
+	void sortting();
+	void repoInit();
+	void addNewCoat();
+	void deleteCoat();
+	void updateCoat();
+	void filter();
+	void filterSize();
+	void addToBag();
+	void seePhoto();
+	void seeBagContent();
+	void plot();
+
+
 };
 
 #endif // MYCLASS_H

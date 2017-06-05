@@ -1,4 +1,0 @@
-﻿  Lab2.c
-c:\users\emy\desktop\oop\lab2\lab2\lab2.c(5): warning C4627: '#include <stdlib.h>': skipped when looking for precompiled header use
-  c:\users\emy\desktop\oop\lab2\lab2\lab2.c(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
-  Lab2.vcxproj -> C:\Users\Emy\Desktop\OOP\Lab2\Debug\Lab2.exe
