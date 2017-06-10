@@ -1,0 +1,5 @@
+﻿  main.cpp
+  SortedBag.cpp
+  Generating Code...
+c:\users\emy\desktop\university-courses\oop\sda\sda\sortedbag.cpp(78): warning C4715: 'SortedBag::remove': not all control paths return a value
+  SDA.vcxproj -> C:\Users\Emy\Desktop\University-Courses\OOP\SDA\Debug\SDA.exe
