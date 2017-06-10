@@ -27,10 +27,21 @@ bool Book::operator==(Book a)
 
 bool Book::operator<(Book a)
 {
-	return author < a.getAuthor();
+	if (author < a.getAuthor())
+		return true;
+	else if (author == a.getAuthor())
+		return name < a.getName();
+	else
+		return false;
 }
 
 bool Book::operator>(Book a)
 {
-	return author > a.getAuthor();
+	if (author > a.getAuthor())
+		return true;
+	else if (author == a.getAuthor())
+		return name > a.getName();
+	else
+		return false;
+	
 }

@@ -13,9 +13,10 @@ void SortedBag::setRoot(Node *r)
 
 Node* SortedBag::add(Node* r, Book b)
 {
+
 	if (r == NULL) 
 		r = new Node{b};
-	else if (b.getAuthor() < r->getInfo().getAuthor())
+	else if (b < r->getInfo())
 		r->setLeft(this->add(r->getLeft(), b));
 	else
 		r->setRight(this->add(r->getRight(), b));
@@ -27,7 +28,7 @@ Node * SortedBag::getMin(Node * r)
 {
 	if (r->getLeft() == NULL)
 		return r;
-	return getMin(r->getLeft());
+	getMin(r->getLeft());
 }
 
 Iterator SortedBag::iterator(SortedBag sb)
@@ -45,36 +46,41 @@ void SortedBag::afisare(Node* r)
 
 Node * SortedBag::remove(Node *r, Book b)
 {
+	int flag = 0;
 	if (r == NULL)
 		return r;
-	else if (b < r->getInfo())
+	else if (b < r->getInfo()) 
 		r->setLeft(remove(r->getLeft(), b));
-	else if (b > r->getInfo())
+	else if (b > r->getInfo()) 
 		r->setRight(remove(r->getRight(), b));
 	else {
-
 		if (r->getLeft() == NULL && r->getRight() == NULL) {
 			delete r;
 			r = NULL;
 		}
 		else if (r->getRight() == NULL) {
+		
 			Node* aux = r;
 			r = r->getLeft();
 			delete aux;
+		
 		}
 		else if (r->getLeft() == NULL) {
+			
 			Node* aux = r;
 			r = r->getRight();
 			delete aux;
+			
 		}
 		else {
+			
 			Node* aux = getMin(r->getRight());
 			r->setInfo(aux->getInfo());
 			r->setRight(remove(r->getRight(), aux->getInfo()));
+			
 		}
-
-		return r;
 	}
+	return r;
 }
 
 bool SortedBag::search(Node* r, Book b)

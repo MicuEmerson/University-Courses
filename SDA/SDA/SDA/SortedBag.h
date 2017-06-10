@@ -4,6 +4,7 @@
 #include <queue>
 
 
+
 class Iterator;
 
 class SortedBag {
@@ -24,7 +25,7 @@ public:
 	void setRoot(Node *r);
 	Node* getMin(Node *r);
 	Iterator iterator(SortedBag sb);
-
+	
 };
 
 
@@ -57,7 +58,7 @@ public:
 		return true;
 	}
 
-	void nextt() {
+	void next() {
 		if (Q.empty()) {
 			currentNode = NULL;
 			return;
