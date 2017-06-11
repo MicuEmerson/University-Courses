@@ -1,5 +1,4 @@
-﻿  main.cpp
-  SortedBag.cpp
+﻿  testing.cpp
+  main.cpp
   Generating Code...
-c:\users\emy\desktop\university-courses\sda\sda\sda\sortedbag.cpp(32): warning C4715: 'SortedBag::getMin': not all control paths return a value
   SDA.vcxproj -> C:\Users\Emy\Desktop\University-Courses\SDA\SDA\Debug\SDA.exe

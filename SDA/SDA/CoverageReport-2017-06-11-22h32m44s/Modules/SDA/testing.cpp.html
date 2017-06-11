@@ -1,0 +1,136 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>testing.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "testing.h"
+
+void Testing::testBook()
+<span style = "background-color:#dfd">{
+	Book x{ "AAA", "BBB" };
+	Book q{ "AAA", "AAA" };</span>
+
+<span style = "background-color:#dfd">	assert(x.getAuthor() == "AAA");
+	assert(x.getName() == "BBB");</span>
+
+<span style = "background-color:#dfd">	x.setAuthor("aaa");
+	x.setName("bbb");</span>
+	
+<span style = "background-color:#dfd">	assert(x.getAuthor() != "AAA");
+	assert(x.getName() != "BBB");</span>
+
+<span style = "background-color:#dfd">	assert(x.getAuthor() == "aaa");
+	assert(x.getName() == "bbb");</span>
+
+<span style = "background-color:#dfd">	Book y{ "CCC", "DDD" };
+	Book k{ "CCC", "AAA" };
+	Book j{ "DDD", "AAA" };
+	assert(x &gt; y);
+	assert(y &lt; x);
+	assert(y &gt; k);
+	assert(!(y &lt; k));
+	assert(x &gt; q);
+	assert(!(x &lt; q));
+	assert(!(x &lt; y));
+	assert(!(y &gt; x));
+	assert(y &lt; x);
+	assert(!(y &gt; j));
+	assert(x == x);</span>
+
+	
+<span style = "background-color:#dfd">}</span>
+
+void Testing::testNode()
+<span style = "background-color:#dfd">{ 
+	Book a{ "bbb", "aaa" };
+	Book b{ "aaa", "bbb" };
+	Node x(b);</span>
+
+<span style = "background-color:#dfd">	assert(x.getInfo() == b);
+	assert(x.getLeft() == NULL);
+	assert(x.getRight() == NULL);</span>
+
+<span style = "background-color:#dfd">	x.setInfo(a);
+	assert(x.getInfo() == a);</span>
+
+<span style = "background-color:#dfd">	Node *st = new Node;
+	Node *dr = new Node;
+	x.setLeft(st);
+	x.setRight(dr);</span>
+
+<span style = "background-color:#dfd">	assert(x.getLeft() == st);
+	assert(x.getRight() == dr);
+	x.printInfo();</span>
+	
+
+<span style = "background-color:#dfd">}</span>
+
+void Testing::testSortedBag()
+<span style = "background-color:#dfd">{
+	Book b{ "aaa", "bbb" };
+	Book a{ "bbb", "bbb" };
+	Book c{ "ccc", "bbb" };</span>
+
+<span style = "background-color:#dfd">	SortedBag sb;
+	sb.setRoot(sb.add(sb.getRoot(), b));
+	assert(sb.size(sb.getRoot()) == 1);
+	sb.setRoot(sb.remove(sb.getRoot(), b));
+	assert(sb.size(sb.getRoot()) == 0);
+	assert(sb.search(sb.getRoot(), b) == false);
+	sb.setRoot(sb.add(sb.getRoot(), b));
+	assert(sb.search(sb.getRoot(), b) == true);
+	assert(sb.getMin(sb.getRoot()) == sb.getRoot());
+	sb.setRoot(sb.getRoot());
+	sb.setRoot(sb.add(sb.getRoot(), b));
+	sb.setRoot(sb.add(sb.getRoot(), c));
+	sb.setRoot(sb.add(sb.getRoot(), a));
+	sb.setRoot(sb.add(sb.getRoot(), b));
+	sb.setRoot(sb.add(sb.getRoot(), c));
+	sb.setRoot(sb.add(sb.getRoot(), a));</span>
+
+<span style = "background-color:#dfd">	Book d{ "DDD", "bbb" };
+	Node* miny = sb.getMin(sb.getRoot());
+	assert(sb.getMin(sb.getRoot()) == miny);
+	sb.setRoot(sb.add(sb.getRoot(), d));
+	miny = sb.getMin(sb.getRoot());
+	assert(sb.getMin(sb.getRoot()) == miny);</span>
+
+<span style = "background-color:#dfd">	assert(sb.search(sb.getRoot(), a) == true);
+	assert(sb.search(sb.getRoot(), b) == true);
+	assert(sb.search(sb.getRoot(), c) == true);
+	assert(sb.search(sb.getRoot(), d) == true);</span>
+
+<span style = "background-color:#dfd">	sb.setRoot(sb.remove(sb.getRoot(), d));
+	sb.setRoot(sb.remove(sb.getRoot(), a));
+	sb.setRoot(sb.remove(sb.getRoot(), b));
+	sb.setRoot(sb.remove(sb.getRoot(), c));</span>
+
+
+<span style = "background-color:#dfd">	sb.setRoot(sb.remove(sb.getRoot(), Book("aa", "bb")));</span>
+	
+
+<span style = "background-color:#dfd">	Iterator iter = sb.iterator(sb);
+	iter.next();
+	while (iter.valid()) {
+		iter.getCurrent();
+		iter.next();
+	}</span>
+
+<span style = "background-color:#dfd">	SortedBag sbbb;
+	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("C", "a")));
+	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("A", "a")));
+	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("B", "a")));
+	sbbb.setRoot(sbbb.remove(sbbb.getRoot(), Book("A", "a")));</span>
+
+
+
+
+<span style = "background-color:#dfd">}</span></pre>
+	</body>
+</html>

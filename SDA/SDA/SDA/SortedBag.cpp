@@ -13,7 +13,6 @@ void SortedBag::setRoot(Node *r)
 
 Node* SortedBag::add(Node* r, Book b)
 {
-
 	if (r == NULL) 
 		r = new Node{b};
 	else if (b < r->getInfo())
@@ -36,17 +35,8 @@ Iterator SortedBag::iterator(SortedBag sb)
 	return Iterator(sb);
 }
 
-void SortedBag::afisare(Node* r)
-{   
-	if (r == NULL) return;
-	this->afisare(r->getLeft());
-	std::cout << r->printInfo();
-	this->afisare(r->getRight());
-}
-
 Node * SortedBag::remove(Node *r, Book b)
 {
-	int flag = 0;
 	if (r == NULL)
 		return r;
 	else if (b < r->getInfo()) 

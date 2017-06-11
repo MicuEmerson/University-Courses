@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>node.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "book.h"
+
+class Node {
+
+private:
+	Book info;
+	Node* left;
+	Node* right;
+
+public:
+<span style = "background-color:#dfd">	Node() : left(NULL), right(NULL) {}
+	Node(Book b) : info(b), left(NULL), right(NULL) {}</span>
+	Node(Book b, Node* l, Node* r) : info(b), left(l), right(r) {}
+
+	void setInfo(Book b);
+	void setLeft(Node* l);
+	void setRight(Node* r);
+
+	Book getInfo();
+	Node* getLeft();
+	Node* getRight();
+
+	std::string printInfo();
+};</pre>
+	</body>
+</html>

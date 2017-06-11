@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>book.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "book.h"
+
+void Book::setAuthor(std::string a)
+<span style = "background-color:#dfd">{
+	this-&gt;author = a;
+}</span>
+
+void Book::setName(std::string n)
+<span style = "background-color:#dfd">{
+	this-&gt;name = n;
+}</span>
+
+std::string Book::getAuthor()
+<span style = "background-color:#dfd">{
+	return this-&gt;author;
+}</span>
+
+std::string Book::getName()
+<span style = "background-color:#dfd">{
+	return this-&gt;name;
+}</span>
+
+bool Book::operator==(Book a)
+<span style = "background-color:#dfd">{
+	return a.getAuthor() == author &amp;&amp; a.getName() == name;
+}</span>
+
+bool Book::operator&lt;(Book a)
+<span style = "background-color:#dfd">{
+	if (author &lt; a.getAuthor())
+		return true;
+	else if (author == a.getAuthor())
+		return name &lt; a.getName();</span>
+	
+<span style = "background-color:#dfd">		return false;
+}</span>
+
+bool Book::operator&gt;(Book a)
+<span style = "background-color:#dfd">{
+	if (author &gt; a.getAuthor())
+		return true;
+	else if (author == a.getAuthor())
+		return name &gt; a.getName();</span>
+	
+<span style = "background-color:#dfd">		return false;</span>
+	
+<span style = "background-color:#dfd">}</span></pre>
+	</body>
+</html>

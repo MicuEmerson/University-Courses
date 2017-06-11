@@ -1,0 +1,85 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>sortedbag.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "node.h"
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+
+class Iterator;
+
+class SortedBag {
+
+private:
+	Node* root;
+public:
+<span style = "background-color:#dfd">	SortedBag() : root(NULL) {}</span>
+	SortedBag(Node* r) : root(r) {}
+
+	Node* add(Node* r, Book b);
+	Node* remove(Node*r, Book b);
+	bool search(Node* r, Book b);
+	int size(Node *r);
+
+	Node* getRoot();
+	void setRoot(Node *r);
+	Node* getMin(Node *r);
+	Iterator iterator(SortedBag sb);
+	
+};
+
+
+
+class Iterator {
+
+private:
+	Node* currentNode;
+	SortedBag sb;
+	std::queue&lt;Node*&gt; Q;
+
+public:
+	Iterator() {}
+<span style = "background-color:#dfd">	Iterator(SortedBag s) : sb(s) {</span>
+
+<span style = "background-color:#dfd">		this-&gt;currentNode = sb.getRoot();
+		this-&gt;inOrder(currentNode);
+	}</span>
+
+<span style = "background-color:#dfd">	void inOrder(Node* r) {
+		if (r == NULL) return;
+		inOrder(r-&gt;getLeft());
+		this-&gt;Q.push(r);
+		inOrder(r-&gt;getRight());
+	}</span>
+
+	bool valid() {
+<span style = "background-color:#dfd">		if (currentNode == NULL)
+			return false;
+		return true;
+	}
+</span>
+	void next() {
+<span style = "background-color:#dfd">		if (Q.empty()) {
+			currentNode = NULL;
+			return;
+		}</span>
+		this-&gt;currentNode = Q.front();
+<span style = "background-color:#dfd">		Q.pop();
+	}
+</span>
+	Node* getCurrent() {
+<span style = "background-color:#dfd">		return currentNode;
+	}
+</span>
+};</pre>
+	</body>
+</html>

@@ -54,10 +54,13 @@ void UI::run()
 Book UI::readBook()
 {
 	std::string a, n;
-	cout << "Author: \n";
-	cin >> a;
-	cout << "Name of the book: \n";
-	cin >> n;
+
+	cout << "Author: ";
+	getchar();
+	getline(cin, a);
+	cout << "Name of the book: ";
+	getline(cin, n);
+
 	return Book(a, n);
 }
 
@@ -72,4 +75,14 @@ void UI::printMenu()
 	s += "5)Print All Books\n";
 	s += "0)Exit\n";
 	cout << s << "\n";
+}
+
+void UI::readFromFile()
+{
+	ifstream fin("text.txt");
+	std::string a, n;
+	while (getline(fin,a)) {
+		getline(fin, n);
+		sb.setRoot(this->sb.add(sb.getRoot(), Book(a, n)));
+	}
 }

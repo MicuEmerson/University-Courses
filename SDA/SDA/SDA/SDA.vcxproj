@@ -145,6 +145,7 @@
     <ClInclude Include="book.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="SortedBag.h" />
+    <ClInclude Include="testing.h" />
     <ClInclude Include="ui.h" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="SortedBag.cpp" />
+    <ClCompile Include="testing.cpp" />
     <ClCompile Include="ui.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

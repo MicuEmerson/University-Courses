@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>node.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "node.h"
+
+void Node::setInfo(Book b)
+<span style = "background-color:#dfd">{
+	this-&gt;info = b;
+}</span>
+
+void Node::setLeft(Node * l)
+<span style = "background-color:#dfd">{
+	this-&gt;left = l;
+}</span>
+
+void Node::setRight(Node * r)
+<span style = "background-color:#dfd">{
+	this-&gt;right = r;
+}</span>
+
+Book Node::getInfo()
+<span style = "background-color:#dfd">{
+	return this-&gt;info;
+}</span>
+
+Node * Node::getLeft()
+<span style = "background-color:#dfd">{
+	return this-&gt;left;
+}</span>
+
+Node * Node::getRight()
+<span style = "background-color:#dfd">{
+	return this-&gt;right;
+}</span>
+
+std::string Node::printInfo()
+<span style = "background-color:#dfd">{
+	return "Author: " + this-&gt;info.getAuthor() + " | Name: " + this-&gt;info.getName() + "\n";
+}</span></pre>
+	</body>
+</html>

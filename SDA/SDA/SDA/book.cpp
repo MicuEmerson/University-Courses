@@ -7,7 +7,7 @@ void Book::setAuthor(std::string a)
 
 void Book::setName(std::string n)
 {
-	this->author = n;
+	this->name = n;
 }
 
 std::string Book::getAuthor()
@@ -31,7 +31,7 @@ bool Book::operator<(Book a)
 		return true;
 	else if (author == a.getAuthor())
 		return name < a.getName();
-	else
+	
 		return false;
 }
 
@@ -41,7 +41,7 @@ bool Book::operator>(Book a)
 		return true;
 	else if (author == a.getAuthor())
 		return name > a.getName();
-	else
+	
 		return false;
 	
 }

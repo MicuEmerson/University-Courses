@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>book.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include &lt;string&gt;
+
+class Book {
+
+private:
+	std::string author;
+	std::string name;
+
+public:
+<span style = "background-color:#dfd">	Book() : author(""), name(""){}
+	Book(std::string a, std::string n) : author(a), name(n) {}</span>
+
+	void setAuthor(std::string a);
+	void setName(std::string n);
+
+	std::string getAuthor();
+	std::string getName();
+
+	bool operator ==(Book a);
+	bool operator &lt;(Book a);
+	bool operator &gt;(Book a);
+	
+};</pre>
+	</body>
+</html>

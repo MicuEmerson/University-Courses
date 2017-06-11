@@ -4,7 +4,6 @@
 #include <queue>
 
 
-
 class Iterator;
 
 class SortedBag {
@@ -18,7 +17,6 @@ public:
 	Node* add(Node* r, Book b);
 	Node* remove(Node*r, Book b);
 	bool search(Node* r, Book b);
-	void afisare(Node* r);
 	int size(Node *r);
 
 	Node* getRoot();

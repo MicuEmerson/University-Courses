@@ -1,0 +1,108 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>sortedbag.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "SortedBag.h"
+
+
+Node * SortedBag::getRoot()
+<span style = "background-color:#dfd">{
+	return this-&gt;root;
+}</span>
+
+void SortedBag::setRoot(Node *r)
+<span style = "background-color:#dfd">{
+	this-&gt;root = r;
+}</span>
+
+Node* SortedBag::add(Node* r, Book b)
+<span style = "background-color:#dfd">{
+	if (r == NULL) 
+		r = new Node{b};
+	else if (b &lt; r-&gt;getInfo())
+		r-&gt;setLeft(this-&gt;add(r-&gt;getLeft(), b));
+	else
+		r-&gt;setRight(this-&gt;add(r-&gt;getRight(), b));</span>
+
+<span style = "background-color:#dfd">	return r;
+}</span>
+
+Node * SortedBag::getMin(Node * r)
+<span style = "background-color:#dfd">{
+	if (r-&gt;getLeft() == NULL)
+		return r;
+	getMin(r-&gt;getLeft());
+}</span>
+
+Iterator SortedBag::iterator(SortedBag sb)
+<span style = "background-color:#dfd">{
+	return Iterator(sb);
+}</span>
+
+Node * SortedBag::remove(Node *r, Book b)
+<span style = "background-color:#dfd">{
+	if (r == NULL)
+		return r;
+	else if (b &lt; r-&gt;getInfo()) 
+		r-&gt;setLeft(remove(r-&gt;getLeft(), b));
+	else if (b &gt; r-&gt;getInfo()) 
+		r-&gt;setRight(remove(r-&gt;getRight(), b));
+	else {
+		if (r-&gt;getLeft() == NULL &amp;&amp; r-&gt;getRight() == NULL) {
+			delete r;
+			r = NULL;</span>
+		}
+<span style = "background-color:#dfd">		else if (r-&gt;getRight() == NULL) {</span>
+		
+<span style = "background-color:#fdd">			Node* aux = r;
+			r = r-&gt;getLeft();
+			delete aux;</span>
+		
+		}
+<span style = "background-color:#fdd">		else if (r-&gt;getLeft() == NULL) {</span>
+			
+<span style = "background-color:#dfd">			Node* aux = r;
+			r = r-&gt;getRight();
+			delete aux;</span>
+			
+		}
+<span style = "background-color:#dfd">		else {</span>
+			
+<span style = "background-color:#dfd">			Node* aux = getMin(r-&gt;getRight());
+			r-&gt;setInfo(aux-&gt;getInfo());
+			r-&gt;setRight(remove(r-&gt;getRight(), aux-&gt;getInfo()));</span>
+			
+		}
+	}
+<span style = "background-color:#dfd">	return r;
+}</span>
+
+bool SortedBag::search(Node* r, Book b)
+<span style = "background-color:#dfd">{
+	if (r == NULL)
+		return false;
+	else if (b == r-&gt;getInfo())
+		return true;
+	else if (b &lt; r-&gt;getInfo())
+		return search(r-&gt;getLeft(), b);</span>
+<span style = "background-color:#fdd">	else </span>
+<span style = "background-color:#dfd">		return search(r-&gt;getRight(), b);</span>
+<span style = "background-color:#fdd">}</span>
+
+int SortedBag::size(Node* r)
+<span style = "background-color:#dfd">{
+	if (r == NULL) return 0;
+	return size(r-&gt;getLeft()) + size(r-&gt;getRight()) + 1;
+}</span>
+
+
+</pre>
+	</body>
+</html>

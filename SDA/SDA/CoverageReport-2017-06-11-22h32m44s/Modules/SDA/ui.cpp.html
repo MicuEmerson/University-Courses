@@ -1,0 +1,101 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>ui.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "ui.h"
+
+void UI::run()
+<span style = "background-color:#fdd">{</span>
+	int cmd;
+<span style = "background-color:#fdd">	while (1) {
+		this-&gt;printMenu();
+		cin &gt;&gt; cmd;</span>
+
+<span style = "background-color:#fdd">		switch (cmd) {</span>
+		case 1: {
+<span style = "background-color:#fdd">			this-&gt;sb.setRoot(this-&gt;sb.add(sb.getRoot(), readBook()));
+			break;</span>
+		}
+		case 2: {
+<span style = "background-color:#fdd">			Book b = readBook();
+			if (this-&gt;sb.search(sb.getRoot(), b))
+				this-&gt;sb.setRoot(this-&gt;sb.remove(sb.getRoot(), b));
+			else
+				cout &lt;&lt; "This book is not in our library\n";</span>
+
+<span style = "background-color:#fdd">			cout &lt;&lt; this-&gt;sb.size(this-&gt;sb.getRoot()) &lt;&lt; endl;
+			break;
+		}</span>
+		case 3: {
+<span style = "background-color:#fdd">			if (this-&gt;sb.search(sb.getRoot(), readBook()))
+				cout &lt;&lt; "This book is in our library\n";
+			else
+				cout &lt;&lt; "This book is not in our library\n";
+			break;</span>
+		}
+		case 4: {
+<span style = "background-color:#fdd">			cout &lt;&lt; "Number of Books: " &lt;&lt; this-&gt;sb.size(sb.getRoot());
+			break;</span>
+		}
+		case 5: {
+<span style = "background-color:#fdd">			Iterator iter = this-&gt;sb.iterator(this-&gt;sb);
+			iter.next();
+			while (iter.valid()) {</span>
+				
+<span style = "background-color:#fdd">				cout &lt;&lt; iter.getCurrent()-&gt;printInfo();
+				iter.next();
+			}
+			break;
+		}</span>
+		case 0:
+<span style = "background-color:#fdd">			exit(0);</span>
+			break;
+		}
+<span style = "background-color:#fdd">	}
+}</span>
+
+
+Book UI::readBook()
+<span style = "background-color:#fdd">{
+	std::string a, n;</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Author: ";
+	getchar();
+	getline(cin, a);
+	cout &lt;&lt; "Name of the book: ";
+	getline(cin, n);</span>
+
+<span style = "background-color:#fdd">	return Book(a, n);
+}</span>
+
+
+void UI::printMenu()
+<span style = "background-color:#fdd">{
+	std::string s = "\t\t\Welcome to Library Software\n";
+	s += "1)Add a New Book\n";
+	s += "2)Remove a Book\n";
+	s += "3)Search\n";
+	s += "4)Get Size\n";
+	s += "5)Print All Books\n";
+	s += "0)Exit\n";
+	cout &lt;&lt; s &lt;&lt; "\n";
+}</span>
+
+void UI::readFromFile()
+<span style = "background-color:#fdd">{
+	ifstream fin("text.txt");
+	std::string a, n;
+	while (getline(fin,a)) {
+		getline(fin, n);
+		sb.setRoot(this-&gt;sb.add(sb.getRoot(), Book(a, n)));
+	}
+}</span></pre>
+	</body>
+</html>
