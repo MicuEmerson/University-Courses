@@ -1,4 +1,8 @@
-﻿  testing.cpp
-  main.cpp
+﻿  ui.cpp
+c:\users\emy\desktop\university-courses\sda\sda\sda\ui.cpp(70): warning C4129: 'W': unrecognized character escape sequence
   Generating Code...
+  Skipping... (no relevant changes detected)
+  testing.cpp
+  main.cpp
+  SortedBag.cpp
   SDA.vcxproj -> C:\Users\Emy\Desktop\University-Courses\SDA\SDA\Debug\SDA.exe

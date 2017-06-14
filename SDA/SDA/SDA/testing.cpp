@@ -69,6 +69,7 @@ void Testing::testNode()
 
 void Testing::testSortedBag()
 {
+	/*
 	Book b{ "aaa", "bbb" };
 	Book a{ "bbb", "bbb" };
 	Book c{ "ccc", "bbb" };
@@ -110,21 +111,22 @@ void Testing::testSortedBag()
 
 	sb.setRoot(sb.remove(sb.getRoot(), Book("aa", "bb")));
 	
-
+	
 	Iterator iter = sb.iterator(sb);
 	iter.next();
 	while (iter.valid()) {
 		iter.getCurrent();
 		iter.next();
 	}
-
+	
 	SortedBag sbbb;
 	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("C", "a")));
 	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("A", "a")));
 	sbbb.setRoot(sbbb.add(sbbb.getRoot(), Book("B", "a")));
 	sbbb.setRoot(sbbb.remove(sbbb.getRoot(), Book("A", "a")));
-
-
+	
+	*/
+	;
 
 
 }

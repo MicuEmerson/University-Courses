@@ -3,48 +3,48 @@
 void UI::run()
 {
 	int cmd;
+	int flag = 0;
 	while (1) {
+		if (flag) break;
 		this->printMenu();
 		cin >> cmd;
-
 		switch (cmd) {
 		case 1: {
-			this->sb.setRoot(this->sb.add(sb.getRoot(), readBook()));
+			this->sb.add(readBook());
 			break;
 		}
 		case 2: {
 			Book b = readBook();
-			if (this->sb.search(sb.getRoot(), b))
-				this->sb.setRoot(this->sb.remove(sb.getRoot(), b));
+			if (this->sb.search(b))
+				this->sb.remove(b);
 			else
 				cout << "This book is not in our library\n";
-
-			cout << this->sb.size(this->sb.getRoot()) << endl;
 			break;
 		}
 		case 3: {
-			if (this->sb.search(sb.getRoot(), readBook()))
+			if (this->sb.search(readBook()))
 				cout << "This book is in our library\n";
 			else
 				cout << "This book is not in our library\n";
 			break;
 		}
 		case 4: {
-			cout << "Number of Books: " << this->sb.size(sb.getRoot());
+			cout << "Number of Books: " << this->sb.size();
 			break;
 		}
 		case 5: {
 			Iterator iter = this->sb.iterator(this->sb);
 			iter.next();
 			while (iter.valid()) {
-				
-				cout << iter.getCurrent()->printInfo();
+				Book x = iter.getCurrent();
+				cout << x.getAuthor() << " - " << x.getName();
+				//cout << iter.getCurrent()->printInfo();
 				iter.next();
 			}
 			break;
 		}
 		case 0:
-			exit(0);
+			flag = 1;
 			break;
 		}
 	}
@@ -77,6 +77,7 @@ void UI::printMenu()
 	cout << s << "\n";
 }
 
+/*
 void UI::readFromFile()
 {
 	ifstream fin("text.txt");
@@ -86,3 +87,4 @@ void UI::readFromFile()
 		sb.setRoot(this->sb.add(sb.getRoot(), Book(a, n)));
 	}
 }
+*/

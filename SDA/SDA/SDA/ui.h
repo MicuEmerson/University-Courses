@@ -12,11 +12,11 @@ class UI {
 private:
 	SortedBag sb;
 public:
-	UI(SortedBag s) : sb(s) { this->readFromFile(); }
+	UI(SortedBag s) : sb(s) {}
 
 	void run();
 	Book readBook();
 	void printMenu();
-	void readFromFile();
+	//void readFromFile();
 
 };

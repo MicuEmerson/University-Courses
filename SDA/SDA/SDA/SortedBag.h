@@ -9,19 +9,28 @@ class Iterator;
 class SortedBag {
 
 private:
+
 	Node* root;
-public:
-	SortedBag() : root(NULL) {}
-	SortedBag(Node* r) : root(r) {}
-
-	Node* add(Node* r, Book b);
-	Node* remove(Node*r, Book b);
-	bool search(Node* r, Book b);
-	int size(Node *r);
-
-	Node* getRoot();
+	Node* add_rec(Node *r, Book b);
+	Node* remove_rec(Node *r, Book b);
+	bool search_rec(Node* r, Book b);
+	int size_rec(Node* r);
 	void setRoot(Node *r);
 	Node* getMin(Node *r);
+	Node* getRoot();
+	
+public:
+
+	SortedBag() : root(NULL) {}
+	SortedBag(Node* r) : root(r) {}
+	
+	void add(Book b);
+	void remove(Book b);
+	bool search(Book b);
+	int size();
+
+	
+	friend class Iterator;
 	Iterator iterator(SortedBag sb);
 	
 };
@@ -35,6 +44,13 @@ private:
 	SortedBag sb;
 	std::queue<Node*> Q;
 
+	void inOrder(Node* r) {
+		if (r == NULL) return;
+		inOrder(r->getLeft());
+		this->Q.push(r);
+		inOrder(r->getRight());
+	}
+
 public:
 	Iterator() {}
 	Iterator(SortedBag s) : sb(s) {
@@ -43,12 +59,6 @@ public:
 		this->inOrder(currentNode);
 	}
 
-	void inOrder(Node* r) {
-		if (r == NULL) return;
-		inOrder(r->getLeft());
-		this->Q.push(r);
-		inOrder(r->getRight());
-	}
 
 	bool valid() {
 		if (currentNode == NULL)
@@ -65,8 +75,8 @@ public:
 		Q.pop();
 	}
 
-	Node* getCurrent() {
-		return currentNode;
+	Book getCurrent() {
+		return currentNode->getInfo();
 	}
 
 };
