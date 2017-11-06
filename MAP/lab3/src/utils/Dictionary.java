@@ -38,6 +38,11 @@ public class Dictionary <K, V> implements IDictionary<K, V> {
     }
 
     @Override
+    public void delete(K key) {
+        dict.remove(key);
+    }
+
+    @Override
     public String toString(){
         StringBuffer str = new StringBuffer();
         for(Map.Entry<K, V> e : dict.entrySet()){

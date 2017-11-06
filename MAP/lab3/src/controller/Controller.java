@@ -21,6 +21,7 @@ public class Controller {
         if(stack.isEmpty())
             throw new EmptyStack("Stack is Empty\n");
 
+        repo.logPrgStateExec();
         Statement st = stack.pop();
        // program.setRoot(st);
         st.execute(program);

@@ -6,4 +6,5 @@ public interface IRepository {
 
     public void addPrgState(PrgState st);
     public  PrgState getCurrentProgram();
+    public void logPrgStateExec();
 }

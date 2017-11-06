@@ -1,15 +1,13 @@
 package models.fileHandling;
 
-import exceptions.fileExceptions.FileAlreadyOpened;
+import exceptions.fileExceptions.FileException;
 import models.PrgState;
 import models.expression.IExpression;
 import models.statement.Statement;
 import utils.IDictionary;
-import utils.IExeStack;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.Buffer;
 
 
 public class CloseRFile implements Statement {
@@ -33,7 +31,7 @@ public class CloseRFile implements Statement {
                 ok = true;
 
         if(!ok)
-            throw new FileAlreadyOpened("Can't close the file because don't exist in FileTable");
+            throw new FileException("Can't close the file because don't exist in FileTable");
 
         FileData fileData = fileTable.get(id);
         BufferedReader bufferedReader = fileData.getReader();
@@ -41,10 +39,11 @@ public class CloseRFile implements Statement {
         try {
             bufferedReader.close();
         } catch (IOException e) {
-            throw new FileAlreadyOpened("Can't close the file");
+            throw new FileException("Can't close the file");
         }
 
         fileTable.delete(id);
+        //dict.delete();
 
         return state;
     }

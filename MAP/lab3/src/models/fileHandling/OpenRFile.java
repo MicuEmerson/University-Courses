@@ -1,14 +1,11 @@
 package models.fileHandling;
 
-import exceptions.fileExceptions.FileAlreadyOpened;
+import exceptions.fileExceptions.FileException;
 import models.PrgState;
 import models.statement.Statement;
 import utils.IDictionary;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.nio.Buffer;
+import java.io.*;
 
 
 public class OpenRFile implements Statement {
@@ -16,7 +13,7 @@ public class OpenRFile implements Statement {
     private String fileName;
     private String varName;
 
-    public OpenRFile(String fileName, String varName) {
+    public OpenRFile(String varName, String fileName) {
         this.fileName = fileName;
         this.varName = varName;
     }
@@ -28,19 +25,19 @@ public class OpenRFile implements Statement {
         IDictionary<String, Integer> dict = state.getDict();
         BufferedReader reader;
 
-        for(FileData d: fileTable.getAllValues())
-            if(d.getFileName().equals(fileName))
-                throw new FileAlreadyOpened("The file is already opened in FileTable");
+        for(FileData d: fileTable.getAllValues()) {
+            if (d.getFileName().equals(fileName))
+                throw new FileException("The file is already opened in FileTable");
+        }
 
-         try{
-             reader = new BufferedReader(new FileReader(fileName));
-
-         } catch (FileNotFoundException e) {
-             // trebe sa schimb aici
-             throw new FileAlreadyOpened("file not found");
+        try{
+            reader = new BufferedReader(new FileReader(fileName));
+         } catch (IOException e) {
+             throw new FileException("File not found");
          }
 
          int id = GeneratorInteger.gen_ID();
+
          fileTable.add(id, new FileData(fileName, reader));
          dict.setValue(varName, id);
 
@@ -49,7 +46,7 @@ public class OpenRFile implements Statement {
 
     @Override
     public String toString(){
-           return "open("+varName+':'+fileName+')';
+           return "open("+varName+", "+fileName+')';
     }
 
 }

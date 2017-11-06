@@ -1,6 +1,6 @@
 package models.fileHandling;
 
-import exceptions.fileExceptions.FileAlreadyOpened;
+import exceptions.fileExceptions.FileException;
 import models.PrgState;
 import models.expression.IExpression;
 import models.statement.Statement;
@@ -29,7 +29,7 @@ public class ReadFile implements Statement {
 
 
         if(!fileTable.contains(id))
-            throw new FileAlreadyOpened("This ID is not in FileTable");
+            throw new FileException("This ID is not in FileTable");
 
         BufferedReader reader = fileTable.get(id).getReader();
 
@@ -37,7 +37,7 @@ public class ReadFile implements Statement {
         try {
             line = reader.readLine();
         } catch (IOException e) {
-            throw new FileAlreadyOpened("Can't read line");
+            throw new FileException("Can't read line");
         }
 
         int value = 0;
@@ -48,4 +48,10 @@ public class ReadFile implements Statement {
 
         return state;
     }
+
+    @Override
+    public String toString(){
+        return "read("+varName + ", " + exp+")";
+    }
+
 }

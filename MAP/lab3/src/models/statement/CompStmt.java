@@ -22,6 +22,6 @@ public class CompStmt implements Statement{
 
     @Override
     public String toString(){
-        return "(" + first + second + ")";
+        return "[" + first +" , "+ second + "]";
     }
 }

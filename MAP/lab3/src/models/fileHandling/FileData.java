@@ -9,7 +9,7 @@ public class FileData {
 
     public FileData(String n, BufferedReader r){
         fileName = n;
-        r = reader;
+        reader = r;
     }
 
     public String getFileName() {
