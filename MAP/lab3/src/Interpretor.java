@@ -9,9 +9,13 @@ import models.statement.*;
 import repository.*;
 import utils.*;
 import exceptions.*;
+import view.ExitCommand;
+import view.RunExample;
+import view.TextMenu;
+
 import java.util.Scanner;
 
-public class Main {
+public class Interpretor {
 
 
     public static void main(String[] args) {
@@ -44,40 +48,14 @@ public class Main {
         Controller ctrl = new Controller(repo);
         repo.addPrgState(state);
 
+        TextMenu menu = new TextMenu();
+        menu.addCommand(new ExitCommand("0", "exit"));
+        menu.addCommand(new RunExample("1",  s7.toString(), ctrl));
+        menu.show();
 
-        Scanner scann = new Scanner(System.in);
-        String ss = "\t 1)OneStepExecution\n" + "\t 2) ExecuteAll";
-        int cmd;
-
-        while(!exeStack.isEmpty()){
-            try {
-                System.out.println(ss);
-                cmd = scann.nextInt();
-                if (cmd == 1)
-                    ctrl.executeOneStep();
-                else if (cmd == 2)
-                    ctrl.executeAll();
-                else
-                    System.out.println("wrong input");
-            }
-            catch (EmptyStack eStk){
-                System.out.println(eStk);
-            }
-            catch(DivisionByZero div){
-                System.out.println(div);
-            }
-            catch(InvalidOperator invO){
-                System.out.println(invO);
-            }
-            catch(VariableNotDefined varND){
-                System.out.println(varND);
-            }
-            catch(FileException f){
-                System.out.println(f);
-            }
         }
 
-    }
-
-
 }
+
+
+

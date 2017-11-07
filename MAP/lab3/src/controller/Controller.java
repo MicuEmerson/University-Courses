@@ -25,7 +25,7 @@ public class Controller {
         Statement st = stack.pop();
        // program.setRoot(st);
         st.execute(program);
-        System.out.println(program);
+       // System.out.println(program);
     }
 
     public void executeAll(){
