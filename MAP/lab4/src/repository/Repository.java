@@ -1,9 +1,8 @@
 package repository;
 
-import exceptions.fileExceptions.FileException;
+import exceptions.FileException;
 import models.PrgState;
 import models.fileHandling.FileData;
-import models.fileHandling.FileTable;
 import models.fileHandling.IFileTable;
 import models.statement.Statement;
 import utils.IDictionary;

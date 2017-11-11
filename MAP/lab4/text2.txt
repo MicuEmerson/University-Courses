@@ -10,6 +10,9 @@ Out:
 FileTable:
 
 
+Heap:
+
+
 
 ExeStack:
 [open(var_f, text.txt) , read(var_c, var_f)]
@@ -22,6 +25,9 @@ Out:
 
 
 FileTable:
+
+
+Heap:
 
 
 
@@ -37,6 +43,9 @@ Out:
 
 
 FileTable:
+
+
+Heap:
 
 
 
@@ -55,6 +64,9 @@ Out:
 FileTable:
 
 0-->text.txt
+
+
+Heap:
 
 
 
@@ -74,6 +86,9 @@ Out:
 FileTable:
 
 0-->text.txt
+
+
+Heap:
 
 
 
@@ -96,6 +111,9 @@ FileTable:
 0-->text.txt
 
 
+Heap:
+
+
 
 ExeStack:
 [read(var_c, var_f) , print(var_c);]
@@ -114,6 +132,9 @@ Out:
 FileTable:
 
 0-->text.txt
+
+
+Heap:
 
 
 
@@ -137,6 +158,9 @@ FileTable:
 0-->text.txt
 
 
+Heap:
+
+
 
 ExeStack:
 print(var_c);
@@ -155,6 +179,9 @@ Out:
 FileTable:
 
 0-->text.txt
+
+
+Heap:
 
 
 
@@ -176,6 +203,9 @@ Out:
 FileTable:
 
 0-->text.txt
+
+
+Heap:
 
 
 

@@ -7,4 +7,5 @@ public interface IDictionary<K, V>{
     public void updateValue(K key, V value);
     public Iterable<K> getAll();
     public void delete(K key);
+    public boolean constains(K key);
 }

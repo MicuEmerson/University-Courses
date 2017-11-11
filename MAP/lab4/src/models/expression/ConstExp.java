@@ -1,6 +1,7 @@
 package models.expression;
 
 import utils.IDictionary;
+import utils.IHeap;
 
 public class ConstExp implements IExpression {
     private int number;
@@ -10,7 +11,7 @@ public class ConstExp implements IExpression {
     }
 
     @Override
-    public int eval(IDictionary<String, Integer> d){
+    public int eval(IDictionary<String, Integer> d, IHeap<Integer, Integer> heap) {
         return number;
     }
 

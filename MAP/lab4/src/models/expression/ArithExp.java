@@ -1,6 +1,7 @@
 package models.expression;
 import exceptions.*;
 import utils.IDictionary;
+import utils.IHeap;
 
 public class ArithExp implements IExpression {
 
@@ -15,10 +16,13 @@ public class ArithExp implements IExpression {
 
 
     @Override
-    public int eval(IDictionary<String, Integer> d) {
+    public int eval(IDictionary<String, Integer> dict, IHeap<Integer, Integer> heap) {
 
-           int vst = st.eval(d);
-           int vdr = dr.eval(d);
+
+           int vstHeapID = st.eval(dict, heap);
+           int vdrHeapID = dr.eval(dict, heap);
+           int vst = heap.get(vstHeapID);
+           int vdr = heap.get(vdrHeapID);
 
           switch (op){
               case '+':

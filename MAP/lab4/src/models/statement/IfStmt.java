@@ -4,6 +4,7 @@ import models.PrgState;
 import models.expression.IExpression;
 import utils.IDictionary;
 import utils.IExeStack;
+import utils.IHeap;
 
 public class IfStmt implements Statement {
 
@@ -21,7 +22,8 @@ public class IfStmt implements Statement {
     public PrgState execute(PrgState state) {
         IDictionary <String, Integer> dict = state.getDict();
         IExeStack<Statement> stack = state.getStack();
-        int val = exp.eval(dict);
+        IHeap<Integer, Integer> heap = state.getHeap();
+        int val = exp.eval(dict, heap);
 
         if(val != 0)
             stack.push(thenS);

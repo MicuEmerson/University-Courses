@@ -5,7 +5,7 @@ import exceptions.DivisionByZero;
 import exceptions.EmptyStack;
 import exceptions.InvalidOperator;
 import exceptions.VariableNotDefined;
-import exceptions.fileExceptions.FileException;
+import exceptions.FileException;
 
 public class RunExample extends Command {
     private Controller ctrl;

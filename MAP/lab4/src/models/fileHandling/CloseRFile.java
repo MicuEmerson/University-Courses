@@ -1,10 +1,11 @@
 package models.fileHandling;
 
-import exceptions.fileExceptions.FileException;
+import exceptions.FileException;
 import models.PrgState;
 import models.expression.IExpression;
 import models.statement.Statement;
 import utils.IDictionary;
+import utils.IHeap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,8 @@ public class CloseRFile implements Statement {
 
         IDictionary<String, Integer> dict = state.getDict();
         IFileTable<Integer, FileData> fileTable = state.getFileTable();
-        int id = exp.eval(dict);
+        IHeap<Integer, Integer> heap = state.getHeap();
+        int id = exp.eval(dict, heap);
 
 
         if(!fileTable.contains(id))

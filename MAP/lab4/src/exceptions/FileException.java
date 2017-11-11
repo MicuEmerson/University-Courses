@@ -1,4 +1,4 @@
-package exceptions.fileExceptions;
+package exceptions;
 
 public class FileException extends RuntimeException {
     public FileException(){}

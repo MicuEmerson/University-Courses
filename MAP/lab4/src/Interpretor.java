@@ -1,6 +1,5 @@
 
 import controller.*;
-import exceptions.fileExceptions.FileException;
 import models.PrgState;
 import models.expression.ConstExp;
 import models.expression.VarExp;
@@ -8,12 +7,9 @@ import models.fileHandling.*;
 import models.statement.*;
 import repository.*;
 import utils.*;
-import exceptions.*;
 import view.ExitCommand;
 import view.RunExample;
 import view.TextMenu;
-
-import java.util.Scanner;
 
 public class Interpretor {
 
@@ -40,9 +36,10 @@ public class Interpretor {
         IDictionary<String, Integer> dict = new Dictionary<>();
         IList<Integer> list = new  MyList<>();
         IFileTable<Integer, FileData> fileTable = new FileTable<>();
+        IHeap<Integer, Integer> heap = new Heap<>();
         exeStack.push(s7);
 
-        PrgState state = new PrgState(exeStack, dict, list, null, fileTable);
+        PrgState state = new PrgState(exeStack, dict, list, null, fileTable, heap);
 
         IRepository repo = new Repository();
         Controller ctrl = new Controller(repo);

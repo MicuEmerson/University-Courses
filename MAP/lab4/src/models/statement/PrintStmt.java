@@ -3,6 +3,7 @@ package models.statement;
 import models.PrgState;
 import models.expression.IExpression;
 import utils.IDictionary;
+import utils.IHeap;
 import utils.IList;
 
 public class PrintStmt implements Statement {
@@ -17,7 +18,8 @@ public class PrintStmt implements Statement {
     public PrgState execute(PrgState state) {
         IList<Integer> list = state.getList();
         IDictionary<String, Integer> dict = state.getDict();
-        int val = exp.eval(dict);
+        IHeap<Integer, Integer> heap = state.getHeap();
+        int val = exp.eval(dict, heap);
         list.add(val);
         return state;
     }

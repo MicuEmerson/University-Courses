@@ -43,6 +43,11 @@ public class Dictionary <K, V> implements IDictionary<K, V> {
     }
 
     @Override
+    public boolean constains(K key) {
+        return dict.containsKey(key);
+    }
+
+    @Override
     public String toString(){
         StringBuffer str = new StringBuffer();
         for(Map.Entry<K, V> e : dict.entrySet()){
