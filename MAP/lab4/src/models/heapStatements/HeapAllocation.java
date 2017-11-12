@@ -36,7 +36,6 @@ public class HeapAllocation implements Statement {
 
 
         return state;
-
     }
 
     @Override

@@ -4,7 +4,6 @@ import exceptions.VariableNotDefined;
 import models.PrgState;
 import models.expression.IExpression;
 import models.statement.Statement;
-import sun.jvmstat.monitor.Variability;
 import utils.IDictionary;
 import utils.IHeap;
 
@@ -20,12 +19,16 @@ public class HeapReading implements IExpression {
     @Override
     public int eval(IDictionary<String, Integer> dict, IHeap<Integer, Integer> heap) {
 
-        if(!dict.constains(varName))
+        if(!dict.constains(varName)) {
+            System.out.println("BAAA");
             throw new VariableNotDefined("This key is not in our symTable");
+        }
         int heapID = dict.getValue(varName);
 
-        if(!heap.contains(heapID))
+        if(!heap.contains(heapID)) {
+            System.out.printf("MAAA");
             throw new VariableNotDefined("This key is not in our heapTable");
+        }
 
         return  heap.get(heapID);
     }

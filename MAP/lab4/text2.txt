@@ -1,5 +1,6 @@
 ExeStack:
-[[open(var_f, text.txt) , read(var_c, var_f)] , [IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ; , close(var_f)]]
+[v=10;  , NewH(v, 20)]
+[NewH(a, 22) , print(v);]
 
 SymTable:
 
@@ -15,8 +16,9 @@ Heap:
 
 
 ExeStack:
-[open(var_f, text.txt) , read(var_c, var_f)]
-[IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ; , close(var_f)]
+v=10; 
+NewH(v, 20)
+[NewH(a, 22) , print(v);]
 
 SymTable:
 
@@ -32,11 +34,12 @@ Heap:
 
 
 ExeStack:
-open(var_f, text.txt)
-read(var_c, var_f)
-[IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ; , close(var_f)]
+NewH(v, 20)
+[NewH(a, 22) , print(v);]
 
 SymTable:
+
+v-->10
 
 
 Out:
@@ -50,12 +53,11 @@ Heap:
 
 
 ExeStack:
-read(var_c, var_f)
-[IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ; , close(var_f)]
+[NewH(a, 22) , print(v);]
 
 SymTable:
 
-var_f-->0
+v-->1
 
 
 Out:
@@ -63,21 +65,20 @@ Out:
 
 FileTable:
 
-0-->text.txt
-
 
 Heap:
+
+1-->20
 
 
 
 ExeStack:
-[IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ; , close(var_f)]
+NewH(a, 22)
+print(v);
 
 SymTable:
 
-var_f-->0
-
-var_c-->10
+v-->1
 
 
 Out:
@@ -85,22 +86,21 @@ Out:
 
 FileTable:
 
-0-->text.txt
-
 
 Heap:
+
+1-->20
 
 
 
 ExeStack:
-IF(var_c) THEN([read(var_c, var_f) , print(var_c);])ELSE(print(0);) ;
-close(var_f)
+print(v);
 
 SymTable:
 
-var_f-->0
+a-->2
 
-var_c-->10
+v-->1
 
 
 Out:
@@ -108,104 +108,37 @@ Out:
 
 FileTable:
 
-0-->text.txt
-
 
 Heap:
+
+1-->20
+
+2-->22
 
 
 
 ExeStack:
-[read(var_c, var_f) , print(var_c);]
-close(var_f)
 
 SymTable:
 
-var_f-->0
+a-->2
 
-var_c-->10
+v-->1
 
 
 Out:
 
-
-FileTable:
-
-0-->text.txt
-
-
-Heap:
-
-
-
-ExeStack:
-read(var_c, var_f)
-print(var_c);
-close(var_f)
-
-SymTable:
-
-var_f-->0
-
-var_c-->10
-
-
-Out:
+1
 
 
 FileTable:
 
-0-->text.txt
-
 
 Heap:
 
+1-->20
 
-
-ExeStack:
-print(var_c);
-close(var_f)
-
-SymTable:
-
-var_f-->0
-
-var_c-->50
-
-
-Out:
-
-
-FileTable:
-
-0-->text.txt
-
-
-Heap:
-
-
-
-ExeStack:
-close(var_f)
-
-SymTable:
-
-var_f-->0
-
-var_c-->50
-
-
-Out:
-
-50
-
-
-FileTable:
-
-0-->text.txt
-
-
-Heap:
+2-->22
 
 
 

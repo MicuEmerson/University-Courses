@@ -19,10 +19,8 @@ public class ArithExp implements IExpression {
     public int eval(IDictionary<String, Integer> dict, IHeap<Integer, Integer> heap) {
 
 
-           int vstHeapID = st.eval(dict, heap);
-           int vdrHeapID = dr.eval(dict, heap);
-           int vst = heap.get(vstHeapID);
-           int vdr = heap.get(vdrHeapID);
+           int  vst = st.eval(dict, heap);
+           int vdr = dr.eval(dict, heap);
 
           switch (op){
               case '+':

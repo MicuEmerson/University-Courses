@@ -14,9 +14,8 @@ public class VarExp implements IExpression {
     @Override
     public int eval(IDictionary<String, Integer> d, IHeap<Integer, Integer> heap) {
 
-        int idHeap = d.getValue(id);
 
-        return heap.get(idHeap);
+        return   d.getValue(id);
     }
 
     @Override
