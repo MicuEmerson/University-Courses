@@ -1,25 +1,38 @@
 
-solveA([], _, _, []).
+% varianta recursiva fara listaColectoare
+% functie(L-list, E-number, L1-list, LR-resultList)
+% (i,i,i,o)
+%
+functie([], _, _, []):-!.
 
-solveA([H|T], E, L1, [L1|LR]):-
+functie([H|T], E, L1, LR):-
     H =:= E,!,
-    solveA(T, E, L1, LR).
+    functie(T, E, L1, LR2),
+    append(L1, LR2, LR).
 
-solveA([H|T], E, L1, [H|TR]):-
-    H =\= E, !,
-    solveA(T, E, L1, TR).
+functie([H|T], E, L1, [HR|TR]):-
+    H =\= E,!,
+    functie(T, E, L1, TR),
+    HR is H.
 
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+%varianta cu listaColectoare
 
-solveAA([], _, _, []).
+addFinal([],E,[E]).
+addFinal([H|T], E, [H|TR]):-
+    addFinal(T, E, TR).
 
-solveAA([H|T], E, L1, LR):-
-    H =:= E, !,
-    solveAA(T, E, L1, LR1),
-    append(LR1, L1, LR).
+% funct(L-listaInitiala, E-elem, L1-listaDeInlocuit, LR-listaColectoare,
+% LRF-listaRezultatFinal)
+% (i, i, i, i, o)
+funct([], _, _, LRF, LRF):-!.
 
+funct([H|T], E, L1, LR, LRF):-
+    H =:= E,!,
+    append(LR, L1, LR2),
+    funct(T, E, L1, LR2, LRF).
 
-
-solveAA([H|T], E, L1, [H|TR]):-
-    H =\= E, !,
-    solveAA(T, E, L1, TR).
-
+funct([H|T], E, L1, LR, LRF):-
+    H =\= E,!,
+    addFinal(LR, H, LR2),
+    funct(T, E, L1, LR2, LRF).

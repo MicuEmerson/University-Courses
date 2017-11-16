@@ -11,6 +11,7 @@ solveA([H|T], P, GCD, REZ):-
     solveA(T, P1, GCD1, REZ).
 
 
+
 %(i,i,i,i,o)
 %solveB(L-list, E-elem, POZ-currentPoz, CPOZ-power2poz, LR-resultList)
 solveB([], _, _, _, []).
