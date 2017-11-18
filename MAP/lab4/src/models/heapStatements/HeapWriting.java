@@ -33,7 +33,6 @@ public class HeapWriting implements Statement {
         heap.update(heapID, val);
 
         return state;
-
     }
 
     @Override

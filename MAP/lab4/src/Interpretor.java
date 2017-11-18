@@ -17,6 +17,9 @@ import view.TextMenu;
 
 import javax.swing.plaf.nimbus.State;
 
+
+import static java.util.stream.Collectors.toList;
+
 public class Interpretor {
 
 
@@ -61,13 +64,33 @@ public class Interpretor {
 
         Statement ex3 = new CompStmt(c1,new CompStmt(c2,c3));
 
+
+
+        //v=10;new(v,20);new(a,22);wH(a,30);print(a);print(rH(a));a=0
+        Statement q = new AssignStmt("v", new ConstExp(10));
+        Statement q1 = new HeapAllocation("v",new ConstExp(20));
+        Statement q2 = new HeapAllocation("a", new ConstExp(22));
+        Statement q3 = new HeapWriting("a", new ConstExp(30));
+        Statement q4 = new PrintStmt(new VarExp("a"));
+        Statement q5 = new PrintStmt(new HeapReading("a"));
+        Statement q6 = new AssignStmt("a", new ConstExp(0));
+
+
+        Statement d1 = new CompStmt(q, q1);
+        Statement d2 = new CompStmt(q2, q3);
+        Statement d3 = new CompStmt(q4, q5);
+        Statement d4 = new CompStmt(q6, d1);
+
+        Statement ex4 = new CompStmt(new CompStmt(d2,d3), d4);
+
+
         IExeStack<Statement> exeStack = new ExeStack<>();
         IDictionary<String, Integer> dict = new Dictionary<>();
         IList<Integer> list = new  MyList<>();
         IFileTable<Integer, FileData> fileTable = new FileTable<>();
         IHeap<Integer, Integer> heap = new Heap<>();
-        exeStack.push(ex1);
-
+        //exeStack.push(q6);exeStack.push(q5);exeStack.push(q4);exeStack.push(q3);exeStack.push(q2);exeStack.push(q1);exeStack.push(q);
+        //exeStack.push(ex4);
         PrgState state = new PrgState(exeStack, dict, list, null, fileTable, heap);
 
         IRepository repo = new Repository();
@@ -76,11 +99,14 @@ public class Interpretor {
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1",  ex1.toString(), ctrl));
+        menu.addCommand(new RunExample("1",  q.toString(), ctrl));
         menu.show();
 
-        }
 
+
+
+
+    }
 }
 
 

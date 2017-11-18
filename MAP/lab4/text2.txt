@@ -1,41 +1,10 @@
 ExeStack:
-[v=10;  , NewH(v, 20)]
-[NewH(a, 22) , print(v);]
-
-SymTable:
-
-
-Out:
-
-
-FileTable:
-
-
-Heap:
-
-
-
-ExeStack:
-v=10; 
 NewH(v, 20)
-[NewH(a, 22) , print(v);]
-
-SymTable:
-
-
-Out:
-
-
-FileTable:
-
-
-Heap:
-
-
-
-ExeStack:
-NewH(v, 20)
-[NewH(a, 22) , print(v);]
+NewH(a, 22)
+heapWriting(a,30)
+print(a);
+print(heapReading(a));
+a=0; 
 
 SymTable:
 
@@ -53,28 +22,11 @@ Heap:
 
 
 ExeStack:
-[NewH(a, 22) , print(v);]
-
-SymTable:
-
-v-->1
-
-
-Out:
-
-
-FileTable:
-
-
-Heap:
-
-1-->20
-
-
-
-ExeStack:
 NewH(a, 22)
-print(v);
+heapWriting(a,30)
+print(a);
+print(heapReading(a));
+a=0; 
 
 SymTable:
 
@@ -94,7 +46,10 @@ Heap:
 
 
 ExeStack:
-print(v);
+heapWriting(a,30)
+print(a);
+print(heapReading(a));
+a=0; 
 
 SymTable:
 
@@ -118,6 +73,9 @@ Heap:
 
 
 ExeStack:
+print(a);
+print(heapReading(a));
+a=0; 
 
 SymTable:
 
@@ -128,7 +86,32 @@ v-->1
 
 Out:
 
-1
+
+FileTable:
+
+
+Heap:
+
+1-->20
+
+2-->30
+
+
+
+ExeStack:
+print(heapReading(a));
+a=0; 
+
+SymTable:
+
+a-->2
+
+v-->1
+
+
+Out:
+
+2
 
 
 FileTable:
@@ -138,7 +121,60 @@ Heap:
 
 1-->20
 
-2-->22
+2-->30
+
+
+
+ExeStack:
+a=0; 
+
+SymTable:
+
+a-->2
+
+v-->1
+
+
+Out:
+
+2
+
+30
+
+
+FileTable:
+
+
+Heap:
+
+1-->20
+
+2-->30
+
+
+
+ExeStack:
+
+SymTable:
+
+a-->0
+
+v-->1
+
+
+Out:
+
+2
+
+30
+
+
+FileTable:
+
+
+Heap:
+
+1-->20
 
 
 

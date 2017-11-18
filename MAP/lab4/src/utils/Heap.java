@@ -2,6 +2,7 @@ package utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Heap<K, V> implements  IHeap<K, V> {
 
@@ -35,6 +36,15 @@ public class Heap<K, V> implements  IHeap<K, V> {
     @Override
     public Iterable<K> getAll() {
         return dict.keySet();
+    }
+
+    @Override
+    public void setContent(Map<K, V> m) {
+        dict = m;
+    }
+
+    public Set<Map.Entry<K, V>> entrySet() {
+        return dict.entrySet();
     }
 
     @Override

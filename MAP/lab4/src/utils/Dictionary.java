@@ -1,8 +1,8 @@
 package utils;
 
 import exceptions.VariableNotDefined;
-import java.util.Map;
-import java.util.HashMap;
+
+import java.util.*;
 
 public class Dictionary <K, V> implements IDictionary<K, V> {
 
@@ -20,6 +20,18 @@ public class Dictionary <K, V> implements IDictionary<K, V> {
         if(!exists(key))
             throw new VariableNotDefined("Variable not defined in our dictionary");
         return dict.get(key);
+    }
+
+    @Override
+    public List<V> getAllValues() {
+        List<V> l = new ArrayList<>();
+
+        for(K key: this.getAll())
+            l.add(this.getValue(key));
+
+        return l;
+
+
     }
 
     @Override
