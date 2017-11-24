@@ -42,6 +42,9 @@ public class Interpretor {
         IList<Integer> list = new  MyList<>();
         IFileTable<Integer, FileData> fileTable = new FileTable<>();
         IHeap<Integer, Integer> heap = new Heap<>();
+
+       // Statement s1 = new OpenRFile("var_f", "text.txt");
+       // Statement s2 = new OpenRFile("var_f1", "t2.txt");
         exeStack.push(ex1);
 
         PrgState state = new PrgState(exeStack, dict, list, null, fileTable, heap);

@@ -1,7 +1,7 @@
 package models.fileHandling;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.util.*;
 
 public class FileTable <K,V> implements IFileTable <K,V> {
 
@@ -22,6 +22,7 @@ public class FileTable <K,V> implements IFileTable <K,V> {
         return dict.get(key);
     }
 
+
     @Override
     public boolean contains(K key) {
         return dict.containsKey(key);
@@ -33,7 +34,7 @@ public class FileTable <K,V> implements IFileTable <K,V> {
     }
 
     @Override
-    public Iterable<V> getAllValues() {
+    public Collection<V> getAllValues() {
         return dict.values();
     }
 
@@ -45,4 +46,6 @@ public class FileTable <K,V> implements IFileTable <K,V> {
         }
         return str.toString();
     }
+
+
 }

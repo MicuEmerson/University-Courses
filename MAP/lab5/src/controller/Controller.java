@@ -1,12 +1,15 @@
 package controller;
 
 import models.PrgState;
+import models.fileHandling.FileData;
+import models.fileHandling.IFileTable;
 import models.statement.Statement;
 import repository.IRepository;
 import utils.IExeStack;
 import exceptions.EmptyStack;
 import utils.IHeap;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +43,26 @@ public class Controller {
     public void executeAll(){
         PrgState state = repo.getCurrentProgram();
         IExeStack<Statement> stack = state.getStack();
+        IFileTable<Integer, FileData> ft = state.getFileTable();
 
         repo.logPrgStateExec();
-        while(!stack.isEmpty())
-            executeOneStep();
+        try {
+            while (!stack.isEmpty())
+                executeOneStep();
+        }
+        catch (EmptyStack e){
+            System.out.println(e);
+        }
+        finally {
+
+            ft.getAllValues().stream().forEach(e-> {
+                try {
+                    e.getReader().close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            });
+        }
     }
 
 
