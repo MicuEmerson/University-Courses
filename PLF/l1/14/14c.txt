@@ -1,0 +1,50 @@
+;
+; miny(l1...ln, m): m , l = 0
+;                    miny(l2..ln, l1), l1 < m
+;                    miny(l2..ln, m), otherwise
+;
+
+(defun minyy (L)
+	(cond 
+		((null L) nil)
+		((miny (cdr L) (car L)))
+	)
+)
+
+(defun miny (L m)
+	(cond 
+	    ((null L) m)
+		((< (car L) m) (miny (cdr L) (car L)))
+		(T (miny (cdr L) m) )
+	)
+)
+
+; removeOneOcc(l1...ln, E): l2..ln, if l1 = E
+;                           l1 U removeOneOcc(l2..ln, E), otherwise
+
+(defun removeOneOcc(L E)
+	(cond
+		((= (car L) E) (cdr L) )
+		(T (cons (car L) (removeOneOcc (cdr L) E) ) )
+	)
+)
+
+; sortList (L) : null , L = 0
+;                minyy(L) U sort(removeOneOcc(L, minny(L))), otherwise
+
+(defun sortList(L)
+	(cond 
+		((null L) nil)
+		(T (cons (minyy L) (sortList (removeOneOcc L (minyy L)) ) ) )
+	)
+)
+
+(defun testsC()
+	(assert (equal (sortList '(1 2 3 1 2)) '(1 1 2 2 3)))
+	(assert (equal (sortList '()) nil))
+	(assert (equal (sortList '(1 1 1)) '(1 1 1)))
+	(assert (equal (sortList '(4 3 2 1)) '(1 2 3 4)))
+	(assert (equal (sortList '(2 2 2 1 1 1 5)) '(1 1 1 2 2 2 5)))
+	"All testsC passed"
+)
+
