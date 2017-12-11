@@ -1,0 +1,7 @@
+(defun intersectionn (L1 L2)
+	(cond
+		((null L1) nil)
+		((member (car L1) L2) (cons (car L1) (intersectionn (cdr L1) L2)))
+		(T (intersectionn (cdr L1 ) L2))
+	)
+)

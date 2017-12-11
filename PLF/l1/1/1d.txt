@@ -1,0 +1,7 @@
+(defun listToSet (L)
+  (cond 
+	((null L) nil)
+	((member (car L) (cdr L)) (listToSet (cdr L)))
+	(T (cons (car L) (listToSet (cdr L))))
+   )
+)

@@ -1,0 +1,6 @@
+(defun combineL (L1 L2)
+	(cond 
+		((null L1) nil)
+		(T (cons (cons (car L1) (car L2)) (combineL (cdr L1) (cdr L2))))
+	)
+)

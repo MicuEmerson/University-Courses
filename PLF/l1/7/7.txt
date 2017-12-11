@@ -1,0 +1,18 @@
+(defun reverseL (L)
+   (cond 
+		((null L) nil)
+		(T (append (reverseL (cdr L)) (list (car L))))
+	)
+)
+
+(defun increaseL (L C)
+	(cond 
+		((and (null L) (= C 0)) nil)
+		((and (null L) (not (= C 0))) (list C))
+		(T (cons (mod (+ (car L) C) 10) (increaseL (cdr L) (floor (+ (car L) C) 10))))
+	)
+)
+
+(defun solve (L)
+	(reverse (increaseL (reverse L) 1))
+)

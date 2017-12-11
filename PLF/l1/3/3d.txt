@@ -1,0 +1,7 @@
+(defun nrOcc (N E)
+	(cond 
+		((and (atom N) (= N E))     1)
+        ((and (atom N)(not(= N E))) 0)		
+		(T (apply #'+ (mapcar #'(lambda(x) (nrOcc x E)) N)))
+	)
+)

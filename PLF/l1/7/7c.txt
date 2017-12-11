@@ -1,0 +1,8 @@
+
+;memberL cauta elementul E in toata lista neomogena L...
+
+(defun listToSet (L)
+	(cond
+		((null L) nil)
+		((and (atom (car L) (not (memberL L (car L)))) ;atunci il bag
+		;#todo
