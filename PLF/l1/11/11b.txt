@@ -1,0 +1,25 @@
+
+
+(defun inc (L)
+	(cond 
+	    ((not (cadr L)) T)
+		((< (car L) (cadr L)) (inc (cdr L)))
+		(T nil)
+	)
+)
+
+(defun dec (L)
+	(cond
+	    ((not (cadr L)) nil)
+		((> (car L) (cadr L)) (dec (cdr L)))
+		(T (inc (cdr L)))
+	)
+)
+
+(defun mountain (L)
+   (cond 
+   
+		((and (and(car L) (cadr L)) (> (car L) (cadr L))) (dec (cdr L)))
+		(T nil)
+	)
+)

@@ -1,0 +1,8 @@
+
+(defun lvlNode (L LVL NODE)
+	(cond
+	    ((null L) nil)
+		((= (car L) NODE) LVL)
+		(T (or (lvlNode (car (cdr L)) (+ LVL 1) NODE) (lvlNode (car(cdr(cdr L))) (+ LVL 1) NODE) ))
+	)
+)

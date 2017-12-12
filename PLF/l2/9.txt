@@ -1,0 +1,5 @@
+(defun transforma (L)
+	(cond 
+		((= (car (cdr L)) 0) (car L))
+		((= (car (cdr L)) 1) (append (list (car L) (transforma (cdr(cdr L))))))
+		((= (car (cdr L)) 2) (append ;nu mai am chef

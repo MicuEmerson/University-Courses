@@ -1,0 +1,8 @@
+(defun solve (L1 E L2)
+	(cond 
+		((null L1) nil)
+		((and (atom (car L1)) (= (car L1) E)) (append L2 (solve (cdr L1) E L2)))
+		((and (atom (car L1)) (not (= (car L1) E))) ( append (list (car L1))  (solve (cdr L1) E L2)))
+		(T (cons (solve (car L1) E L2) (solve (cdr L1) E L2)))
+	)
+)

@@ -1,0 +1,12 @@
+;transforme (L1..Ln) - (L1 2) U transforme(L2) U transforme (L3), if L2 != NIL && L3 != NIL
+;                      (L1 1) U transforme(L2), if L2 != NIL
+;					   (L1 0), otherwise
+
+(defun transforme (L)
+    (cond 
+		((and (cdr L) (cdr(cdr L))) (append (list (car L) 2) (append (transforme (car(cdr L))) (transforme (car(cdr(cdr L)))) ) ) )
+		((cdr L) (append (list (car L) 1) (transforme (car(cdr L))) ))
+		(T (list (car L) 0) )
+	)
+)
+
