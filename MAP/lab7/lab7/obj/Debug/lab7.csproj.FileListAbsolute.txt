@@ -1,0 +1,5 @@
+C:\Users\Emy\RiderProjects\lab7\lab7\bin\Debug\lab7.exe
+C:\Users\Emy\RiderProjects\lab7\lab7\bin\Debug\lab7.pdb
+C:\Users\Emy\RiderProjects\lab7\lab7\obj\Debug\lab7.csprojResolveAssemblyReference.cache
+C:\Users\Emy\RiderProjects\lab7\lab7\obj\Debug\lab7.exe
+C:\Users\Emy\RiderProjects\lab7\lab7\obj\Debug\lab7.pdb

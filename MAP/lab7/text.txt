@@ -1,0 +1,142 @@
+
+Stack: 
+[Open(C:\Users\Emy\RiderProjects\lab7\text1.txt);ReadFile(var_c)]
+[IF(var_c) THEN([ReadFile(var_c);Print(var_c)])ELSE(Print( 0));Close(var_f)]
+
+Dict: 
+
+Output: 
+
+FileTable: 
+
+
+
+Stack: 
+Open(C:\Users\Emy\RiderProjects\lab7\text1.txt)
+ReadFile(var_c)
+[IF(var_c) THEN([ReadFile(var_c);Print(var_c)])ELSE(Print( 0));Close(var_f)]
+
+Dict: 
+
+Output: 
+
+FileTable: 
+
+
+
+Stack: 
+ReadFile(var_c)
+[IF(var_c) THEN([ReadFile(var_c);Print(var_c)])ELSE(Print( 0));Close(var_f)]
+
+Dict: 
+var_f --> 0
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+[IF(var_c) THEN([ReadFile(var_c);Print(var_c)])ELSE(Print( 0));Close(var_f)]
+
+Dict: 
+var_f --> 0
+var_c --> 50
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+IF(var_c) THEN([ReadFile(var_c);Print(var_c)])ELSE(Print( 0))
+Close(var_f)
+
+Dict: 
+var_f --> 0
+var_c --> 50
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+[ReadFile(var_c);Print(var_c)]
+Close(var_f)
+
+Dict: 
+var_f --> 0
+var_c --> 50
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+ReadFile(var_c)
+Print(var_c)
+Close(var_f)
+
+Dict: 
+var_f --> 0
+var_c --> 50
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+Print(var_c)
+Close(var_f)
+
+Dict: 
+var_f --> 0
+var_c --> 60
+
+Output: 
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+Close(var_f)
+
+Dict: 
+var_f --> 0
+var_c --> 60
+
+Output: 
+60
+
+FileTable: 
+0 --> C:\Users\Emy\RiderProjects\lab7\text1.txt
+
+
+
+Stack: 
+
+Dict: 
+var_f --> 0
+var_c --> 60
+
+Output: 
+60
+
+FileTable: 
+
+

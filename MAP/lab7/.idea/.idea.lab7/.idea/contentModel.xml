@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Emy\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_lab7.2105096906.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Emy\RiderProjects\lab7" t="IncludeFlat">
+      <e p="lab7" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controller" t="Include">
+          <e p="Controller.cs" t="Include" />
+        </e>
+        <e p="lab7.csproj" t="IncludeRecursive" />
+        <e p="Models" t="Include">
+          <e p="ArithExp.cs" t="Include" />
+          <e p="AssignStmt.cs" t="Include" />
+          <e p="CompStmt.cs" t="Include" />
+          <e p="ConstExp.cs" t="Include" />
+          <e p="FileHandlers" t="Include">
+            <e p="CloseRFile.cs" t="Include" />
+            <e p="FileData.cs" t="Include" />
+            <e p="FileTable.cs" t="Include" />
+            <e p="openRFile.cs" t="Include" />
+            <e p="ReadFile.cs" t="Include" />
+          </e>
+          <e p="IExpression.cs" t="Include" />
+          <e p="IfStmt.cs" t="Include" />
+          <e p="IStatement.cs" t="Include" />
+          <e p="PrintStmt.cs" t="Include" />
+          <e p="VarExp.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="PrgState.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Utils" t="Include">
+          <e p="Dictionary.cs" t="Include" />
+          <e p="ExeStack.cs" t="Include" />
+          <e p="IDictionary.cs" t="Include" />
+          <e p="IExeStack.cs" t="Include" />
+          <e p="IMyList.cs" t="Include" />
+          <e p="MyList.cs" t="Include" />
+        </e>
+        <e p="View" t="Include">
+          <e p="Command.cs" t="Include" />
+          <e p="ExitCommand.cs" t="Include" />
+          <e p="RunExample.cs" t="Include" />
+          <e p="TextMenu.cs" t="Include" />
+        </e>
+      </e>
+      <e p="lab7.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

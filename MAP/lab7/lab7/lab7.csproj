@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6E8F1C9-7C6B-4783-94F8-ECDF6F15EF89}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>lab7</RootNamespace>
+    <AssemblyName>lab7</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Models\ArithExp.cs" />
+    <Compile Include="Models\AssignStmt.cs" />
+    <Compile Include="Models\CompStmt.cs" />
+    <Compile Include="Models\ConstExp.cs" />
+    <Compile Include="Models\FileHandlers\CloseRFile.cs" />
+    <Compile Include="Models\FileHandlers\FileData.cs" />
+    <Compile Include="Models\FileHandlers\FileTable.cs" />
+    <Compile Include="Models\FileHandlers\OpenRFile.cs" />
+    <Compile Include="Models\FileHandlers\ReadFile.cs" />
+    <Compile Include="Models\IExpression.cs" />
+    <Compile Include="Models\IfStmt.cs" />
+    <Compile Include="Models\IStatement.cs" />
+    <Compile Include="Models\PrintStmt.cs" />
+    <Compile Include="Models\VarExp.cs" />
+    <Compile Include="PrgState.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Dictionary.cs" />
+    <Compile Include="Utils\ExeStack.cs" />
+    <Compile Include="Utils\IDictionary.cs" />
+    <Compile Include="Utils\IExeStack.cs" />
+    <Compile Include="Utils\IMyList.cs" />
+    <Compile Include="Utils\MyList.cs" />
+    <Compile Include="View\Command.cs" />
+    <Compile Include="View\ExitCommand.cs" />
+    <Compile Include="View\RunExample.cs" />
+    <Compile Include="View\TextMenu.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
