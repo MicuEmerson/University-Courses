@@ -1,0 +1,9 @@
+; X - elem, N- nivel curent K - nivel cautat
+; apelul il facem cu N = -1 ca prima data X e lista
+(defun nrNodNiv (X N K)
+	(cond 
+		((and (atom X) (= N K)) 1)
+		((and (atom X) (not (= N K))) 0)
+		(T (apply '+ (mapcar #'(lambda (X) (nrNodNiv X (+ N 1) K)) X)))
+	)
+)

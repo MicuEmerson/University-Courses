@@ -1,0 +1,18 @@
+
+
+
+(defun isMember (X E)
+	(cond
+		((and (numberp X) (= X E)) 1)
+		((and (numberp X) (not (= X E))) 0)
+		(T (apply #'+ (mapcar #'(lambda (X) (isMember X E)) X)))
+	)
+)
+
+(defun isMemberr (X E)
+	(cond
+		((= (isMember X E) 0) nil)
+		(T T)
+	)
+)
+	

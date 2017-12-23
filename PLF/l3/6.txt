@@ -1,0 +1,8 @@
+
+(defun maxy (X)
+	(cond 
+		((numberp X) X)
+		((atom X) 0)
+        (T (apply #'max (mapcar #'maxy X)))
+    )
+)	

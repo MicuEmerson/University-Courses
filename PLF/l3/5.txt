@@ -1,0 +1,8 @@
+
+(defun sum (X)
+	(cond 
+		((and (atom X) (= (mod X 2) 0)) X)
+        ((and (atom X) (= (mod X 2) 1)) (* -1 X))
+        (T (apply #'+ (mapcar #'sum X)))
+    )
+)	

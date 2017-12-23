@@ -1,0 +1,7 @@
+
+(defun listDepth (X)
+	(cond 
+		((atom X) 0)
+		(T (+ 1 (apply 'max (mapcar 'listDepth X))))
+	)
+)

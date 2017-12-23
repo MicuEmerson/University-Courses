@@ -1,0 +1,7 @@
+
+(defun liniarizare (X)
+	(cond 
+		((atom X) (list X))
+		(T (mapcan 'liniarizare X))
+	)
+)

@@ -1,0 +1,9 @@
+
+
+(defun removeL (X E)
+	(cond 
+		((and (atom X) (= X E)) NIL)
+		((and (atom X) (not (= X E))) (list X))
+		(T  (mapcan #'(lambda (X) (removeAll X E)) X))
+	)
+)
