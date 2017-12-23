@@ -11,8 +11,7 @@
 	(cond
 		((= (cadr L) 0) 1)
 		((= (cadr L) 1) (+ 1 (nrNiv (cddr L))))
-		((= (cadr L) 2) (+ 1 (max (nrNiv cddr L) (nrNiv (rightSon (cddr L) 1)))) )
+		((= (cadr L) 2) (+ 1 (max (nrNiv (cddr L)) (nrNiv (rightSon (cddr L) 1)))) )
 	)
 )
 
-;buuug
