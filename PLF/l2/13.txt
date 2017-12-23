@@ -1,0 +1,18 @@
+(defun isThere (L E)
+	(cond
+		((null L) nil)
+		((and (atom (car L)) (equal (car L) E)) T)
+		((and (atom (car L)) (not (equal (car L) E))) (isThere (cdr L) E))
+		(T (or (isThere (car L) E) (isThere (cdr L) E)))
+	)
+)
+
+
+(defun getPath (L E)
+	(cond
+	    ((equal (car L) E) (list E))
+		((isThere (cadr L) E) (cons (car L) (getPath (cadr L) E)))
+		((isThere (caddr L) E) (cons (car L) (getPath (caddr L) E)))
+		((not(equal (car L) E)) nil)
+	)
+)
