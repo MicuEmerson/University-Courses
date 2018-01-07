@@ -1,0 +1,17 @@
+
+(defun depth (L)
+	(cond
+		((null L) 0)
+		(T (+ 1 (max (depth (cadr L)) (depth (caddr L)))))
+	)
+)
+
+(defun balanced (L)
+	(cond 
+		((null L) T)
+		((= 1 (- (depth (cadr L)) (depth (caddr L)))) (and  (balanced (cadr L)) (balanced (caddr L))))
+		((= 0 (- (depth (cadr L)) (depth (caddr L)))) (and  (balanced (cadr L)) (balanced (caddr L))))
+		((= -1 (- (depth (cadr L)) (depth (caddr L)))) (and  (balanced (cadr L)) (balanced (caddr L))))
+		(T nil)
+	)
+)
