@@ -1,0 +1,16 @@
+
+minsert([], E, [E]).
+minsert([H|T], E, [E, H|T]).
+minsert([H|T], E, [H|TR]):-
+    minsert(T, E, TR).
+
+
+perm([], []).
+
+perm([H|T], LR):-
+   perm(T, LR2),
+   minsert(LR2, H, LR).
+
+
+main(L, LR):-
+    findall(X, perm(L, X), LR).
