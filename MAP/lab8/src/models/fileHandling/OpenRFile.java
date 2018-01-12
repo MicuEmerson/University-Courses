@@ -41,7 +41,7 @@ public class OpenRFile implements Statement {
          fileTable.add(id, new FileData(fileName, reader));
          dict.setValue(varName, id);
 
-         return state;
+         return null;
     }
 
     @Override

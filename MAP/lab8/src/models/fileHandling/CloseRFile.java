@@ -43,7 +43,7 @@ public class CloseRFile implements Statement {
         fileTable.delete(id);
         //dict.delete();
 
-        return state;
+        return null;
     }
 
     @Override

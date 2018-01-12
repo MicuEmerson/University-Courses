@@ -5,24 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import models.statement.*;
-import models.booleanExpression.*;
-import models.expression.*;
-import models.fileHandling.*;
-import models.heapStatements.*;
 
-import javax.naming.ldap.Control;
-import java.util.ArrayList;
-import java.util.List;
+import static java.lang.System.exit;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
-
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("selectProgram.fxml"));
 
         primaryStage.setTitle("Programs");
         primaryStage.setScene(new Scene(root, 500, 300));
@@ -33,5 +24,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        exit(0);
     }
 }

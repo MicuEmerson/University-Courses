@@ -1,100 +1,130 @@
 package sample;
 
+import exceptions.ControllerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import models.PrgState;
-import models.expression.ArithExp;
-import models.expression.ConstExp;
-import models.expression.VarExp;
-import models.heapStatements.HeapAllocation;
-import models.heapStatements.HeapReading;
-import models.heapStatements.HeapWriting;
-import models.statement.*;
+import models.fileHandling.FileData;
+import models.fileHandling.IFileTable;
+import models.statement.Statement;
+import repository.IRepository;
+import utils.IExeStack;
+import exceptions.EmptyStack;
+import utils.IHeap;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-
+import java.util.Map;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 public class Controller {
 
-    @FXML
-    private ListView<String> listView;
+    private IRepository repo;
+    private ExecutorService executor;
 
-    @FXML
-    private Button runProgramBTN;
-
-    public static Statement statement;
-    private List<Statement> StmtList = new ArrayList<Statement>();
-
-
-    @FXML
-    public void initialize() {
-
-        //hardcodam programe
-        Statement a = new AssignStmt("a", new ArithExp('+', new ConstExp(2), new ArithExp('*', new ConstExp(3), new ConstExp(5))));
-        Statement b = new CompStmt(new AssignStmt("b", new ArithExp('+', new VarExp("a"), new ConstExp(1))), new PrintStmt(new VarExp("b")));
-        Statement ex1 = new CompStmt(a,b);
-
-        Statement aa = new AssignStmt("a", new ArithExp('-', new ConstExp(2), new ConstExp(2)));
-        Statement thenS = new AssignStmt("v", new ConstExp(2));
-        Statement elseS = new AssignStmt("v", new ConstExp(3));
-        Statement decision = new IfStmt(new VarExp("a"),  thenS, elseS);
-        Statement ex2 = new CompStmt(aa, new CompStmt(decision, new PrintStmt(new VarExp("v"))));
+    public Controller(IRepository _repo){
+        repo = _repo;
+        executor = Executors.newFixedThreadPool(2);
+    }
 
 
-        Statement a1 =  new AssignStmt("v", new ConstExp(6));
-        Statement a2 = new WhileStmt(new ArithExp('-',new VarExp("v"), new ConstExp(4) ),
-                new CompStmt(new PrintStmt(new VarExp("v")), new AssignStmt("v", new ArithExp('-',new VarExp("v"), new ConstExp(1) ))));
-        Statement a3 = new PrintStmt(new VarExp("v"));
-        Statement ex3 = new CompStmt(new CompStmt(a1,a2), a3);
+    public int noPrgStates(){
+        return repo.getPrgList().size();
+    }
 
-        Statement q1 = new AssignStmt("v", new ConstExp(10));
-        Statement q2 = new HeapAllocation("a", new ConstExp(22));
-        Statement q3 = new HeapWriting("a", new ConstExp(30));
-        Statement q4 = new AssignStmt("v", new ConstExp(32));
-        Statement q5 = new PrintStmt(new VarExp("v"));
-        Statement q6 = new PrintStmt(new HeapReading("a"));
-        Statement q7 = new CompStmt(new CompStmt(q3,q4), new CompStmt(q5,q6));
-        Statement q8 = new ForkStmt(q7);
-        Statement q9 = new PrintStmt(new VarExp("v"));
-        Statement q10 = new PrintStmt(new HeapReading("a"));
-        Statement c1 = new CompStmt(q1, q2);
-        Statement c2 = new CompStmt(q8, new CompStmt(q9, q10));
-        Statement ex4 = new CompStmt(c1,c2);
+    public PrgState getPrgStateByIndex(int index){
+       return  repo.getPrgList().get(index);
+    }
 
-        StmtList.add(ex1);StmtList.add(ex2);StmtList.add(ex3);StmtList.add(ex4);
-
-
+    public ObservableList<String> getPrgStatesID(){
         ObservableList<String> list = FXCollections.observableArrayList();
-        for(Statement i : StmtList)
-            list.add(""+i);
+        for(PrgState i : repo.getPrgList())
+           list.add( String.valueOf(i.getID()));
 
-        listView.setItems(list);
-
-        listView.getSelectionModel().selectIndices(0);
+        return list;
     }
 
-    @FXML
-    public void buttonRun() throws IOException {
 
-        statement = StmtList.get(listView.getSelectionModel().getSelectedIndex());
+    public List<PrgState> removeCompletedPrg(List<PrgState> l){
+        return l.stream().filter(e-> e.isNotCompleted())
+                .collect(Collectors.toList());
+    }
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
-        stage.setTitle("Running Program");
-        stage.setScene(new Scene(root, 700, 700));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+    public void oneStepForAll(List<PrgState> list)  {
+
+
+        List<Callable<PrgState>> callList = list.stream()
+                                            .map((PrgState p) -> (Callable<PrgState>)(() -> {return p.oneStep();}))
+                                            .collect(Collectors.toList());
+
+
+        List<PrgState> newList = null;
+        try {
+            newList = executor.invokeAll(callList)
+                                                .stream()
+                                                .map(  future ->
+                                                {
+                                                    try {
+                                                        return future.get();
+                                                    } catch (InterruptedException e) {
+                                                        throw new ControllerException(e.getMessage());
+                                                    } catch (ExecutionException e) {
+                                                        throw new ControllerException(e.getMessage());
+                                                    }
+                                                })
+                                                .filter(p -> p != null)
+                                                .collect(Collectors.toList());
+        } catch (InterruptedException e) {
+            throw new ControllerException(e.getMessage());
+        }
+
+
+
+
+        list.addAll(newList);
+        list.forEach(prg-> repo.logPrgStateExec(prg));
+
+        repo.setPrgList(list);
 
     }
+
+
+
+    public boolean oneStepGUI (){
+
+        List<PrgState> prgList = removeCompletedPrg(repo.getPrgList());
+
+        if(prgList.size() > 0){
+            oneStepForAll(prgList);
+            prgList = removeCompletedPrg(repo.getPrgList());
+            return true;
+        }
+        else{
+            executor.shutdownNow();
+            repo.setPrgList(prgList);
+            return false;
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    /*
+   private Map<Integer,Integer> conservativeGarbageCollector(List<Integer> symTableValues, IHeap<Integer, Integer> heap){
+
+        return heap.entrySet().stream()
+                .filter(e->symTableValues.contains(e.getKey()))
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+    */
 
 }

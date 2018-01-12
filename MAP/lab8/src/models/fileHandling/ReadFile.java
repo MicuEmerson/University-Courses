@@ -49,7 +49,7 @@ public class ReadFile implements Statement {
 
         dict.setValue(varName, value);
 
-        return state;
+        return null;
     }
 
     @Override

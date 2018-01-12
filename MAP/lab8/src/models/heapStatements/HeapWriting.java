@@ -32,7 +32,7 @@ public class HeapWriting implements Statement {
         int val = exp.eval(dict, heap);
         heap.update(heapID, val);
 
-        return state;
+        return null;
     }
 
     @Override

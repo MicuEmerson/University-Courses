@@ -35,7 +35,7 @@ public class HeapAllocation implements Statement {
                  dict.setValue(varName, id);
 
 
-        return state;
+        return null;
     }
 
     @Override
