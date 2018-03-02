@@ -1,0 +1,10 @@
+1,Mihai,13,9
+2,Ionut,5,8
+3,George,10,5
+4,Vasile,2,5
+5,Ionela,1,10
+6,Mihaela,6,8
+7,Mirela,7,3
+8,Daciana,8,2
+9,Alexandru,9,7
+10,Robert,4,5
