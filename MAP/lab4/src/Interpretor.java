@@ -79,9 +79,9 @@ public class Interpretor {
         Statement d1 = new CompStmt(q, q1);
         Statement d2 = new CompStmt(q2, q3);
         Statement d3 = new CompStmt(q4, q5);
-        Statement d4 = new CompStmt(q6, d1);
 
-        Statement ex4 = new CompStmt(new CompStmt(d2,d3), d4);
+
+        Statement ex4 = new CompStmt(new CompStmt(d1,d2), new CompStmt(d3,q6));
 
 
         IExeStack<Statement> exeStack = new ExeStack<>();
@@ -90,7 +90,7 @@ public class Interpretor {
         IFileTable<Integer, FileData> fileTable = new FileTable<>();
         IHeap<Integer, Integer> heap = new Heap<>();
         //exeStack.push(q6);exeStack.push(q5);exeStack.push(q4);exeStack.push(q3);exeStack.push(q2);exeStack.push(q1);exeStack.push(q);
-        //exeStack.push(ex4);
+        exeStack.push(ex4);
         PrgState state = new PrgState(exeStack, dict, list, null, fileTable, heap);
 
         IRepository repo = new Repository();
@@ -99,7 +99,7 @@ public class Interpretor {
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1",  q.toString(), ctrl));
+        menu.addCommand(new RunExample("1",  ex4.toString(), ctrl));
         menu.show();
 
 

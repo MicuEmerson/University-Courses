@@ -1,0 +1,10 @@
+
+(defun liniarizare (X lvl)
+	(cond
+		((and (numberp X) (= (mod lvl 2) 1)) (list X))
+		((atom X) nil)
+		(T (mapcan #'(lambda (X) (liniarizare X (+ lvl 1))) X) )
+	)
+)
+
+

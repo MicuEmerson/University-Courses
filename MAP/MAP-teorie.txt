@@ -1,0 +1,256 @@
+1.
+  super - it is a rezervated keyword used to call the contructor of the parent class
+          also we can call methods / fields that are overwrited in subclasses, to access both forms(parent form, children form)
+  
+   packages - have to role to group classes and interface under the same namespace management
+   	      we can also have packages in packages
+              we can import a package using keyword "import"
+              we also have static import which allow us to use a static function without specify the class in front 
+              if file .java dont contain keyword package "name", all the file classes are part of anonymous package
+              we can have name collisions if two imported packages have classes with the same name
+
+2.
+  
+  There are 3 types of exceptions:
+     -Errors(external to the application)   --> VirtualMachineError
+     -CheckedExceptions(try/catch)          --> IOException
+     -RunTimeException(coresponding to some bugs) --> NullPointerException, ArithmeticException etc
+ 
+ Arrayuri - care e diferentra intre mai multe tipuri
+ We have 3 types, One Dimension Array
+                 Rectangular Multidimension Array       
+                 Non-reactangular Multidimnesion array  
+
+
+1)Why we use generics?
+  We use generics because they are easier to read, more safe and also make the code more reusable.
+  We have generic methods and classes.
+  Exemplu cu stiva, bagam doua obiecte diferite si le scoatem pe ambele ca fiind obiecte String, corect la compirare, deces la rulare
+
+
+2)cum trateaza java arrayurile - generic arrays
+  we cannot do something like T[] elem = new T[dim] // error at compile
+  but we can use T[] elem = (T[]) new Object[dim]
+  we can use ArrayList which supports generics very well
+
+3)bounds
+  We use bounds when we wanna bound our generic type
+  T extends B, means that T can be B or subtypes of B
+  T extends B & I1 & I2, means that T can be B or subtypes of B
+  T extends I1 & I2, means that T need to implemnet the I1 interface
+  !!!Always T is replaced by first Class/Interface that is after extends
+  They are good for adding more security to code
+
+4)bounded wildcards
+   (for read) ? extends B ---> we can give class B and any subtype of class B (kids) (mai exact tot ce e sub ierarhia lui B(inclusiv B) este permis)
+   (for write)? super   B  --->we can give class B and any uppertype of class B (parinti/bunici) (mai exact tot ce e deasupra ierarhia lui B(inclusiv B) este permis)
+
+5)iterators
+   Iterators provide a generic way to traverse through a collection regardless of its implementation
+   We don't know how the actual implementation of iterator is but we don't even care as long we have hasNext() and next() methods available
+   We have some methods like ( hasNext(), next(), remove() )
+   We have Iterator interface and if we implement it we will be able to do for each statement with our class objects
+ 
+
+6) Comparable vs Comparators
+   Comparable --> generic interface with only one method (int comparaTo(){..}), we usually use it to define the natural ordering of our class that implements this interface.
+   Comparator --> generic interface with method (int compare(T x, T y){...})
+   Comparable --> Collections.sort(list), it use the comparaTo to sort the list
+   Comparator --> Collections.sort(list, new ComparatorClass()), it use ComparatorClass which implements Comparator interface and sort the list by compare function
+   Comparable object can only offer one form of sorting. To provide multiple forms of sorting, we gotta use Comparators.
+   We can also use both.
+   
+
+3.
+
+  Stream:
+     A stream is a sequence of that that represent an input source or an output destination
+    
+   Sincron vs Asincron operations
+   Sincron operations are sequential, meaning that after one operation is done the other can start, ex: we write and after we read
+   Asincron operations are not sequential, meaning that we can do more operation on the same time, ex: we write and read in the same time
+   Asincron operations are done with Future or CompletionHelper
+
+  1) Buffer
+   A buffer is essentially a block of memory with an specific data, into which you can write data, which you can then later read again.
+   It has an limit(capacity)
+
+  2) Try vs Try-With-Resource
+     The main difference is that when the TryWR finishes the code, all the closeble classes that are opened between the parameziz if the class
+     have AutoCloseable interface implements
+     If we open some stuff in try without resource we gotta be sure that we use finally in order to close them.
+
+
+
+4.
+  1) Annonymous Classes
+	provides a way to implmenet a class that may occur only once in an application
+      
+        class B{
+             void public aloha(){
+                  print("clasa reala");
+             }
+        }
+
+        B b = new B(){
+               void public aloha(){
+                   print("clasa anonima");
+                }
+              };
+   
+    2) Functional Interfaces
+       are interfaces that have only one method
+       using functional interfaces with anonimous classes or lambda expressions are commond pattern in java
+       // ar merge un exemplu aici
+
+    3) Lambda Expressions
+	 can be created without belonging to any class
+         A Java lambda expression is essentially an object, you can assign lambda expression to an interface object (runnable, comparator)
+         Runnable r1 = () -> System.out.println("aloooha");
+         or 
+         public interface myComp(){
+             int compare(int a, int b);
+         }
+         myComp cmp = (a,b) -> return a > b;
+         boolean result = myComp(5,6);
+
+    4) Streams
+       - a sequence of elements from a source that support aggregate operations
+       - streams don't store elements only compute on demand
+
+    5) Streams Processing Phases
+       1. Configuration - intermediate operations
+		a) Filtering (filter(predicate), distinct, limit(n), skip(n)
+                b) Mapping   ( map(function) )
+                they return a stream and are lazy because do not perform any processing
+       2. Processing - terminal operations
+                - produce a result from a pipeline(i call it stream) such as List, Integer, or even void(any non-stream type)
+                a) .collect(supplier/accumulator/combiner/finisher)
+                b) min/max
+                c) count
+                d) anyMatch, allMatch, noneMatch
+
+    6) How infinite streams are build??
+	There are two static method that let you create infinite streams a) stream.iterate 
+								         b) stream.generate
+
+
+5-6-7
+   1. Diff Proccess - Thread
+	   Processes have it's own memory and are izolated from each other
+           To communicate between processes we use pipes and sockets.
+	   Threads share resources (Heap, FileTable) and this may cause problems if the access to shared resources are not syncronizated.
+           A thread is a collection of instructions that can be executed in parallel with other process/threads, threads also share the memory of the process.
+
+   2. Multi-Threads
+           A multi-threads program is a program that have multiple flows of control when executed, at some instance there may exist multiple instruction executed
+           in the same time.
+
+   3. Interrupting Threads
+     A blocking/waiting block (sleep(), join(), wait()) can be interrupted by an InterruptedException thrown by thread.interrupt()
+     The InterruptException will not be activated if there is not some blocking/waiting blocks (sleep(), join(), wait())
+     Insted of InterruptException we can use two functions, interrupted() which is destructive, that means the flag of interupt it is set back to false after this function is executed
+                                                          , isInterrupted() which is non-destructive, the flag of interrupted remains unchanged
+
+   4. Sincronizarea
+      Two or more Threads can access the same memory on the same time and this can produce unwanted results.
+      To little synchronization ==> loss or corrupt data.
+      To much synchronization   ==> deadlock / system frozen
+      We can use synchronized method/statement, when one thread execute a syncronized method/statement,
+      all other threads wait for the current threads that executes in that time, to finish.
+
+   5. Monitor Model
+      A monitor is a collection of code (called critical section) associated with an object(called lock)
+      One thread can be in that critical section at a certain time
+      Java allows only an object to be the lock for monitor
+
+   6. ExecutorService
+	Its an interface which execute tasks asynchronusly in the background.
+	Its like a threadPool  
+        It have some methods like (execute(Runnable), submit(Runnable), submit(Callable), invokeAll(), invokeAny())
+	Difference between Runnable and Callable is that Callable is able to return something.
+        invokeAll return a list of Futures
+        Futures are some objects that have a method .get() that return the result of that Callable 
+
+   7. ForkJoinPool
+	Simillar with ExecutorService but with one differences
+        Implemenets work/steal strategy, meaning that when a thread need to wait for some result, the thread removes that task from work queue and
+        and executes some other task ready to run. In this way way the current thread is not blocked and can be used to execute other tasks.
+        .fork() will start a asynnchronus exections of the task
+        .join() will wait untill the result of the executed task is returned
+
+    8. Blocking Queue
+	It is a queue that supports operations for that wait for the Q to be non empty when it tries to retrieve one element, and the Q to be not full when it 
+        tries to store an element.
+        There are for form os BQ, one of them is put and take.
+        //producer and consumer exemple
+
+
+    9. Semaphores
+       Provide a mechanism that allows only N threads to have access to the critical section on a given time, if critical section reaches N threads in it, other
+	threads will wait till some threads will leave the critical section.
+
+    10. CountDown Latch
+        Provide a mechnism that keep alive or block on thread untill the count reaches 0.
+        First we initializate it with a given count, and then when we use countDown() that given count is decremented.
+        We also have await(), this method blocks the thread untill count reaches 0.
+
+    11. Cyclic Barrier
+	It is a sincronizated method that allow us to control the flow of some threads.
+        The idea is that we have an barrier that when a threads reach that barrier it wait(await) for all other threads to reach it, in order to pass it through barrier.
+        
+
+   12. Atomic Variables
+       are some variables that are sincronizated automaticale, we don't need to use lock/unlock to sincronizate them
+       we have atomicinterger, boolean, and other ones
+       they are also much faster then syncronizating via locks
+       it is good to use atomic variables when we wanna syncronize just one variable.
+
+10-11-12.
+
+ 1)Scene Graph
+	A scene graph is a tree of GUI components.
+        A scene graph element is a node.
+	Each node has and ID, class style, bouding volume, etc.
+        Each node has a single parent and 0 or more childrens, except the root
+	Node:  The abstract base class for all scene graph nodes.
+        Parent: The abstract base class for all branch nodes. 
+	Scene: The base container class for all content in the scene graph.	
+
+ 2)Event Driven Programming
+	Any action generates an event: a) pressing or relesing the keyboard
+				       b) moving the mouse etc
+        There are also event that are not generated by the user
+        An event can be treater by executing a function
+	Types of events: a) ActionEvent
+			 b) InputEvent
+			 c) WindowEvent
+
+Seminarii.
+
+ 1) Instaceof operator:
+  	instaceof operator compare an object to a specified type, test if an object is a instance of a class, subclass/interface of that class/interface
+  	// si dau un exemplu gen clasa A, B extends A si C extends A si fac o clasa Call care primeste un obiect A (eu il apelez cu B si C) si verific ce tip e,
+        if(x instaceof B) ...
+        else if(x instaceof C)...
+      
+
+ 2) Serializable
+	Serialization is a process of translating an Object/Data-Structure into a form that can be stored in a file/buffer etc.
+        In java we have Serializable interface that allow us to do this Serialization.
+        We also have the reverse process Deserialization that allow us to read from a file/buffer an serializated object.
+        Serializable interface have no fields/methods.
+        Transient and Static variabiles are not serializable.
+        We have also a serialVersionUID for every object that tell us if the object structure was changed durring the last check.
+        We can add more variables to our object after we serializated it and this will be still fine to deserializate it, but if we remove some
+        variables our class after we serializated it, this will produce an error.
+        
+
+
+
+
+
+
+
+
+

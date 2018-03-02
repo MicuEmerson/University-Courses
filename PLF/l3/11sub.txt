@@ -1,0 +1,35 @@
+
+(defun liniarizare (X)
+	(cond
+		((numberp X) (list X))
+		((atom X) nil)
+		(T (mapcan 'liniarizare X))
+	)
+)
+
+
+(defun verif (L)
+	(cond
+		((null L) nil)
+		((= (mod (car L) 2) 1) T)
+		(T nil)
+	)
+)
+
+(defun verif2 (L)
+	(cond
+		((null L) nil)
+		((and (equal (cdr L) nil) (= (mod (car L) 2) 1)) T)
+		((and (equal (cdr L) nil) (= (mod (car L) 2) 0)) nil)
+		(T (verif2 (cdr L)))
+	)
+)
+     		
+
+(defun solve (X)
+	(cond
+		((atom X) 0)
+		((verif2(liniarizare X)) (and (write X) (+ 1 (apply '+ (mapcar 'solve X)))))
+		(T (apply '+ (mapcar 'solve X)))
+	)
+)

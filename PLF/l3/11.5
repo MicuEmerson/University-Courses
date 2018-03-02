@@ -1,0 +1,6 @@
+
+(defun liniarizare (X)
+	((not (numberp X)) NIL)
+	((numberp X) (list X))
+	(T (mapcan 'liniarizare X))
+)

@@ -20,13 +20,12 @@ public class HeapReading implements IExpression {
     public int eval(IDictionary<String, Integer> dict, IHeap<Integer, Integer> heap) {
 
         if(!dict.constains(varName)) {
-            System.out.println("BAAA");
             throw new VariableNotDefined("This key is not in our symTable");
         }
+
         int heapID = dict.getValue(varName);
 
         if(!heap.contains(heapID)) {
-            System.out.printf("MAAA");
             throw new VariableNotDefined("This key is not in our heapTable");
         }
 

@@ -1,0 +1,41 @@
+
+(defun substituie(X E L1)
+	(cond
+		((and (atom X) (equal X E)) (copie L1))
+		((atom X) (list X))
+		(T (list (mapcan #'(lambda (X) (substituie X E L1)) X)))
+	)
+)
+
+(defun copie(L)
+	(cond	
+		((null L) nil)
+		(T (cons (car L) (copie (cdr L))))
+	)
+)
+
+(defun main(X E L1)
+	(car (substituie X E L1))
+)
+
+(defun test()
+	(assert (equal (main '(1 (5 (2 7 (2)))) 2 '(3 4)) '(1 (5 (3 4 7 (3 4)))) ))
+	(assert (equal (main '(1 2 3 4 2) 2 '(3 4)) '(1 3 4 3 4 3 4) ))
+	(assert (equal (main '(1 (2 (3 4) 2)) 2 '(3 4)) '(1 (3 4 (3 4) 3 4)) ))
+	(assert (equal (main '(1 6 (5 (4 2)) 2 (2)) 2 '(3 4)) '(1 6 (5 (4 3 4)) 3 4 (3 4)) ))
+	"all passed"
+)
+
+(defun funct (L E)
+	(cond	
+		((null L) nil)
+		(T (cons (append (car L) (append (car L) E)) (funct (cdr L) E)))
+    )
+)	
+
+(defun subm(L)
+	(cond
+		((null L) '(()))
+		(t (append (subm (cdr L)) (mapcar #'(lambda(x) (cons (car l) x)) (subm (cdr L)))))
+	)
+)

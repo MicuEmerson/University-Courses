@@ -24,6 +24,7 @@ public class HeapWriting implements Statement {
 
         if(!dict.constains(varName))
             throw new VariableNotDefined("This key is not in our symTable");
+
         int heapID = dict.getValue(varName);
 
         if(!heap.contains(heapID))

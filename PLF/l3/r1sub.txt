@@ -1,0 +1,119 @@
+(defun F(L)
+	(max (car L) (caddr L))
+)
+
+;4
+(defun inlocuire (L N K E)
+	(cond
+		((null L) nil)
+		((= N K) (cons E (list (cadr L) (caddr L))))
+		(T (cons (car L) (list (inlocuire (cadr L) (+ N 1) K E) (inlocuire (caddr L) (+ N 1) K E))))
+	)
+)
+
+(defun inlocuire2(X N K E)
+	(cond
+		((and (atom X)(= N K)) E)
+		((atom X) X)
+		(T (mapcar #'(lambda(X) (inlocuire2 X N (+ K 1 ) E)) X))
+    )
+)	
+
+
+(defun mountain_desc(L)
+	(cond
+		((= (length L) 1) T)
+		
+		((=(length L) 2) 
+		   (cond 
+		    ((> (car L) (cadr L)) T)
+			(T nil)
+		    )
+		)
+		((> (car L) (cadr L))
+		   (mountain_desc (cdr L))
+		)
+		(T NIL)
+	)
+)
+
+(defun mountain_inc(L)
+	(cond
+		((cadr L) nil)
+		((< (car L) (cadr L)) (mountain_inc (cdr L)))
+		((> (car L) (cadr L)) (mountain_desc(cdr L)))
+		(T nil)
+	)
+)
+
+(defun mountain(L)
+	(cond
+		((< (car L) (cadr L)) (mountain_inc (cdr L)))
+	)
+)
+
+
+
+
+;R11.3
+
+(defun funct (L)
+	(cond
+		((null L) 0)
+		(T (funcall (lambda (L2)
+					(cond
+						((> L2 2) (+ (car L) (funct (cdr L))))
+						(T L2)
+					)
+				  ) (funct (car L))
+		    )
+        )			
+	)
+)
+
+;R3.1
+
+(defun blabla(L)
+	(cond
+		((atom L) -1)
+		(T (funcall (lambda (L2)
+						(cond
+							((> L2 0) (+ (car L) L2 (blabla(cdr L))))
+							(T (blabla (cdr L)))
+						)
+                   )(blabla(car L))
+          )
+        )
+		 
+    )
+)	 
+
+;R16.3 ramas
+
+(defun alo(L)
+	(cond
+		((null L) nil)
+		((listp (car L))
+			(funcall (lambda (L2)
+						(append L2 (alo (cdr L)) (car L2))
+					 )(blabla (car L))
+            )
+        )
+        (T (list (car L)))
+    )
+)	
+						
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

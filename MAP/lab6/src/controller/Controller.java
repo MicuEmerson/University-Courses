@@ -26,23 +26,25 @@ public class Controller {
         repo = _repo;
     }
 
+
     public List<PrgState> removeCompletedPrg(List<PrgState> l){
         return l.stream().filter(e-> e.isNotCompleted())
                          .collect(Collectors.toList());
     }
 
 
-    public void oneStepForAll(List<PrgState> l)  {
+
+    public void oneStepForAll(List<PrgState> list)  {
 
 
-
-        List<Callable<PrgState>> callList = l.stream()
+        List<Callable<PrgState>> callList = list.stream()
                                             .map((PrgState p) -> (Callable<PrgState>)(() -> {return p.oneStep();}))
                                             .collect(Collectors.toList());
 
-        List<PrgState> lp = null;
+
+        List<PrgState> newList = null;
         try {
-            lp = executor.invokeAll(callList)
+            newList = executor.invokeAll(callList)
                                                 .stream()
                                                 .map(  future ->
                                                 {
@@ -61,10 +63,10 @@ public class Controller {
         }
 
 
-        l.forEach(prg-> repo.logPrgStateExec(prg));
-        l.addAll(lp);
-        repo.setPrgList(l);
 
+        list.forEach(prg-> repo.logPrgStateExec(prg));
+        list.addAll(newList);
+        repo.setPrgList(list);
 
     }
 
@@ -82,6 +84,7 @@ public class Controller {
 
             oneStepForAll(prgList);
             prgList = removeCompletedPrg(repo.getPrgList());
+
         }
 
         executor.shutdownNow();
@@ -93,11 +96,9 @@ public class Controller {
 
    private Map<Integer,Integer> conservativeGarbageCollector(List<Integer> symTableValues, IHeap<Integer, Integer> heap){
 
-
         return heap.entrySet().stream()
                 .filter(e->symTableValues.contains(e.getKey()))
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
     }
 
 

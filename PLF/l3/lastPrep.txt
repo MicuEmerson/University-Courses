@@ -1,0 +1,334 @@
+
+(defun check(L)
+	(cond
+		((null L) 0)
+		((atom (car L)) (+ 1 (check (cdr L))))
+		(T (check (cdr L)))
+	)
+)
+
+(defun stergere(L)
+	(cond
+		((null L) nil)
+		((atom (car L)) (cons (car L) (stergere (cdr L))))
+		((=(mod (check (car L)) 2)1)  (cons (stergere (car L)) (stergere (cdr L))))
+	    (T (stergere (cdr L)))
+	)
+)
+
+
+(defun reversL (L)
+	(cond
+		((null L) nil)
+		((numberp (car L)) (reversL (cdr L)))
+		((atom (car L)) (append (reversL (cdr L)) (list (car L)) ))
+		(T (append (reversL (cdr L)) (reversL (car L))))
+	)
+)
+
+(defun mappp (X)
+	(cond
+		((numberp X) nil)
+		((atom X) (list X))
+		(T (reverse (mapcan 'mappp X)))
+	)
+)
+
+(defun subm (L)
+	(cond
+		((null L) (list nil))
+		(t ((lambda (s)
+				(append s (mapcar #'(lambda (sb)
+						                         (cons (car L) sb)
+                                    )
+                           s
+                           )
+                )
+            )
+       (subm (cdr L))
+ 
+            )  
+          )
+    )
+)
+
+(defun adaugaN(L N K E N2)
+	(cond
+		((null L) nil)
+		((= N K) (cons (car L) (cons E (adaugaN (cdr L) (+ N N2) (+ K 1) E N2))))
+		((not (= N K)) (cons (car L) (adaugaN (cdr L) N (+ K 1) E N2)))
+	)
+)
+
+(defun stergeCons(L F)
+	(cond
+		((null L) nil)
+		( (and (numberp (car L)) (numberp (cadr L))  (equal (+ 1(car L)) (cadr L)))
+			(stergeCons (cdr L) 1)
+		)
+		((= F 1) (stergeCons (cdr L) 0))
+		(T (cons (car L) (stergeCons (cdr L) 0)))
+	)
+)
+
+(defun reverse1(L)
+	(cond
+		((null L) nil)
+		(T (append (reverse1 (cdr L)) (list (car L))))
+	)
+)	
+	
+	
+(defun revers(X)
+	(cond
+		((atom X) X)
+		( T (reverse1 (mapcar 'revers X)))
+	)
+)
+
+
+
+(defun rever(L)
+	(cond
+		((null L) nil)
+		((atom (car L)) (append   (rever (cdr L)) (list (car L))))
+		(T (append (rever (cdr L)) (rever (car L))))
+	)
+)
+
+(defun calc(X E)
+	(cond
+		((equal X E) 1)
+		((atom X) 0)
+		(T (apply '+ (mapcar #'(lambda (X) (calc X E)) X)))
+	)
+)
+
+(defun notUniq(L L2)
+	(cond	
+		((null L) nil)
+		((and (atom (car L)) (= (calc L2 (car L)) 1))
+			(cons (car L) (notUniq (cdr L) L2))
+		)
+		((atom (car L))
+			(notUniq (cdr L) L2)
+		)
+		(T
+			(cons (notUniq (car L) L2) (notUniq (cdr L) L2))
+		)
+	)
+)
+
+(defun linia(X)
+	(cond
+		((atom X) (list X))
+	    (T (mapcan 'linia X))
+	)
+)
+
+(defun ultimu(L)
+	(cond
+		((equal (cdr L) nil) (car L))
+		(T (ultimu (cdr L)))
+	)
+)
+	
+
+(defun inlocuire(L)
+	(cond
+		((null L) nil)
+		((atom (car L)) (cons (car L) (inlocuire (cdr L))))
+		(T (cons (ultimu(linia(car L))) (inlocuire (cdr L))))
+	)
+)
+		
+		
+(defun intercls(L1 L2)
+	(cond
+		((null L1) L2)
+		((null L2) L1)
+		((< (car L1) (car L2)) (cons (car L1) (intercls (cdr L1) L2)))
+		((> (car L1) (car L2)) (cons (car L2) (intercls L1 (cdr L2))))
+		((= (car L1) (car L2)) (cons (car L1) (intercls (cdr L1) (cdr L2))))
+	)
+)
+
+(defun copyL(L)	
+	(cond
+		((null L) nil)
+	    (T (cons (car L) (copyL (cdr L))))
+	)
+)
+
+(defun EtoL(X L E)
+	(cond
+		((and (atom X) (equal X E)) (copyL L))
+		((atom X) (list X))
+		(T (list (mapcan #'(lambda (X) (EtoL X L E)) X)))
+	)
+)
+
+
+(defun minyL(L)
+	(cond
+		((null L) 999)
+		(T (min (car L) (minyL (cdr L))))
+	)
+)
+ 
+(defun vale_inc(L)
+	(cond
+		((null L) nil)
+		((not(cdr L)) T)
+		((< (car L) (cadr L))
+         (vale_inc(cdr L))
+        )
+	)
+)
+ 
+(defun vale_dec(L)	
+	(cond
+		((null L) nil)
+		((not (cdr L)) nil)
+		((> (car L) (cadr L))
+         (vale_dec(cdr L))
+        )
+		(T (vale_inc( cdr L)))
+	)
+)
+
+ (defun vale(L)
+	(cond
+		((> (car L) (cadr L))
+			(vale_dec(cdr L))		
+		)
+	)
+)
+
+
+
+
+(defun inserareI(L E N K):-
+	(cond
+		((null L) nil)
+		((= N K) (cons E (cons (car L) (inserareI (cdr L) E N (+ K 1)))))
+		(T (cons (car L) (inserareI (cdr L) E N (+ K 1))))
+	)
+)
+	
+(defun sesi(L L1 E N):-
+	(cond
+		((null L) (list(append L1 (list E))))
+		(T (cons (inserareI L1 E N 1) (sesi (cdr L) L1 E (+ N 1))))
+	)
+)
+
+(defun mainScadere(L1 L2)
+	(reverse (scadem (reverse L1) (reverse L2) 0))
+)
+
+(defun oscadere(L C)
+	(cond 
+		((not(cdr L))
+		    (cond
+				((= (- (car L) C) 0) nil)
+				(T (list (- (car L) C)))
+			)	
+		)
+		((< (- (car L) C) 0) (cons (- (+ (car L) 10) C) (oscadere (cdr L) 1)))
+		(T (cons (- (car L) C) (oscadere (cdr L) 0)))
+	)
+)
+
+(defun scadem (L1 L2 C)
+	(cond
+		((null L2)
+		   (cond
+			((= C 0) L1)
+			(T (oscadere L1 C))
+		    )
+		)
+		((>= (- (car L1) C) (car L2))
+			(cons (- (car L1) (car L2)) (scadem (cdr L1) (cdr L2) 0))
+		)
+		(T
+			(cons (- (+ (car L1) 10) C (car L2)) (scadem (cdr L1) (cdr L2) 1))
+		)
+	)
+)
+
+
+
+
+
+
+(defun isThere (L E)
+	(cond
+		((null L) nil)
+		((and (atom (car L)) (equal (car L) E)) T)
+		((and (atom (car L)) (not (equal (car L) E))) (isThere (cdr L) E))
+		(T (or (isThere (car L) E) (isThere (cdr L) E)))
+	)
+)
+
+
+(defun getPath (L E)
+	(cond
+	    ((equal (car L) E) (list E))
+		((isThere (cadr L) E) (cons (car L) (getPath (cadr L) E)))
+		((isThere (caddr L) E) (cons (car L) (getPath (caddr L) E)))
+		((not(equal (car L) E)) nil)
+	)
+)
+
+(defun myList(X K N)
+	(cond
+		((and (atom X) (= K N)) (list X)) 
+        ((atom X) nil)
+		(T (mapcan #'(lambda (X) (myList X (+ K 1) N)) X))
+	)
+)
+
+(defun reverseAll(L aux)
+	(cond
+		  ((null L) (reverse aux))
+		  ((listp (car L))
+			 (append (reverse aux) (cons (reverseAll (car L) nil) (reverseAll (cdr L) nil)))
+		  )
+		  (T 
+			(reverseAll (cdr L) (append aux (list (car L))))
+		  )
+	)
+)
+
+(defun reverseMain(L)
+	(reverseAll L nil)
+)
+
+
+(defun subm (L)
+	(cond
+		((null L) (list nil))
+		(t ((lambda (s)
+			(append s (mapcar #'(lambda (sb) (cons (car L) sb)) s)  )
+			)				
+			 (subm (cdr L))			
+			)	 
+        )
+	)
+)
+
+(defun subsets (L)
+  (if (null L) '(nil)
+    (let (
+		  (e (car L))
+          (ss (subsets (cdr L)))
+		 )
+      (append ss (loop for s in ss collect (cons e s)))
+	)
+   )
+)
+
+(
+
+

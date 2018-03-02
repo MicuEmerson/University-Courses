@@ -1,0 +1,153 @@
+
+
+(defun maxy (L)
+	(cond	
+		((null L) -1)
+		((numberp (car L)) (max (car L) (maxy (cdr L))))
+		(T (maxy (cdr L)))
+	)
+)
+
+(defun solve (X LVL)
+	(cond
+		((atom X) 0)
+		((and (= (mod LVL 2) 0) (= (mod (maxy X) 2) 0))
+			(and (write X) (+ 1 (apply '+ (mapcar #'(lambda (X) (solve X (+ LVL 1)))  X))))
+         )
+		(T (+ 0 (apply '+ (mapcar #'(lambda (X) (solve X (+ LVL 1)))  X))))
+	)
+)
+
+;R17
+(defun check (L)
+	(cond
+		((null L) nil)
+		((and (equal (cdr L) nil) (= (mod (car L) 2) 1))
+			T
+		)
+		((and (equal (cdr L) nil) (= (mod (car L) 2) 0))
+			nil
+		)
+		(T
+		   (check (cdr L))
+		)
+	)
+)
+
+(defun liniarizam (L)
+	(cond
+		((null L) nil)
+		((numberp (car L)) (cons (car L) (liniarizam (cdr L))))
+		(T (liniarizam (cdr L)))
+	)
+)
+
+(defun solve(X)
+	(cond
+		((atom X) 0)
+		((check (liniarizam X)) (+ 1 (apply '+ (mapcar 'solve X))))
+		(T (+ 0 (apply '+ (mapcar 'solve X))))
+	)
+)
+		
+
+(defun funct(L)
+	(cond 
+		((null L) nil)
+		((listp (car L)) 
+			(append (funct (car L)) (funct (cdr L)) (car (funct(car L)))) 
+	    )
+		(T
+			(list (car L))
+		)
+	)
+)
+
+
+;R16
+
+(defun liniar(X)
+	(cond	
+		((atom X) (list X))
+		(T (mapcan 'liniar X))
+	)
+)
+
+(defun sum(L)
+	(cond
+		((null L) 0)
+	    ((numberp (car L)) (+ (car L) (sum (cdr L))))
+		(T (sum (cdr L)))
+	)
+)
+
+(defun sol(X)
+	(cond
+		((atom X) 0)
+		((= (mod (sum (liniar X)) 2) 0) 
+			(and (write X)(+ 1 (apply '+ (mapcar 'sol X))))
+		)
+		(T (+ 0 (apply '+ (mapcar 'sol X))))
+	)
+)
+
+
+;;suma nivel impar
+(defun suma_niv(X niv)
+	(cond
+		((and (numberp X) (=(mod niv 2) 1)) X)
+		((atom X) 0)
+		(t (apply '+ (mapcar #'(lambda(X) (suma_niv X (+ 1 niv))) X )))
+	)
+)
+
+;;verific daca un numar e par
+(defun verifica_par(n)
+	(cond
+		((= (mod n 2) 0) t)
+	)
+)
+
+(defun determinare(l)
+	(cond
+		((atom l) 0)
+		
+		;;daca suma de pe nivelele impare este numar par, aplic un mapcar + 1
+		((verifica_par (suma_niv l 0)) 
+		(and (write l) (+ 1 (apply '+(mapcar 'determinare l))) ))
+		
+		(t  (apply '+ (mapcar 'determinare l)) )
+	)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;(A (B 2) (1 C 4) (D 1 (6 F)) ((G 4) 6))
+;(6 F)
+;((G) 4)

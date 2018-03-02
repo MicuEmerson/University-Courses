@@ -1,0 +1,7659 @@
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 4
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 5
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 6
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[[v=2;  , w=5; ] , [call(sum ;  v*10 w , print(v);]]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=2;  , w=5; ]
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=2; 
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+w=5; 
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[call(sum ;  v*10 w , print(v);]
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+call(sum ;  v*10 w
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+[v=a+b;  , print(v);]
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+v=a+b; 
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+return()
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+a-->20
+
+b-->5
+
+v-->25
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+print(v);
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+fork([call(product ;  v w , fork(call(sum ;  v w)])
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 1
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[call(product ;  v w , fork(call(sum ;  v w)]
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+call(product ;  v w
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+[v=a*b;  , print(v);]
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+v=a*b; 
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+print(v);
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+return()
+fork(call(sum ;  v w)
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->10
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+fork(call(sum ;  v w)
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 2
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+call(sum ;  v w
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+[v=a+b;  , print(v);]
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+v=a+b; 
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+print(v);
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+return()
+
+SymTable:
+
+a-->2
+
+b-->5
+
+v-->7
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+
+ExeStack: 3
+
+SymTable:
+
+v-->2
+
+w-->5
+
+
+Out:
+
+25
+
+2
+
+10
+
+7
+
+
+FileTable:
+
+
+Heap:
+
+
+ProcTable:
+
+product(a,b,)-->[v=a*b;  , print(v);]
+
+sum(a,b,)-->[v=a+b;  , print(v);]
+
+
+

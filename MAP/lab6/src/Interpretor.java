@@ -42,6 +42,8 @@ public class Interpretor {
           fork(wH(a,30);v=32;print(v);print(rH(a)));
           print(v);print(rH(a))
         */
+
+
         Statement a1 = new AssignStmt("v", new ConstExp(10));
         Statement a2 = new HeapAllocation("a", new ConstExp(22));
 
@@ -58,9 +60,35 @@ public class Interpretor {
 
         Statement c1 = new CompStmt(a1, a2);
         Statement c2 = new CompStmt(a8, new CompStmt(a9, a10));
+        //Statement c2 = new CompStmt(a9,a10);
         Statement ex1 = new CompStmt(c1,c2);
 
-        exeStack.push(ex1);
+/*
+        Statement s1 = new AssignStmt("v", new ConstExp(10));
+        Statement s2 = new AssignStmt("v", new ConstExp(11));
+        Statement s3 = new AssignStmt("v", new ConstExp(12));
+
+        Statement s8 = new ForkStmt(new CompStmt(new ForkStmt(s2), s3));
+        exeStack.push(s8);
+        exeStack.push(s1);
+*/
+
+
+        Statement Ts1 = new OpenRFile("var_f", "text.txt");
+        Statement Ts2 = new ReadFile(new VarExp("var_f"), "var_c");
+        Statement TthenS1 = new ReadFile(new VarExp("var_f"), "var_c");
+        Statement TthenS2 = new PrintStmt(new VarExp("var_c"));
+        Statement TthenS = new CompStmt(TthenS1, TthenS2);
+        Statement TelseS = new PrintStmt(new ConstExp(0));
+
+        Statement Ts3 = new IfStmt(new VarExp("var_c"), TthenS, TelseS);
+        Statement Ts4 = new CloseRFile(new VarExp("var_f"));
+
+        Statement Ts5 = new CompStmt(Ts1,Ts2);
+        Statement Ts6 = new CompStmt(Ts3, Ts4);
+        Statement ex5 = new CompStmt(Ts5, Ts6);
+
+        exeStack.push(ex5);
 
         PrgState state = new PrgState(exeStack, dict, list, null, fileTable, heap, GenIDFork.getID());
 
@@ -72,7 +100,7 @@ public class Interpretor {
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1",  ex1.toString(), ctrl));
+        menu.addCommand(new RunExample("1",  ex5.toString(), ctrl));
         try {
             menu.show();
         }
