@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<bibliography>
+
+	<element>
+        <category>Book</category>
+		<author>Raj Jain</author>
+        <title>Good Habbits</title>
+	</element>
+
+	<element>
+    <category>Web</category>
+		<author>Sadia Kasi</author>
+        <title>I Don't Know</title>
+	</element>
+
+	<element>
+    <category>Reports</category>
+		<author>Basileios Julia</author>
+        <title>Global warming</title>
+	</element>
+
+    <element>
+    <category>Book</category>
+		<author>Terry Rian</author>
+        <title>Healthy Food</title>
+	</element>
+
+    <element>
+        <category>Book</category>
+		<author>Mihail Cerbinski</author>
+        <title>Think Outside The Box</title>
+	</element>
+
+    <element>
+        <category>Book</category>
+		<author>Mihai Eminescu</author>
+        <title>Luceafarul</title>
+	</element>
+
+    <element>
+        <category>Articles</category>
+		<author>Ion Creanga</author>
+        <title>Amintiri Din Copilarie</title>
+	</element>
+
+    <element>
+        <category>Articles</category>
+		<author>Saraj Arthur</author>
+        <title>Why we do what we do</title>
+	</element>
+    
+    <element>
+        <category>Articles</category>
+		<author>Josh Peterson</author>
+        <title>The bioinformatics in our lifes</title>
+	</element>
+
+
+</bibliography>
